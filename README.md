@@ -1,8 +1,24 @@
 # APMine Doom Companion
 
-Private source repository candidate for the separate Doom 1993 / Doom II client.
-This directory has not been published and is not an approved release. It is not
+Modified APDoom source for a separate Archipelago DOOM 1993 / DOOM II client.
+This is a source publication, not a binary release or an installer. It is not
 verified corresponding source for the previously distributed APDoom binaries.
+
+## License
+
+The combined engine/APCpp program is distributed under the **GNU General
+Public License, version 3 (GPL-3.0-only)**. See [LICENSE](LICENSE) for the complete
+license. You may copy, modify and redistribute the covered program under those
+terms. There is no warranty.
+
+Original component copyright and license grants remain intact. The engine's
+GPL-2.0-or-later notices permit the combined GPLv3 build; APCpp supplies GPLv3
+code. Separately licensed dependencies retain their BSD, MIT, Apache and other
+applicable terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md),
+[COPYING.md](COPYING.md), [COPYING.GPL3.txt](COPYING.GPL3.txt) and the notices in
+each component. These code licenses do not license original game/mod data.
+
+## Source And Build
 
 The engine retains APMine's custom AP gameplay behavior. The platform distributes
 the rules-only APWorlds separately; no platform build/publish hooks are included.
@@ -27,15 +43,34 @@ source. The recovered baseline already contains older local gameplay edits;
 their original authorship and dates have not been established. The preparation
 notices do not invent those dates or provide historical license clearance.
 
-The combined engine/APCpp build uses GPL version 3; this does not remove the
-component grants or relicense original game data. See [GPLv3](COPYING.GPL3.txt),
-[engine GPLv2 text](COPYING.md), and the retained component notices. There is
-no warranty. This candidate does not claim permission to distribute Doom IWADs,
-Scythe, Brutal Doom, extracted artwork, or other third-party mods.
+## Game Resources
 
-Before a public repository or binary release is authorized, verify the complete
-preferred source/build inputs for each shipped native dependency, source/art
-provenance, clean builds, live AP item/save behavior, and recipient source access.
-Every eventual binary release needs an immutable matching source revision and
-build record. A moving branch or upstream homepage is not a substitute for
-recovering the source of the retired releases.
+No Doom IWADs, Scythe WAD, Brutal Doom mod, extracted original-game artwork,
+embedded resource archives or player caches are included. Supply your own
+legitimately obtained supported original DOS IWADs, following the local resource
+instructions in [BUILDING.md](BUILDING.md). Generated resources stay private;
+do not upload them or add them to a release. Scythe and other third-party mods
+are not supported or cleared for distribution by this source publication.
+
+## Verification And History
+
+The initial import at
+[`c052864b80182a7191f8b3a822676397c99087b1`](https://github.com/gambino87/APMine-Doom-Companion/tree/c052864b80182a7191f8b3a822676397c99087b1)
+preserves all 5,143 inventoried inputs from the independently built normal
+companion snapshot. Its snapshot SHA-256 is
+`57238b6c6a62c6678fa253ee6228b2fda41298c47f6e0a4a4bb806469123cce8`.
+The publication documentation and standard license filename are subsequent,
+source-inventoried changes; the native code and build recipes are unchanged.
+
+`SOURCE_SNAPSHOT.json` and `DEPENDENCIES.json` retain their preparation-time
+labels, not a live statement about this repository's visibility. The public
+documentation update is recorded separately in the snapshot. Verification
+does not make a binary release ready or establish continued source availability.
+
+Every eventual binary release needs its own immutable matching source revision,
+notices and build record. This new modified source does not resolve the retired
+releases' corresponding-source gaps or establish historical GPL cure or
+reinstatement. A newer build cannot substitute for an older recipient's actual
+source. No binary download or platform deployment is part of this publication.
+
+Publication documentation updated 2026-10-12.

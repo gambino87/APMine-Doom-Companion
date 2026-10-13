@@ -1,7 +1,15 @@
-# Building The Private Candidate
+# Building The Source
 
 These instructions build a local proof of concept, not a redistributable package.
 No signing, deployment, binary download, or asset download is performed.
+
+The source publication is licensed as described in `README.md` and `LICENSE`.
+Preparation-time "private candidate" labels below and in the hash inventories
+are historical technical records, not restrictions on the GPL-granted rights
+to copy, modify or redistribute covered code. The first import commit referenced
+in `README.md` is the exact preferred-source snapshot for the recorded normal
+build; a later binary must have its own matching source/build record. Publication
+documentation updated 2026-10-12; native source and recipes are unchanged.
 
 ## Requirements
 

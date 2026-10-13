@@ -62,7 +62,11 @@ icons, embedded asset archives, or rendered player caches are included.
 Code licenses do not cover those game/mod assets. Other games are not claimed
 as supported by this candidate merely because inherited engine code remains.
 
-No public source URL, release tag, binary package or source offer has been
-created. Before binary distribution, provide recipients with matching preferred
-source and build/run scripts and the applicable notices for the actual release.
-The retired distribution's source and asset-permission gaps remain unresolved.
+This source tree is prepared for publication at
+https://github.com/gambino87/APMine-Doom-Companion under GPLv3 for the combined
+engine/APCpp program. The standard `LICENSE` is an exact copy of
+`COPYING.GPL3.txt`; it does not replace the retained component grants. No binary
+package is included. Before binary distribution, provide recipients with
+matching preferred source, build/run scripts and the applicable notices for
+that actual release. The retired distribution's source and asset-permission
+gaps remain unresolved. Publication documentation updated 2026-10-12.

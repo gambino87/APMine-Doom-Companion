@@ -1242,7 +1242,7 @@
     },
     {
       "path": "BUILDING.md",
-      "sha256": "0a475a81d21b8533318b244b0aa78971b689a609508ef037d7598f6c4cee886a"
+      "sha256": "94798fc90c5e2ab67a78d8140552661d0276243534b7f423214b44d7bc2ff335"
     },
     {
       "path": "CHANGELOG.md",
@@ -1277,6 +1277,10 @@
       "sha256": "886ea47c074d4f6b8e295013ed0a5025010a5c4fd7c5cb0084227a32bfc15d5c"
     },
     {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
       "path": "Makefile.am",
       "sha256": "9b7020eb4003033455d288f9931c6e7a04042cdbf112b9e3457f9f6fc7a39073"
     },
@@ -1302,7 +1306,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "5136938a9e7aaac66115da1dcaa0d2b49a2d54ac7f0176bcfaa7e22c8c00f827"
+      "sha256": "c75ea48eec88e4c8f0527236d9d5b8b4e0a7b9798fdc97915b3dfc010be07693"
     },
     {
       "path": "README.upstream.md",
@@ -1314,7 +1318,7 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "063d039919e1d8b36723af8f14907bdf3e5a2b9a32860509c71b0f640977f5c4"
+      "sha256": "ee54c05f80261eba1328bc4e18d769b22a17b60795516a660f558961fef3a546"
     },
     {
       "path": "TODO.md",
@@ -21442,5 +21446,44 @@
     "Historical binary/source matching and recipient source access",
     "Source/art provenance review",
     "Explicit publication authorization; no public source URL exists yet"
-  ]
+  ],
+  "publication_preparation": {
+    "date": "2026-10-12",
+    "repository": "gambino87/APMine-Doom-Companion",
+    "authorization": "Explicit human request to publish this separate source repository",
+    "exact_build_snapshot_commit": "c052864b80182a7191f8b3a822676397c99087b1",
+    "exact_build_snapshot_sha256": "57238b6c6a62c6678fa253ee6228b2fda41298c47f6e0a4a4bb806469123cce8",
+    "native_source_and_build_recipes_changed": false,
+    "public_visibility_verified": false,
+    "documentation_changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "5136938a9e7aaac66115da1dcaa0d2b49a2d54ac7f0176bcfaa7e22c8c00f827",
+        "after_sha256": "c75ea48eec88e4c8f0527236d9d5b8b4e0a7b9798fdc97915b3dfc010be07693",
+        "date": "2026-10-12",
+        "kind": "publication-documentation-or-license-filename"
+      },
+      {
+        "path": "BUILDING.md",
+        "before_sha256": "0a475a81d21b8533318b244b0aa78971b689a609508ef037d7598f6c4cee886a",
+        "after_sha256": "94798fc90c5e2ab67a78d8140552661d0276243534b7f423214b44d7bc2ff335",
+        "date": "2026-10-12",
+        "kind": "publication-documentation-or-license-filename"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "before_sha256": "063d039919e1d8b36723af8f14907bdf3e5a2b9a32860509c71b0f640977f5c4",
+        "after_sha256": "ee54c05f80261eba1328bc4e18d769b22a17b60795516a660f558961fef3a546",
+        "date": "2026-10-12",
+        "kind": "publication-documentation-or-license-filename"
+      },
+      {
+        "path": "LICENSE",
+        "before_sha256": null,
+        "after_sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+        "date": "2026-10-12",
+        "kind": "publication-documentation-or-license-filename"
+      }
+    ]
+  }
 }
