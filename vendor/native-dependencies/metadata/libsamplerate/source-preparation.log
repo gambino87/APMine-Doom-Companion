@@ -1,0 +1,14 @@
+Downloading https://github.com/libsndfile/libsamplerate/archive/0.2.2.tar.gz -> libsndfile-libsamplerate-0.2.2.tar.gz
+Successfully downloaded libsndfile-libsamplerate-0.2.2.tar.gz
+-- Extracting source C:/Users/varga/AppData/Local/vcpkg/downloads/libsndfile-libsamplerate-0.2.2.tar.gz
+-- Using source at C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/blds/libsamplerate/src/0.2.2-01bf3b2d30.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/libsamplerate_x64-windows/lib/pkgconfig/samplerate.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at C:/Users/varga/AppData/Local/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/libsamplerate_x64-windows/debug/lib/pkgconfig/samplerate.pc
+-- Installing: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/libsamplerate_x64-windows/share/libsamplerate/copyright
+-- Performing post-build validation

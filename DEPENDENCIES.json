@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "source_delivery_complete": false,
+  "required_dependency_sources_present": true,
+  "installed_dependencies": [
+    {
+      "name": "fluidsynth",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "fluidsynth",
+          "versionInfo": "2.5.4",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@48798e344d7d76993660993d776bfbaeb2e08b66",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "fluidsynth:x64-windows",
+          "versionInfo": "4a101c8e20d827c7ac3a137ee9ac9683b385e44f686f13a08381eb6ae9b161d7",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "FluidSynth/fluidsynth",
+          "downloadLocation": "git+https://github.com/FluidSynth/fluidsynth@v2.5.4",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95",
+      "source_delivery": "not linked by the captured build profile; notice/reference retained",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release"
+    },
+    {
+      "name": "gcem",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "gcem",
+          "versionInfo": "1.18.0",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@061d6e29d72905c39027e09ef277e84ce0a31f19",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "gcem:x64-windows",
+          "versionInfo": "bcbd4133f9b0d7a0bffd8129245475557a1d7a793c4cf88e148f7fd3de77a59a",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "kthohr/gcem",
+          "downloadLocation": "git+https://github.com/kthohr/gcem@v1.18.0",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "source_delivery": "not linked by the captured build profile; notice/reference retained",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release"
+    },
+    {
+      "name": "libogg",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "libogg",
+          "versionInfo": "1.3.6#1",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@0631c72b35b0e169220b9c0fa9a6af4b229268cb",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "libogg:x64-windows",
+          "versionInfo": "6638675d20f2db606d7bcf35ff45d09962dec28f985453b9bfbbece7e4b9d9e3",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "xiph/ogg",
+          "downloadLocation": "git+https://github.com/xiph/ogg@v1.3.6",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/libogg"
+    },
+    {
+      "name": "libpng",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "libpng",
+          "versionInfo": "1.6.58",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@909d98e06046a0901fd11300b3d725d6a80d27bf",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "libpng:x64-windows",
+          "versionInfo": "2f9743f98015ba9755abd9b728a9b64b8d00511afbd7ed5e368fc4be31a03083",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "pnggroup/libpng",
+          "downloadLocation": "git+https://github.com/pnggroup/libpng@v1.6.58",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-1",
+          "name": "${LIBPNG_APNG_PATCH_NAME}.gz",
+          "downloadLocation": "https://downloads.sourceforge.net/project/libpng-apng/libpng16/1.6.58/${LIBPNG_APNG_PATCH_NAME}.gz",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/libpng"
+    },
+    {
+      "name": "libsamplerate",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "libsamplerate",
+          "versionInfo": "0.2.2#1",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@f21f2fca566e762cdc4fb4b808b075f3c5d3b444",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "libsamplerate:x64-windows",
+          "versionInfo": "793ad5b39acaeb2ea7ff25e1ed6559339a73cd9be1ab1c10f6791124b91a1df3",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "libsndfile/libsamplerate",
+          "downloadLocation": "git+https://github.com/libsndfile/libsamplerate@0.2.2",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "2c1f76ce2effdddb425018405d5690c0b1ab4e6976e35296b0a6db65c5e1a55d",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/libsamplerate"
+    },
+    {
+      "name": "libvorbis",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "libvorbis",
+          "versionInfo": "1.3.7#4",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@149b8037ad8023f0f1b130616cf1a90238083cb0",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "libvorbis:x64-windows",
+          "versionInfo": "85a99e2690cfab9cb3b906cabe37a350302c764e5b3e5f898b81d811256dc8cf",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "xiph/vorbis",
+          "downloadLocation": "git+https://github.com/xiph/vorbis@v1.3.7",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/libvorbis"
+    },
+    {
+      "name": "sdl2",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "sdl2",
+          "versionInfo": "2.32.10",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@af36a2c0ace7069e28bded20480ebbaf4e9c6e98",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "sdl2:x64-windows",
+          "versionInfo": "e440771f06ed301c362193e7cd3a58f4626f3c14b1bf20ae245e1c6df5e57653",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "libsdl-org/SDL",
+          "downloadLocation": "git+https://github.com/libsdl-org/SDL@release-2.32.10",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/sdl2"
+    },
+    {
+      "name": "sdl2-mixer",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "sdl2-mixer",
+          "versionInfo": "2.8.1#2",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@ee2053a681764a5fda41536fee42df58397d0c37",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "sdl2-mixer:x64-windows",
+          "versionInfo": "167b3df5e1fcc2bfed7fa019cd9556a517f48abe8386eb0a5a6ba746d773c936",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "libsdl-org/SDL_mixer",
+          "downloadLocation": "git+https://github.com/libsdl-org/SDL_mixer@release-2.8.1",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "7826eca0a0f7e591f38dd844e207a200aac81a59b20d8a30c3af8c6282af13e6",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/sdl2-mixer"
+    },
+    {
+      "name": "sdl2-net",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "sdl2-net",
+          "versionInfo": "2.2.0#3",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@f735d9ac81c56778c5a317db55d1c1f2cce78e87",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "sdl2-net:x64-windows",
+          "versionInfo": "02ddd53678c9543cf3a2dead8b2dbff7da58eeec4820a56b536067afefeda179",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "libsdl-org/SDL_net",
+          "downloadLocation": "git+https://github.com/libsdl-org/SDL_net@669e75b84632e2c6cc5c65974ec9e28052cb7a4e",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "fcb07e07ac6bc8b2fcf047b50431ef4ebe5b619d7ca7c82212018309a9067426",
+      "source_delivery": "not linked by the captured build profile; notice/reference retained",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release"
+    },
+    {
+      "name": "vcpkg-cmake",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "vcpkg-cmake",
+          "versionInfo": "2024-04-23",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@e74aa1e8f93278a8e71372f1fa08c3df420eb840",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "vcpkg-cmake:x64-windows",
+          "versionInfo": "3506e7801d07a9efe62a04d9febc6dd4cc17af00cbe1de064578e24496c68048",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "1ee376fc340e0aa6ad6a3581c94126e741468705096ac92263048a21daa86460",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "ports/vcpkg-cmake"
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "vcpkg-cmake-config",
+          "versionInfo": "2024-05-23",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@97a63e4bc1a17422ffe4eff71da53b4b561a7841",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "vcpkg-cmake-config:x64-windows",
+          "versionInfo": "760bbb65ecc20a63e2fb0e0fee4b726773d478fbcc533c85ae3852982e4c241e",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "04b60f99a43bfd7fefdc8364b24aac704a2160cef969b75ba6a38b62dc4c4b70",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "ports/vcpkg-cmake-config"
+    },
+    {
+      "name": "wavpack",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "wavpack",
+          "versionInfo": "5.9.0",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@c1135a4bf0e9a8dd1c07fffa886e75ec6ee60386",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "wavpack:x64-windows",
+          "versionInfo": "9411b79c3b97f1293f6bcd49e3059e8d1c3358a82fdd4430fad65720f6b293a5",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "dbry/WavPack",
+          "downloadLocation": "git+https://github.com/dbry/WavPack@5.9.0",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "1703dd391c9b422910287add8483a27d9bead0b0b5ccd6d5017e995a7192b3e2",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/wavpack"
+    },
+    {
+      "name": "zlib",
+      "packages": [
+        {
+          "SPDXID": "SPDXRef-port",
+          "name": "zlib",
+          "versionInfo": "1.3.2",
+          "downloadLocation": "git+https://github.com/microsoft/vcpkg@e2a9ce8cf8f5d07e489e14c256eefdd58cd535c1",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-binary",
+          "name": "zlib:x64-windows",
+          "versionInfo": "a7ae3086073eb934ed53c56a528f544d225176f018dce3f4a22d0a2528f23eea",
+          "downloadLocation": "NONE",
+          "licenseDeclared": "NOASSERTION"
+        },
+        {
+          "SPDXID": "SPDXRef-resource-0",
+          "name": "madler/zlib",
+          "downloadLocation": "git+https://github.com/madler/zlib@v1.3.2",
+          "licenseDeclared": "NOASSERTION"
+        }
+      ],
+      "notice_sha256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+      "source_delivery": "present in private candidate; not publicly delivered",
+      "binary_inclusion": "installed build dependency; linkage must be checked per release",
+      "preferred_source": "sources/zlib"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+Downloading https://github.com/libsdl-org/SDL/archive/release-2.32.10.tar.gz -> libsdl-org-SDL-release-2.32.10.tar.gz
+Successfully downloaded libsdl-org-SDL-release-2.32.10.tar.gz
+-- Extracting source C:/Users/varga/AppData/Local/vcpkg/downloads/libsdl-org-SDL-release-2.32.10.tar.gz
+-- Applying patch deps.patch
+-- Applying patch alsa-dep-fix.patch
+-- Applying patch cxx-linkage-pkgconfig.diff
+-- Using source at C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/blds/sdl2/src/se-2.32.10-3b143ac573.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/sdl2_x64-windows/lib/pkgconfig/sdl2.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at C:/Users/varga/AppData/Local/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/sdl2_x64-windows/debug/lib/pkgconfig/sdl2.pc
+-- Installing: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/sdl2_x64-windows/share/sdl2/usage
+-- Installing: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/sdl2_x64-windows/share/sdl2/copyright
+-- Performing post-build validation

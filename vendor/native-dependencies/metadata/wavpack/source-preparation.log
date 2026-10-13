@@ -1,0 +1,14 @@
+Downloading https://github.com/dbry/WavPack/archive/5.9.0.tar.gz -> dbry-WavPack-5.9.0.tar.gz
+Successfully downloaded dbry-WavPack-5.9.0.tar.gz
+-- Extracting source C:/Users/varga/AppData/Local/vcpkg/downloads/dbry-WavPack-5.9.0.tar.gz
+-- Using source at C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/blds/wavpack/src/5.9.0-5cef8290a6.clean
+-- Configuring x64-windows
+-- Building x64-windows-dbg
+-- Building x64-windows-rel
+-- Installing: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/wavpack_x64-windows/share/wavpack/copyright
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/wavpack_x64-windows/lib/pkgconfig/wavpack.pc
+-- Using cached msys2-mingw-w64-x86_64-pkgconf-1~2.4.3-1-any.pkg.tar.zst
+-- Using cached msys2-msys2-runtime-3.6.2-2-x86_64.pkg.tar.zst
+-- Using msys root at C:/Users/varga/AppData/Local/vcpkg/downloads/tools/msys2/9272adbcaf19caef
+-- Fixing pkgconfig file: C:/ROMS/APDoom-master/build-codex/vcpkg_installed/vcpkg/pkgs/wavpack_x64-windows/debug/lib/pkgconfig/wavpack.pc
+-- Performing post-build validation

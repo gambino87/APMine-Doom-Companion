@@ -1,0 +1,43 @@
+# Original game/mod data and player caches never belong in this repository.
+*.wad
+*.WAD
+*.pk3
+*.PK3
+*.apworld
+*.zip
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ogg
+*.wav
+*.mp3
+*.exe
+*.dll
+*.pdb
+*.obj
+*.lib
+*.sav
+*.log
+BaseAssets*
+APMine-local-assets.json
+APMine-player-runtime.json
+/runtime/
+/history/
+/games/
+/save/
+/saves/
+/smoke-*/
+/build*/
+/Release/
+/.venv/
+__pycache__/
+/prepare-manifest.json
+/src/*-res.rc
+/src/setup/setup-manifest.xml
+
+# Hash-bound upstream library fixture data is part of the reviewed source tree.
+# The source verifier rejects extra/native payloads in this directory.
+!/vendor/native-dependencies/sources/**

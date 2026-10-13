@@ -1,0 +1,1440 @@
+//
+// Copyright(C) 1993-1996 Id Software, Inc.
+// Copyright(C) 2005-2014 Simon Howard
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// DESCRIPTION:
+//	Handling interactions (i.e., collisions).
+//
+
+
+
+
+// Data.
+#include "doomdef.h"
+#include "dstrings.h"
+#include "sounds.h"
+
+#include "deh_main.h"
+#include "deh_misc.h"
+#include "doomstat.h"
+
+#include "m_random.h"
+#include "i_system.h"
+
+#include "am_map.h"
+
+#include "p_local.h"
+
+#include "s_sound.h"
+
+#include "p_inter.h"
+
+#include "apdoom.h"
+#include "r_data.h" // [AP] R_FlatNumToName
+#include "hu_stuff.h" // [AP] HU_AddAPMessage
+
+#include "g_game.h"
+
+
+#define BONUSADD	6
+
+
+
+
+// a weapon is found with two clip loads,
+// a big item has five clip loads
+int	maxammo[NUMAMMO] = {200, 50, 300, 50};
+int	clipammo[NUMAMMO] = {10, 4, 20, 1};
+
+
+//
+// GET STUFF
+//
+
+//
+// P_GiveAmmo
+// Num is the number of clip loads,
+// not the individual count (0= 1/2 clip).
+// Returns false if the ammo can't be picked up at all
+//
+
+boolean
+P_GiveAmmo
+( player_t*	player,
+  ammotype_t	ammo,
+  int		num,
+  boolean	dropped ) // [NS] Dropped ammo/weapons give half as much.
+{
+    int		oldammo;
+	
+    if (ammo == am_noammo)
+	return false;
+		
+    if (ammo >= NUMAMMO)
+	I_Error ("P_GiveAmmo: bad type %i", ammo);
+		
+    if ( player->ammo[ammo] == player->maxammo[ammo]  )
+	return false;
+		
+    if (num)
+	num *= clipammo[ammo];
+    else
+	num = clipammo[ammo]/2;
+    
+    if (gameskill == sk_baby
+	|| gameskill == sk_nightmare
+	|| critical->moreammo)
+    {
+	// give double ammo in trainer mode,
+	// you'll need in nightmare
+	num <<= 1;
+    }
+    
+	// [NS] Halve if needed.
+  if (!ap_force_disable_behaviors)
+  {
+		// [AP] Don't halve if in AP. We need those ammos more than anything!
+  }
+	else if (dropped)
+	{
+		num >>= 1;
+		// Don't round down to 0.
+		if (!num)
+			num = 1;
+	}
+		
+    oldammo = player->ammo[ammo];
+    player->ammo[ammo] += num;
+
+    if (player->ammo[ammo] > player->maxammo[ammo])
+	player->ammo[ammo] = player->maxammo[ammo];
+
+    // If non zero ammo, 
+    // don't change up weapons,
+    // player was lower on purpose.
+    if (oldammo)
+	return true;	
+
+    // We were down to zero,
+    // so select a new weapon.
+    // Preferences are not user selectable.
+    switch (ammo)
+    {
+      case am_clip:
+	if (player->readyweapon == wp_fist)
+	{
+	    if (player->weaponowned[wp_chaingun])
+		player->pendingweapon = wp_chaingun;
+	    else
+		player->pendingweapon = wp_pistol;
+	}
+	break;
+	
+      case am_shell:
+	if (player->readyweapon == wp_fist
+	    || player->readyweapon == wp_pistol)
+	{
+	    if (player->weaponowned[wp_shotgun])
+		player->pendingweapon = wp_shotgun;
+	}
+	break;
+	
+      case am_cell:
+	if (player->readyweapon == wp_fist
+	    || player->readyweapon == wp_pistol)
+	{
+	    if (player->weaponowned[wp_plasma])
+		player->pendingweapon = wp_plasma;
+	}
+	break;
+	
+      case am_misl:
+	if (player->readyweapon == wp_fist)
+	{
+	    if (player->weaponowned[wp_missile])
+		player->pendingweapon = wp_missile;
+	}
+      default:
+	break;
+    }
+	
+    return true;
+}
+
+
+// [crispy] show weapon pickup messages in multiplayer games
+const char *const WeaponPickupMessages[NUMWEAPONS] =
+{
+	NULL, // wp_fist
+	NULL, // wp_pistol
+	GOTSHOTGUN,
+	GOTCHAINGUN,
+	GOTLAUNCHER,
+	GOTPLASMA,
+	GOTBFG9000,
+	GOTCHAINSAW,
+	GOTSHOTGUN2,
+};
+
+//
+// P_GiveWeapon
+// The weapon name may have a MF_DROPPED flag ored in.
+//
+boolean
+P_GiveWeapon
+( player_t*	player,
+  weapontype_t	weapon,
+  boolean	dropped )
+{
+	if (!ap_force_disable_behaviors) // [AP] forced demo compatibility
+	{
+		if (dropped)
+			return false; // [AP] We don't give dropped weapons
+	}
+
+    boolean	gaveammo;
+    boolean	gaveweapon;
+	
+    if (netgame
+	&& (deathmatch!=2)
+	 && !dropped )
+    {
+	// leave placed weapons forever on net games
+	if (player->weaponowned[weapon])
+	    return false;
+
+	player->bonuscount += BONUSADD;
+	player->weaponowned[weapon] = true;
+
+	if (deathmatch)
+	    P_GiveAmmo (player, weaponinfo[weapon].ammo, 5, false);
+	else
+	    P_GiveAmmo (player, weaponinfo[weapon].ammo, 2, false);
+	player->pendingweapon = weapon;
+	// [crispy] show weapon pickup messages in multiplayer games
+	player->message = DEH_String(WeaponPickupMessages[weapon]);
+
+	if (player == &players[displayplayer])
+	    S_StartSound (NULL, sfx_wpnup);
+	return false;
+    }
+	
+    if (weaponinfo[weapon].ammo != am_noammo)
+    {
+	// give one clip with a dropped weapon,
+	// two clips with a found weapon
+	// [NS] Just need to pass that it's dropped.
+	gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 2, dropped);
+	/*
+	if (dropped)
+	    gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 1);
+	else
+	    gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 2);
+	*/
+    }
+    else
+	gaveammo = false;
+	
+    if (player->weaponowned[weapon])
+	gaveweapon = false;
+    else
+    {
+	gaveweapon = true;
+	player->weaponowned[weapon] = true;
+	player->pendingweapon = weapon;
+    }
+	
+    return (gaveweapon || gaveammo);
+}
+
+ 
+
+//
+// P_GiveBody
+// Returns false if the body isn't needed at all
+//
+boolean
+P_GiveBody
+( player_t*	player,
+  int		num )
+{
+    if (player->health >= MAXHEALTH)
+	return false;
+		
+    player->health += num;
+    if (player->health > MAXHEALTH)
+	player->health = MAXHEALTH;
+    player->mo->health = player->health;
+	
+    return true;
+}
+
+boolean
+P_GiveBodyCapped
+( player_t*	player,
+  int		num,
+  int		max )
+{
+    if (player->health >= max)
+	return false;
+
+    player->health += num;
+    if (player->health > max)
+	player->health = max;
+    player->mo->health = player->health;
+
+    return true;
+}
+
+static int P_APPercentAmount(int max, int percent)
+{
+    int amount = (max * percent + 100) / 200;
+
+    return MAX(1, amount);
+}
+
+static int P_APDisplayPercentAmount(int max, int percent)
+{
+    int amount = (max * percent + 100) / 200;
+
+    return MAX(1, amount);
+}
+
+boolean P_APGiveBodyPercent(player_t* player, int percent, int cap_percent)
+{
+    return P_GiveBodyCapped(player,
+                            P_APPercentAmount(ap_state.player_state.max_health, percent),
+                            P_APPercentAmount(ap_state.player_state.max_health, cap_percent));
+}
+
+boolean P_APGiveArmorPercentAdditive(player_t* player, int percent, int armortype, int cap_percent)
+{
+    return P_GiveArmorAdditive(player,
+                               P_APPercentAmount(ap_state.player_state.max_armor, percent),
+                               armortype,
+                               P_APPercentAmount(ap_state.player_state.max_armor, cap_percent));
+}
+
+boolean P_APGiveSupercharge(player_t* player)
+{
+    // Add 100% health, capped at the player's AP-expanded 200% ceiling.
+    return P_APGiveBodyPercent(player, 100, 200);
+}
+
+boolean P_APGiveMegasphere(player_t* player)
+{
+    // Add 200% health and armor, capped at each AP-expanded 200% ceiling.
+    boolean gave_health = P_APGiveBodyPercent(player, 200, 200);
+    boolean gave_armor = P_APGiveArmorPercentAdditive(player, 200, 2, 200);
+
+    return gave_health || gave_armor;
+}
+
+boolean P_APGiveBerserkHealth(player_t* player)
+{
+    return P_APGiveBodyPercent(player, 100, 100);
+}
+
+//
+// P_GiveArmor
+// Returns false if the armor is worse
+// than the current armor.
+//
+boolean
+P_GiveArmor
+( player_t*	player,
+  int		armortype )
+{
+    int		hits;
+	
+    hits = armortype*100;
+    if (player->armorpoints >= hits)
+	return false;	// don't pick up
+		
+    player->armortype = armortype;
+    player->armorpoints = hits;
+	
+    return true;
+}
+
+boolean
+P_GiveArmorAdditive
+( player_t*	player,
+  int		points,
+  int		armortype,
+  int		max )
+{
+    if (player->armorpoints >= max)
+	return false;
+
+    player->armorpoints += points;
+    if (player->armorpoints > max)
+	player->armorpoints = max;
+    if (player->armortype < armortype)
+	player->armortype = armortype;
+
+    return true;
+}
+
+
+
+//
+// P_GiveCard
+//
+void
+P_GiveCard
+( player_t*	player,
+  card_t	card )
+{
+    if (player->cards[card])
+	return;
+    
+    player->bonuscount += netgame ? BONUSADD : 0; // [crispy] Fix "Key pickup resets palette"
+    player->cards[card] = 1;
+    ap_mark_vanilla_key_collected(card);
+}
+
+
+//
+// P_GivePower
+//
+boolean
+P_GivePower
+( player_t*	player,
+  int /*powertype_t*/	power )
+{
+    if (power == pw_invulnerability)
+    {
+	player->powers[power] = INVULNTICS;
+	return true;
+    }
+    
+    if (power == pw_invisibility)
+    {
+	player->powers[power] = INVISTICS;
+	player->mo->flags |= MF_SHADOW;
+	return true;
+    }
+    
+    if (power == pw_infrared)
+    {
+	player->powers[power] = INFRATICS;
+	return true;
+    }
+    
+    if (power == pw_ironfeet)
+    {
+	player->powers[power] = IRONTICS;
+	return true;
+    }
+    
+    if (power == pw_strength)
+    {
+	P_APGiveBerserkHealth(player);
+	player->powers[power] = 1;
+	return true;
+    }
+	
+    if (player->powers[power])
+	return false;	// already got it
+		
+    player->powers[power] = 1;
+    return true;
+}
+
+
+
+//
+// P_TouchSpecialThing
+//
+
+static void AP_CheckEnhancedAmmoPickup(mobj_t* special)
+{
+    if (!ap_state.enhanced_ammo)
+        return;
+
+    ap_level_index_t idx = ap_make_level_index(gameepisode, gamemap);
+    if (special->type != MT_APBP
+        && apdoom_get_enhanced_ammo_location_type(idx, special->index) <= 0)
+        return;
+    if (ap_is_location_checked(idx, special->index))
+        return;
+
+    apdoom_check_location(idx, special->index);
+}
+
+static void AP_GiveBackpackPickup(player_t* player)
+{
+    int i;
+
+    if (!ap_state.enhanced_ammo && !player->backpack)
+    {
+        for (i=0 ; i<NUMAMMO ; i++)
+            player->maxammo[i] *= 2;
+        player->backpack = true;
+    }
+    else if (!ap_state.enhanced_ammo && ap_force_disable_behaviors)
+    {
+        if (ap_state.player_state.capacity_upgrades[0] == 0)
+        {
+            ap_state.player_state.capacity_upgrades[0] = 1;
+            for (i = 0; i < NUMAMMO; ++i)
+                player->maxammo[i] *= 2;
+        }
+    }
+
+    for (i=0 ; i<NUMAMMO ; i++)
+        P_GiveAmmo (player, i, 1, false);
+}
+
+void
+P_TouchSpecialThing
+( mobj_t*	special,
+  mobj_t*	toucher )
+{
+    player_t*	player;
+    int		i;
+    fixed_t	delta;
+    int		sound;
+    const boolean dropped = ((special->flags & MF_DROPPED) != 0);
+		
+    delta = special->z - toucher->z;
+
+    if (delta > toucher->height
+	|| delta < -8*FRACUNIT)
+    {
+	// out of reach
+	return;
+    }
+    
+	
+    sound = sfx_itemup;	
+    player = toucher->player;
+
+    // [AP] transfer voodoo doll special touch to real player
+    if (toucher->type == MT_FAKEPLAYER)
+    {
+      if (special->sprite == SPR_LVST)
+        return; // Voodoo dolls can't exit to hub
+      if (!player->mo || player->mo->health <= 0)
+        return; // Actual player is dead, ignore contact
+      toucher = player->mo;
+    }
+
+    // Dead thing touching.
+    // Can happen with a sliding player corpse.
+    if (toucher->health <= 0)
+	return;
+
+    // Identify by sprite.
+    switch (special->sprite)
+    {
+	// armor
+      case SPR_ARM1:
+	if (ap_state.enhanced_ap_powerups)
+	{
+	    if (!P_APGiveArmorPercentAdditive(player, 200, deh_green_armor_class, 100))
+		return;
+	}
+	else if (!P_GiveArmor (player, deh_green_armor_class))
+	    return;
+	player->message = DEH_String(GOTARMOR);
+	break;
+		
+      case SPR_ARM2:
+	if (ap_state.enhanced_ap_powerups)
+	{
+	    if (!P_APGiveArmorPercentAdditive(player, 400, deh_blue_armor_class, 200))
+		return;
+	}
+	else if (!P_GiveArmor (player, deh_blue_armor_class))
+	    return;
+	player->message = DEH_String(GOTMEGA);
+	break;
+	
+	// bonus items
+      case SPR_BON1:
+	{
+	    int health_bonus_amount = ap_state.enhanced_ap_bonus_items
+		? P_APDisplayPercentAmount(ap_state.player_state.max_health, 1)
+		: 1;
+	    int health_bonus_max = ap_state.enhanced_ap_bonus_items
+		? ap_state.player_state.max_health
+		: deh_max_health;
+	    player->health += health_bonus_amount;		// can go over 100%
+	    if (player->health > health_bonus_max)
+	    {
+		// [AP] Convert unused health/armor bonus to EnergyLink
+		APDOOM_EnergyLink_GiveEnergy(AP_ENERGYLINK_COST(player->health - health_bonus_max) / 2);
+		player->health = health_bonus_max;
+	    }
+	}
+	player->mo->health = player->health;
+	player->message = DEH_String(GOTHTHBONUS);
+	break;
+	
+      case SPR_BON2:
+	{
+	    int armor_bonus_amount = ap_state.enhanced_ap_bonus_items
+		? P_APDisplayPercentAmount(ap_state.player_state.max_armor, 1)
+		: 1;
+	    int armor_bonus_max = ap_state.enhanced_ap_bonus_items
+		? ap_state.player_state.max_armor
+		: deh_max_armor;
+	    player->armorpoints += armor_bonus_amount;		// can go over 100%
+	    if (player->armorpoints > armor_bonus_max && gameversion > exe_doom_1_2)
+	    {
+		// [AP] Convert unused health/armor bonus to EnergyLink
+		APDOOM_EnergyLink_GiveEnergy(AP_ENERGYLINK_COST(player->armorpoints - armor_bonus_max) / 2);
+		player->armorpoints = armor_bonus_max;
+	    }
+	}
+        // deh_green_armor_class only applies to the green armor shirt;
+        // for the armor helmets, armortype 1 is always used.
+	if (!player->armortype)
+	    player->armortype = 1;
+	player->message = DEH_String(GOTARMBONUS);
+	break;
+	
+      case SPR_SOUL:
+	if (!P_APGiveSupercharge(player))
+	    return;
+	player->message = DEH_String(GOTSUPER);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_MEGA:
+	if (gamemode != commercial)
+	    return;
+	if (!P_APGiveMegasphere(player))
+	    return;
+	player->message = DEH_String(GOTMSPHERE);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+	// cards
+	// leave cards for everyone
+      case SPR_BKEY:
+	if (!player->cards[it_bluecard])
+	    player->message = DEH_String(GOTBLUECARD);
+	P_GiveCard (player, it_bluecard);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+      case SPR_YKEY:
+	if (!player->cards[it_yellowcard])
+	    player->message = DEH_String(GOTYELWCARD);
+	P_GiveCard (player, it_yellowcard);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+      case SPR_RKEY:
+	if (!player->cards[it_redcard])
+	    player->message = DEH_String(GOTREDCARD);
+	P_GiveCard (player, it_redcard);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+      case SPR_BSKU:
+	if (!player->cards[it_blueskull])
+	    player->message = DEH_String(GOTBLUESKUL);
+	P_GiveCard (player, it_blueskull);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+      case SPR_YSKU:
+	if (!player->cards[it_yellowskull])
+	    player->message = DEH_String(GOTYELWSKUL);
+	P_GiveCard (player, it_yellowskull);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+      case SPR_RSKU:
+	if (!player->cards[it_redskull])
+	    player->message = DEH_String(GOTREDSKULL);
+	P_GiveCard (player, it_redskull);
+	sound = sfx_keyup; // [NS] Optional key pickup sound.
+	if (!netgame)
+	    break;
+	return;
+	
+	// medikits, heals
+      case SPR_STIM:
+	if (!P_APGiveBodyPercent(player, 10, 100))
+	    return;
+	player->message = DEH_String(GOTSTIM);
+	break;
+	
+      case SPR_MEDI:
+	if (!P_APGiveBodyPercent(player, 25, 100))
+	    return;
+
+	// [crispy] show "Picked up a Medikit that you really need" message as intended
+	if (player->health < 50)
+	    player->message = DEH_String(GOTMEDINEED);
+	else
+	    player->message = DEH_String(GOTMEDIKIT);
+	break;
+
+	
+	// power ups
+      case SPR_PINV:
+	if (ap_state.enhanced_ap_powerups)
+	{
+	    P_GivePower (player, pw_invulnerability);
+	    player->message = DEH_String(GOTINVUL);
+	    if (gameversion > exe_doom_1_2)
+		sound = sfx_getpow;
+	    break;
+	}
+	if (!P_GivePower (player, pw_invulnerability))
+	    return;
+	player->message = DEH_String(GOTINVUL);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_PSTR:
+	if (!P_GivePower (player, pw_strength))
+	    return;
+	player->message = DEH_String(GOTBERSERK);
+	if (player->readyweapon != wp_fist)
+	    player->pendingweapon = wp_fist;
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_PINS:
+	if (!P_GivePower (player, pw_invisibility))
+	    return;
+	player->message = DEH_String(GOTINVIS);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_SUIT:
+	if (!P_GivePower (player, pw_ironfeet))
+	    return;
+	player->message = DEH_String(GOTSUIT);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_PMAP:
+	if (!P_GivePower (player, pw_allmap))
+	    return;
+	player->message = DEH_String(GOTMAP);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+      case SPR_PVIS:
+	if (!P_GivePower (player, pw_infrared))
+	    return;
+	player->message = DEH_String(GOTVISOR);
+	if (gameversion > exe_doom_1_2)
+	    sound = sfx_getpow;
+	break;
+	
+	// ammo
+	// [NS] Give half ammo for drops of all types.
+      case SPR_APCL:
+      case SPR_CLIP:
+	/*
+	if (special->flags & MF_DROPPED)
+	{
+	    if (!P_GiveAmmo (player,am_clip,0))
+		return;
+	}
+	else
+	{
+	    if (!P_GiveAmmo (player,am_clip,1))
+		return;
+	}
+	*/
+	    if (!P_GiveAmmo (player,am_clip,1,dropped))
+		return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTCLIP);
+	break;
+	
+      case SPR_APAM:
+      case SPR_AMMO:
+	if (!P_GiveAmmo (player, am_clip,5,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTCLIPBOX);
+	break;
+	
+      case SPR_APRK:
+      case SPR_ROCK:
+	if (!P_GiveAmmo (player, am_misl,1,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTROCKET);
+	break;
+	
+      case SPR_APBR:
+      case SPR_BROK:
+	if (!P_GiveAmmo (player, am_misl,5,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTROCKBOX);
+	break;
+	
+      case SPR_APCE:
+      case SPR_CELL:
+	if (!P_GiveAmmo (player, am_cell,1,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTCELL);
+	break;
+	
+      case SPR_APCP:
+      case SPR_CELP:
+	if (!P_GiveAmmo (player, am_cell,5,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTCELLBOX);
+	break;
+	
+      case SPR_APSH:
+      case SPR_SHEL:
+	if (!P_GiveAmmo (player, am_shell,1,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTSHELLS);
+	break;
+	
+      case SPR_APSB:
+      case SPR_SBOX:
+	if (!P_GiveAmmo (player, am_shell,5,dropped))
+	    return;
+	AP_CheckEnhancedAmmoPickup(special);
+	player->message = DEH_String(GOTSHELLBOX);
+	break;
+	
+      case SPR_BPAK:
+	AP_GiveBackpackPickup(player);
+	player->message = DEH_String(GOTBACKPACK);
+	break;
+	
+	// weapons
+	// [NS] Give half ammo for all dropped weapons.
+      case SPR_BFUG:
+	if (!P_GiveWeapon (player, wp_bfg, dropped) )
+	    return;
+	player->message = DEH_String(GOTBFG9000);
+	sound = sfx_wpnup;	
+	break;
+	
+      case SPR_MGUN:
+        if (!P_GiveWeapon(player, wp_chaingun,
+                          (special->flags & MF_DROPPED) != 0))
+            return;
+	player->message = DEH_String(GOTCHAINGUN);
+	sound = sfx_wpnup;	
+	break;
+	
+      case SPR_CSAW:
+	if (!P_GiveWeapon (player, wp_chainsaw, dropped) )
+	    return;
+	player->message = DEH_String(GOTCHAINSAW);
+	sound = sfx_wpnup;	
+	break;
+	
+      case SPR_LAUN:
+	if (!P_GiveWeapon (player, wp_missile, dropped) )
+	    return;
+	player->message = DEH_String(GOTLAUNCHER);
+	sound = sfx_wpnup;	
+	break;
+	
+      case SPR_PLAS:
+	if (!P_GiveWeapon (player, wp_plasma, dropped) )
+	    return;
+	player->message = DEH_String(GOTPLASMA);
+	sound = sfx_wpnup;	
+	break;
+	
+      case SPR_SHOT:
+        if (!P_GiveWeapon(player, wp_shotgun,
+                          (special->flags & MF_DROPPED) != 0))
+            return;
+	player->message = DEH_String(GOTSHOTGUN);
+	sound = sfx_wpnup;	
+	break;
+		
+      case SPR_SGN2:
+        if (!P_GiveWeapon(player, wp_supershotgun,
+                          (special->flags & MF_DROPPED) != 0))
+            return;
+	player->message = DEH_String(GOTSHOTGUN2);
+	sound = sfx_wpnup;	
+	break;
+		
+	// [NS] Beta pickups.
+      case SPR_BON3:
+	player->message = DEH_String(BETA_BONUS3);
+	break;
+
+      case SPR_BON4:
+	player->message = DEH_String(BETA_BONUS4);
+	break;
+
+	case SPR_APPI:
+		extern void ST_evilGrin(void);
+		ST_evilGrin();
+		// fall through
+	case SPR_APJI:
+	{
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APBH:
+	{
+		P_GiveBodyCapped(player, P_APDisplayPercentAmount(ap_state.player_state.max_health, 1),
+		                  ap_state.player_state.max_health);
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APBA:
+	{
+		P_GiveArmorAdditive(player, P_APDisplayPercentAmount(ap_state.player_state.max_armor, 1),
+		                     1, ap_state.player_state.max_armor);
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APAR:
+	{
+		P_APGiveArmorPercentAdditive(player, 200, deh_green_armor_class, 100);
+		player->message = DEH_String(GOTARMOR);
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APMA:
+	{
+		P_APGiveArmorPercentAdditive(player, 400, deh_blue_armor_class, 200);
+		player->message = DEH_String(GOTMEGA);
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APSC:
+	{
+		P_APGiveSupercharge(player);
+		player->message = DEH_String(GOTSUPER);
+		if (gameversion > exe_doom_1_2)
+			sound = sfx_getpow;
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APMS:
+	{
+		P_APGiveMegasphere(player);
+		player->message = DEH_String(GOTMSPHERE);
+		if (gameversion > exe_doom_1_2)
+			sound = sfx_getpow;
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APIN:
+	{
+		P_GivePower(player, pw_invulnerability);
+		player->message = DEH_String(GOTINVUL);
+		if (gameversion > exe_doom_1_2)
+			sound = sfx_getpow;
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APIS:
+	{
+		P_GivePower(player, pw_invisibility);
+		player->message = DEH_String(GOTINVIS);
+		if (gameversion > exe_doom_1_2)
+			sound = sfx_getpow;
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APBE:
+	{
+		P_GivePower(player, pw_strength);
+		player->message = DEH_String(GOTBERSERK);
+		if (player->readyweapon != wp_fist)
+			player->pendingweapon = wp_fist;
+		if (gameversion > exe_doom_1_2)
+			sound = sfx_getpow;
+		apdoom_check_location(ap_make_level_index(gameepisode, gamemap), special->index);
+		break;
+	}
+	case SPR_APBP:
+	{
+		AP_GiveBackpackPickup(player);
+		player->message = DEH_String(GOTBACKPACK);
+		AP_CheckEnhancedAmmoPickup(special);
+		break;
+	}
+
+	case SPR_LVST:
+		// Teleport back to level select!
+		if (leveltimesinceload > MINHUBTIME)
+		{
+			S_StartSound(NULL, sfx_telept);
+			G_LevelSelect();
+		}
+		return; // Don't pick up this
+
+      default:
+	I_Error ("P_SpecialThing: Unknown gettable thing");
+    }
+	
+    if (special->flags & MF_COUNTITEM)
+	player->itemcount++;
+    P_RemoveMobj (special);
+    player->bonuscount += BONUSADD;
+    if (player == &players[displayplayer])
+	S_StartSoundOptional (NULL, sound, sfx_itemup); // [NS] Fallback to itemup.
+}
+
+
+void cache_ap_player_state(void);
+
+
+//
+// KillMobj
+//
+void
+P_KillMobj_Real // So we can specify death by death link
+( mobj_t*	source,
+  mobj_t*	target,
+  boolean   send_death_link )
+{
+    mobjtype_t	item;
+    mobj_t*	mo;
+	
+    target->flags &= ~(MF_SHOOTABLE|MF_FLOAT|MF_SKULLFLY);
+
+    if (target->type != MT_SKULL)
+	target->flags &= ~MF_NOGRAVITY;
+
+    target->flags |= MF_CORPSE|MF_DROPOFF;
+    target->height >>= 2;
+
+    if (source && source->player)
+    {
+	// count for intermission
+	if (target->flags & MF_COUNTKILL)
+	    source->player->killcount++;	
+
+	if (target->player)
+	    source->player->frags[target->player-players]++;
+    }
+    else if (!netgame && (target->flags & MF_COUNTKILL) )
+    {
+	// count all monster deaths,
+	// even those caused by other monsters
+	players[0].killcount++;
+    }
+    
+    if (target->player)
+    {
+	// count environment kills against you
+	if (!source)	
+	    target->player->frags[target->player-players]++;
+			
+	target->flags &= ~MF_SOLID;
+	target->player->playerstate = PST_DEAD;
+
+	// [AP] it's possible for the player to be killed with positive health (via deathlink/menu)
+	// if that happens, we need to set player health to 0 to prevent touching items in death
+	if (target->player->health > 0)
+		target->health = target->player->health = target->player->neghealth = 0;
+	
+	cache_ap_player_state();
+
+	if (send_death_link)
+	{
+		const char *obituary = APDOOM_SendDeath();
+		if (obituary)
+			HU_AddAPMessage(obituary);
+	}
+
+	P_DropWeapon (target->player);
+	// [crispy] center view when dying
+	target->player->centering = true;
+	// [JN] & [crispy] Reset the yellow bonus palette when the player dies
+	target->player->bonuscount = 0;
+	// [JN] & [crispy] Remove the effect of the inverted palette when the player dies
+	target->player->fixedcolormap = target->player->powers[pw_infrared] ? 1 : 0;
+
+	if (target->player == &players[consoleplayer]
+	    && automapactive
+	    && !demoplayback) // [crispy] killough 11/98: don't switch out in demos, though
+	{
+	    // don't die in auto map,
+	    // switch view prior to dying
+	    AM_Stop ();
+	}
+	
+    }
+
+    // [crispy] Lost Soul, Pain Elemental and Barrel explosions are translucent
+    if (target->type == MT_SKULL ||
+        target->type == MT_PAIN ||
+        target->type == MT_BARREL)
+        target->flags |= MF_TRANSLUCENT;
+
+    if ((target->health < -target->info->spawnhealth
+    // [JN] Gib health feature from DOOM Retro.
+    // Logic: if gibhealth < 0, i.e. explicitly modified via DEHACKED,
+    // and the current health is lower than the defined gibhealth.
+    || (target->info->gibhealth < 0 && target->health < target->info->gibhealth))
+	&& target->info->xdeathstate)
+    {
+	P_SetMobjState (target, target->info->xdeathstate);
+    }
+    else
+	P_SetMobjState (target, target->info->deathstate);
+    target->tics -= P_Random()&3;
+
+    // [crispy] randomly flip corpse, blood and death animation sprites
+    if (target->flags & MF_FLIPPABLE)
+    {
+	target->health = (target->health & (int)~1) - (Crispy_Random() & 1);
+    }
+
+    if (target->tics < 1)
+	target->tics = 1;
+		
+    //	I_StartSound (&actor->r, actor->info->deathsound);
+
+    // In Chex Quest, monsters don't drop items.
+
+    if (gameversion == exe_chex)
+    {
+        return;
+    }
+
+    // Drop stuff.
+    // This determines the kind of object spawned
+    // during the death frame of a thing.
+    if (target->info->droppeditem != MT_NULL) // [crispy] drop generalization
+    {
+        item = target->info->droppeditem;
+    }
+    else
+        return;
+
+    // In AP monsters don't drop weapons, they drop ammo instead
+    if (!ap_force_disable_behaviors)
+    {
+        switch (item)
+        {
+        case MT_SHOTGUN:      item = MT_MISC22; break;
+        case MT_CHAINGUN:     item = MT_CLIP;   break;
+        case MT_ROCKET:       item = MT_MISC18; break;
+        case MT_PLASMA:       item = MT_MISC20; break;
+        case MT_BFG:          item = MT_MISC20; break;
+        case MT_MISC26:       return; // Chainsaw
+        case MT_SUPERSHOTGUN: item = MT_MISC22; break;
+        default: break;
+        }
+    }
+
+
+    mo = P_SpawnMobj (target->x,target->y,ONFLOORZ, item);
+    mo->flags |= MF_DROPPED;	// special versions of items
+}
+
+void
+P_KillMobj
+( mobj_t*	source,
+  mobj_t*	target )
+{
+	P_KillMobj_Real(source, target, true);
+}
+
+
+
+//
+// [AP]
+// P_MakeObituaryTags
+// Sets up tags for an impending death, to show an appropriate obituary.
+//
+
+void
+P_MakeObituaryTags
+( mobj_t*	target,
+  mobj_t*	inflictor,
+  mobj_t*	source,
+  int     damage )
+{
+	APDOOM_ObitTags_Clear();
+	if (!target || !target->player)
+		return;
+
+	if (!source && !inflictor)
+	{
+		sector_t *sec = target->subsector->sector;
+		if (!sec)
+			return;
+
+		APDOOM_ObitTags_Add("FLOOR_%s", R_FlatNumToName(sec->floorpic));
+		APDOOM_ObitTags_Add("CEILING_%s", R_FlatNumToName(sec->ceilingpic));
+
+		if (sec->specialdata)
+		{
+			union
+			{
+				floormove_t *floor;
+				ceiling_t *ceil;
+			}	specdata;
+
+			specdata.ceil = sec->specialdata;
+			if (
+				(specdata.ceil->thinker.function.acp1 == (actionf_p1)T_MoveCeiling && specdata.ceil->crush)
+				|| (specdata.floor->thinker.function.acp1 == (actionf_p1)T_MoveFloor && specdata.floor->crush)
+			)
+			{
+				APDOOM_ObitTags_Add("CRUSHER");
+			}
+		}
+		return;
+	}
+
+	if (source)
+	{
+		if (target == source)
+		{
+			APDOOM_ObitTags_Add("SUICIDE");
+		}
+		else
+		{
+			if (source->health <= 0)
+				APDOOM_ObitTags_Add("POSTHUMOUS");
+
+			APDOOM_ObitTags_Add("SOURCE_MOBJTYPE_%d", source->type);
+			if (source->info->doomednum > 0)
+				APDOOM_ObitTags_Add("SOURCE_DOOMEDNUM_%d", source->info->doomednum);
+		}
+	}
+
+	if (inflictor && inflictor == source)
+	{
+		if (damage == 10000)
+			APDOOM_ObitTags_Add("TELEFRAG");
+		else
+			APDOOM_ObitTags_Add("MELEE");
+	}
+	else if (inflictor)
+	{
+		if (!source)
+			APDOOM_ObitTags_Add("NO_SOURCE");
+		else
+			APDOOM_ObitTags_Add("MISSILE");
+
+		APDOOM_ObitTags_Add("INFLICTOR_MOBJTYPE_%d", inflictor->type);
+		if (inflictor->info->doomednum > 0)
+			APDOOM_ObitTags_Add("INFLICTOR_DOOMEDNUM_%d", inflictor->info->doomednum);
+	}
+
+	// Account for splash damage
+	// If damage is 100 or more we assume you just took a direct hit
+	extern mobj_t *bombspot;
+	if (damage < 100 && inflictor && bombspot && bombspot == inflictor)
+		APDOOM_ObitTags_Add("SPLASH");
+}
+
+
+
+//
+// P_DamageMobj
+// Damages both enemies and players
+// "inflictor" is the thing that caused the damage
+//  creature or missile, can be NULL (slime, etc)
+// "source" is the thing to target after taking damage
+//  creature or NULL
+// Source and inflictor are the same for melee attacks.
+// Source can be NULL for slime, barrel explosions
+// and other environmental stuff.
+//
+void
+P_DamageMobj
+( mobj_t*	target,
+  mobj_t*	inflictor,
+  mobj_t*	source,
+  int 		damage )
+{
+    unsigned	ang;
+    int		saved;
+    player_t*	player;
+    fixed_t	thrust;
+    int		temp;
+    int orig_damage = damage; // [AP] For obits
+	
+    if ( !(target->flags & MF_SHOOTABLE) )
+	return;	// shouldn't happen...
+		
+    if (target->health <= 0)
+	return;
+
+    if ( target->flags & MF_SKULLFLY )
+    {
+	target->momx = target->momy = target->momz = 0;
+    }
+	
+    player = target->player;
+    if (player && gameskill == sk_baby)
+	damage >>= 1; 	// take half damage in trainer mode
+		
+
+    // Some close combat weapons should not
+    // inflict thrust and push the victim out of reach,
+    // thus kick away unless using the chainsaw.
+    if (inflictor
+	&& !(target->flags & MF_NOCLIP)
+	&& (!source
+	    || !source->player
+	    || source->player->readyweapon != wp_chainsaw))
+    {
+	ang = R_PointToAngle2 ( inflictor->x,
+				inflictor->y,
+				target->x,
+				target->y);
+		
+	thrust = damage*(FRACUNIT>>3)*100/target->info->mass;
+
+	// make fall forwards sometimes
+	if ( damage < 40
+	     && damage > target->health
+	     && target->z - inflictor->z > 64*FRACUNIT
+	     && (P_Random ()&1) )
+	{
+	    ang += ANG180;
+	    thrust *= 4;
+	}
+		
+	ang >>= ANGLETOFINESHIFT;
+	target->momx += FixedMul (thrust, finecosine[ang]);
+	target->momy += FixedMul (thrust, finesine[ang]);
+    }
+    
+    // [AP] transfer voodoo doll damage to real player
+    if (player && target->type == MT_FAKEPLAYER)
+    {
+      if (!player->mo || player->mo->health <= 0)
+        return; // Actual player is dead, don't kill them further
+      target = player->mo;
+    }
+
+    // player specific
+    if (player)
+    {
+	// end of game hell hack
+	if (target->subsector->sector->special == 11
+	    && damage >= target->health)
+	{
+	    damage = target->health - 1;
+	}
+	
+
+	// Below certain threshold,
+	// ignore damage in GOD mode, or with INVUL power.
+	if ( damage < 1000
+	     && ( (player->cheats&CF_GODMODE)
+		  || player->powers[pw_invulnerability] ) )
+	{
+	    return;
+	}
+	
+	if (player->armortype)
+	{
+	    if (player->armortype == 1)
+		saved = damage/3;
+	    else
+		saved = damage/2;
+	    
+	    if (player->armorpoints <= saved)
+	    {
+		// armor is used up
+		saved = player->armorpoints;
+		player->armortype = 0;
+	    }
+	    player->armorpoints -= saved;
+	    damage -= saved;
+	}
+	player->health -= damage; 	// mirror mobj health here for Dave
+	// [crispy] negative player health
+	player->neghealth = player->health;
+	if (player->neghealth < -99)
+	    player->neghealth = -99;
+	if (player->health < 0)
+	    player->health = 0;
+	
+	player->attacker = source;
+	player->damagecount += damage;	// add damage after armor / invuln
+
+	if (player->damagecount > 100)
+	    player->damagecount = 100;	// teleport stomp does 10k points...
+	
+	temp = damage < 100 ? damage : 100;
+
+	if (player == &players[consoleplayer])
+	    I_Tactile (40,10,40+temp*2);
+    }
+    
+    // do the damage	
+    target->health -= damage;	
+    if (target->health <= 0)
+    {
+      if (player)
+        P_MakeObituaryTags(target, inflictor, source, orig_damage);
+      P_KillMobj (source, target);
+      return;
+    }
+
+    if ( (P_Random () < target->info->painchance)
+	 && !(target->flags&MF_SKULLFLY) )
+    {
+	target->flags |= MF_JUSTHIT;	// fight back!
+	
+	P_SetMobjState (target, target->info->painstate);
+    }
+			
+    target->reactiontime = 0;		// we're awake now...	
+
+    if ( (!target->threshold || target->type == MT_VILE)
+	 && source && (source != target || gameversion < exe_doom_1_5)
+	 && source->type != MT_VILE)
+    {
+	// if not intent on another player,
+	// chase after this one
+	target->target = source;
+	target->threshold = BASETHRESHOLD;
+	if (target->state == &states[target->info->spawnstate]
+	    && target->info->seestate != S_NULL)
+	    P_SetMobjState (target, target->info->seestate);
+    }
+			
+}
