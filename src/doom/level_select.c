@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: separate keys, markers and weapon icons.
 //
 // Copyright(C) 2023 David St-Louis
 //
@@ -18,6 +19,7 @@
 #include "apdoom.h"
 #include "ap_lsel.h"
 #include "level_select.h"
+#include "level_select_layout.h"
 
 #include "crispy.h"
 #include "doomdef.h"
@@ -309,7 +311,7 @@ static void DrawSelectedLevelName(
     {
         patch_t *patch = W_CacheLumpName(graphic, PU_CACHE);
         const int x = (ORIGWIDTH - patch->width) / 2;
-        const int y = (screen_defs->map_names < 0) ? 2 : (ORIGHEIGHT - patch->height) - 2;
+        const int y = (screen_defs->map_names < 0 || gamemode == commercial) ? 2 : (ORIGHEIGHT - patch->height) - 2;
 
         DrawLevelSelectPatchMaybeComplete(x, y, patch, completed);
     }
@@ -317,7 +319,7 @@ static void DrawSelectedLevelName(
     {
         const int width = HULib_measureText(mapinfo->map_name.text, strlen(mapinfo->map_name.text));
         const int x = (ORIGWIDTH - width) / 2;
-        const int y = (screen_defs->map_names < 0) ? 2 : ORIGHEIGHT - 12;
+        const int y = (screen_defs->map_names < 0 || gamemode == commercial) ? 2 : ORIGHEIGHT - 12;
 
         HUlib_drawText(mapinfo->map_name.text, x, y);
     }
@@ -454,7 +456,7 @@ static int LevelSelectDoom2KeyAnchorX(const ap_levelselect_t *screen_defs, int m
             right_x = line_right;
     }
 
-    return right_x - 5;
+    return right_x - WIDESCREENDELTA + 4;
 }
 
 static void AppendWeaponLabel(char *text, size_t text_size, const char *label)
@@ -852,10 +854,7 @@ static void DrawSelectedLevelWeaponDisplay(void)
 {
     enum
     {
-        MAX_DISPLAY_WEAPONS = 8,
-        WEAPON_SPACING = 50,
-        WEAPON_SCALE_NUM = 3,
-        WEAPON_SCALE_DEN = 4
+        MAX_DISPLAY_WEAPONS = 8
     };
 
     ap_level_weapon_display_t weapons[MAX_DISPLAY_WEAPONS];
@@ -868,32 +867,28 @@ static void DrawSelectedLevelWeaponDisplay(void)
     for (int i = 0; i < count; ++i)
     {
         patch_t* weapon_patch = W_CacheLumpName(weapons[i].sprite, PU_CACHE);
-        const int slot_x = (ORIGWIDTH / 2) + (i * WEAPON_SPACING) - (((count - 1) * WEAPON_SPACING) / 2);
-        const int weapon_height = LevelSelectScaledPatchHeight(weapon_patch, WEAPON_SCALE_NUM, WEAPON_SCALE_DEN);
+        const int slot_x = (ORIGWIDTH / 2) + (i * APMINE_WEAPON_SPACING) - (((count - 1) * APMINE_WEAPON_SPACING) / 2);
+        int scale_num, scale_den;
+        APMineLevelSelectWeaponScale(SHORT(weapon_patch->width), SHORT(weapon_patch->height), &scale_num, &scale_den);
+        const int weapon_height = LevelSelectScaledPatchHeight(weapon_patch, scale_num, scale_den);
         int weapon_y;
 
-        weapon_y = ORIGHEIGHT - weapon_height;
+        weapon_y = APMINE_WEAPON_BOTTOM - weapon_height;
 
-        if (weapons[i].logic && W_CheckNumForName("WISPLAT") >= 0)
+        if (weapons[i].logic && W_CheckNumForName("CHECKMRK") >= 0)
         {
-            patch_t* splat_patch = W_CacheLumpName("WISPLAT", PU_CACHE);
-            const int weapon_center_y = weapon_y + (weapon_height / 2);
-
-            V_DrawPatch(
-                LevelSelectCenteredPatchX(splat_patch, slot_x),
-                LevelSelectCenteredPatchY(splat_patch, weapon_center_y),
-                splat_patch);
+            V_DrawPatch(slot_x + 15, APMINE_WEAPON_BOTTOM - 7, W_CacheLumpName("CHECKMRK", PU_CACHE));
         }
 
         if (!weapons[i].owned)
             dp_translation = cr_levelselect_keydark;
 
         V_DrawPatchScaled(
-            LevelSelectCenteredScaledPatchX(weapon_patch, slot_x, WEAPON_SCALE_NUM, WEAPON_SCALE_DEN),
-            weapon_y + ((SHORT(weapon_patch->topoffset) * WEAPON_SCALE_NUM) / WEAPON_SCALE_DEN),
+            LevelSelectCenteredScaledPatchX(weapon_patch, slot_x, scale_num, scale_den),
+            weapon_y + ((SHORT(weapon_patch->topoffset) * scale_num) / scale_den),
             weapon_patch,
-            WEAPON_SCALE_NUM,
-            WEAPON_SCALE_DEN);
+            scale_num,
+            scale_den);
 
         dp_translation = NULL;
     }
@@ -924,7 +919,10 @@ void DrawEpisodicLevelSelectStats()
 
         const ap_levelselect_map_t* mapinfo = &screen_defs->map_info[i];
         const int x = mapinfo->x;
-        const int y = mapinfo->y;
+        const int y = gamemode == commercial
+            ? APMineLevelSelectListY(mapinfo->y, screen_defs->map_info[0].y, screen_defs->map_info[map_count - 1].y)
+            : mapinfo->y;
+        const int marker_y = gamemode == commercial ? y : y - 12;
 
         int key_x, key_y;
         int map_name_width = 0;
@@ -935,7 +933,7 @@ void DrawEpisodicLevelSelectStats()
                 key_count++;
 
         // Level name display ("Individual" mode)
-        if (screen_defs->map_names == 0 && mapinfo->map_name.graphic[0])
+        if (gamemode != commercial && screen_defs->map_names == 0 && mapinfo->map_name.graphic[0])
         {
             patch_t* patch = W_CacheLumpName(mapinfo->map_name.graphic, PU_CACHE);
             DrawLevelSelectPatchStatus(
@@ -950,7 +948,7 @@ void DrawEpisodicLevelSelectStats()
         
         // Level complete splash
         if (ap_level_state->completed)
-            V_DrawPatch(x, y, W_CacheLumpName("WISPLAT", PU_CACHE));
+            V_DrawPatch(x, marker_y, W_CacheLumpName("WISPLAT", PU_CACHE));
 
         // Available but incomplete marker
         if (gamemode != commercial
@@ -958,12 +956,12 @@ void DrawEpisodicLevelSelectStats()
             && !ap_level_state->completed
             && W_CheckNumForName("WIAVAIL") >= 0)
         {
-            V_DrawPatch(x, y, W_CacheLumpName("WIAVAIL", PU_CACHE));
+            V_DrawPatch(x, marker_y, W_CacheLumpName("WIAVAIL", PU_CACHE));
         }
 
         // Lock
         if (!ap_level_state->unlocked)
-            V_DrawPatch(x, y, W_CacheLumpName("WILOCK", PU_CACHE));
+            V_DrawPatch(x, marker_y, W_CacheLumpName("WILOCK", PU_CACHE));
 
         // Keys
         {
@@ -984,7 +982,7 @@ void DrawEpisodicLevelSelectStats()
 
             if (gamemode != commercial)
             {
-                key_x = x + 10;
+                key_x = x + APMINE_MAP_KEY_X;
                 key_y = y - 13 + ((16 - (3 * 9)) / 2) + (2 * 9);
             }
             else
@@ -1137,28 +1135,20 @@ void DrawEpisodicLevelSelectStats()
         // You are here
         if (i == selected_level[selected_ep] && urh_anim < 25)
         {
-            int offset_y = 0;
-
             if (strncmp(mapinfo->cursor.graphic, "WIURH", 5) == 0)
             {
-                // I don't feel like de-hackifying this. It would make the level select json much more complex
-                const int key_align = mapinfo->keys.align_y * key_count;
-                switch (mapinfo->cursor.graphic[5])
-                {
-                    case '0': offset_y = (mapinfo->keys.x > 0) ? key_align : 0; break;
-                    case '1': offset_y = (mapinfo->keys.x < 0) ? key_align : 0; break;
-                    default:  break;
-                }
+                V_DrawPatch(x, y, W_CacheLumpName(mapinfo->cursor.graphic, PU_CACHE));
             }
-
-            V_DrawPatch(x + mapinfo->cursor.x, 
-                        y + offset_y + mapinfo->cursor.y, 
-                        W_CacheLumpName(mapinfo->cursor.graphic, PU_CACHE));
+            else
+            {
+                V_DrawPatch(x + mapinfo->cursor.x, y + mapinfo->cursor.y,
+                            W_CacheLumpName(mapinfo->cursor.graphic, PU_CACHE));
+            }
         }
     }
 
     // Level name (non-"Individual" modes)
-    if (screen_defs->map_names != 0)
+    if (screen_defs->map_names != 0 || gamemode == commercial)
     {
         const int sel_idx = selected_level[selected_ep];
         ap_level_index_t idx = {selected_ep, sel_idx};

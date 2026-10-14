@@ -115,6 +115,17 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
                 pixels[height // 2][x] = ink
         return encode_patch(pixels, left, top)
 
+    def frame(width: int, height: int, border: int, fill: int | None = None,
+              left: int = 0, top: int = 0) -> bytes:
+        pixels = [[border if x in (0, width - 1) or y in (0, height - 1) else fill
+                   for x in range(width)] for y in range(height)]
+        return encode_patch(pixels, left, top)
+
+    def symbol(rows: tuple[str, ...], selected: int, left: int = 0, top: int = 0) -> bytes:
+        return encode_patch([[selected if value == "#" else None for value in row] for row in rows], left, top)
+
+    check = (".....#", "....##", "#..##.", "####..", ".##...")
+
     def glyph(character: str, scale: int = 1) -> PixelRows:
         source = supplied.get(f"STCFN{ord(character.upper()):03d}")
         if source:
@@ -151,11 +162,15 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
     common = {
         "CREDITS": b"Player-local reconstruction from explicitly supplied IWADs; do not redistribute this cache.\n",
         "M_DOOM": launcher["LN_DOOM1"], "M_DOOM2": launcher["LN_DOOM2"],
-        "NOTIFBG": badge(30, 30, teal), "NOTIFSEL": badge(34, 34, ink, 2, 2),
-        "CHECKMRK": badge(10, 8, teal), "REDX": badge(9, 7, red, -1, -1),
-        "KEYBG": badge(11, 9, dark), "STYSLASH": label("/", 6, 6),
-        "WIAVAIL": badge(18, 18, teal, 9, 9), "WISPLAT": badge(28, 22, teal, 15, 11),
-        "WILOCK": badge(16, 19, red, 8, 12), "AMAP": badge(6, 6, teal, 1, 1),
+        "NOTIFBG": frame(30, 30, teal, dark), "NOTIFSEL": frame(34, 34, ink, left=2, top=2),
+        "CHECKMRK": symbol(check, teal),
+        "REDX": symbol(("#.....#", ".#...#.", "..#.#..", "...#...", "..#.#..", ".#...#.", "#.....#"), red),
+        "KEYBG": frame(11, 9, dark, dark), "STYSLASH": label("/", 6, 6),
+        # Markers sit beside the caption, not behind the AP/W progress lines.
+        "WIAVAIL": symbol(("..####..", ".#....#.", "#......#", "#......#", "#......#", "#......#", ".#....#.", "..####..", "........"), teal, 10, 5),
+        "WISPLAT": symbol(tuple(row + ".." for row in check) + ("........",) * 4, teal, 10, 5),
+        "WILOCK": symbol(("..####..", ".##..##.", ".##..##.", ".######.", ".######.", ".##..##.", ".##..##.", ".######.", "........"), red, 10, 5),
+        "AMAP": badge(6, 6, teal, 1, 1),
     }
     for name, text, width in (("M_PLAY", "PLAY", 55), ("M_GOAL", "GOAL", 70),
                               ("M_ENERGY", "ENERGY LINK", 138), ("M_KILL", "KILL REQUIREMENT", 141)):
@@ -168,8 +183,8 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
     common["STBAR"] = encode_patch(extended)
     for name in ("D2INTER2", "D2INTER3", "TNTEP2", "TNTEP4", "WIMAP3"):
         common[name] = background
-    for index, (left, top) in enumerate(((-2, 15), (62, 15), (-2, -1), (61, -1))):
-        common[f"WIURH{index}"] = badge(60, 15, teal, left, top)
+    for index in range(4):
+        common[f"WIURH{index}"] = symbol(("....#.....", "....##....", "....###...", "########..", "#########.", "########..", "....###...", "....##....", "....#....."), ink, 34, 7)
     for group, count in ((0, 3), (1, 6), (2, 1)):
         for index in range(count):
             common[f"WIA3{group:02d}{index:02d}"] = encode_patch([[None]])

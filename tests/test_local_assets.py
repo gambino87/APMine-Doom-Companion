@@ -75,6 +75,38 @@ class DoomCompanionLocalAssetTests(unittest.TestCase):
                 for index in range(count):
                     self.assertIn(f"WIA3{group:02d}{index:02d}", resources)
 
+    def test_menu_symbols_have_distinct_shapes_and_do_not_cover_the_progress_text(self) -> None:
+        source = dict(wad_lumps(self.iwad.read_bytes()))
+        with zipfile.ZipFile(io.BytesIO(runtime_resources({"doom2": source}, []))) as archive:
+            resources = dict(wad_lumps(archive.read("ArchipelagoDoom.wad")))
+        shapes = []
+        for name in ("WIAVAIL", "WISPLAT", "WILOCK"):
+            pixels, left, top = decode_patch(resources[name])
+            self.assertEqual((8, 9, 10, 5), (len(pixels[0]), len(pixels), left, top))
+            # DOOM's marker is drawn twelve pixels above its map anchor.
+            self.assertLessEqual(-12 - top + len(pixels), -4)
+            self.assertLessEqual(len(pixels[0]) - left, -2)
+            shapes.append(pixels)
+        self.assertNotEqual(shapes[0], shapes[1])
+        self.assertNotEqual(shapes[1], shapes[2])
+        for index in range(4):
+            pixels, left, top = decode_patch(resources[f"WIURH{index}"])
+            self.assertEqual((10, 9, 34, 7), (len(pixels[0]), len(pixels), left, top))
+            self.assertLessEqual(len(pixels[0]) - left, -24)
+
+    def test_notification_selection_is_an_outline_not_an_opaque_cross(self) -> None:
+        source = dict(wad_lumps(self.iwad.read_bytes()))
+        with zipfile.ZipFile(io.BytesIO(runtime_resources({"doom2": source}, []))) as archive:
+            resources = dict(wad_lumps(archive.read("ArchipelagoDoom.wad")))
+        pixels, left, top = decode_patch(resources["NOTIFSEL"])
+        self.assertEqual((34, 34, 2, 2), (len(pixels[0]), len(pixels), left, top))
+        self.assertTrue(all(value is None for row in pixels[1:-1] for value in row[1:-1]))
+        self.assertTrue(all(value is not None for value in pixels[0]))
+        check, left, top = decode_patch(resources["CHECKMRK"])
+        self.assertEqual((6, 5, 0, 0), (len(check[0]), len(check), left, top))
+        self.assertIsNone(check[0][0])
+        self.assertIsNotNone(check[0][-1])
+
     def test_cache_is_repeatable_and_never_mutates_original_iwad(self) -> None:
         original = self.iwad.read_bytes()
         output = build_local_cache([self.iwad], self.cache)

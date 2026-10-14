@@ -2058,11 +2058,15 @@
     },
     {
       "path": "src/doom/level_select.c",
-      "sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8"
+      "sha256": "6b61cc8cc5c62b366f97b80b8e215c860fc37c461276f8b726a52c24c02b3cc8"
     },
     {
       "path": "src/doom/level_select.h",
       "sha256": "02a0084be35a80613e502fd29a9cd50c09770e468b9de60ed5db759b680092bf"
+    },
+    {
+      "path": "src/doom/level_select_layout.h",
+      "sha256": "85469d089f3246f5f7619081b26725e5d7d22b838fbe775bf52b9033480ad23e"
     },
     {
       "path": "src/doom/m_background.h",
@@ -4093,8 +4097,12 @@
       "sha256": "7953e220ea83031fcd7e7589035878d931dcb26704ce8fa14dc513dbaaa90401"
     },
     {
+      "path": "tests/test_level_select_layout.py",
+      "sha256": "e4c6a36ea3c498f107284e9d21dbb5a375c0c5e49fd134e6d2c95ea6b22cba07"
+    },
+    {
       "path": "tests/test_local_assets.py",
-      "sha256": "444f7f6359a370e72cca1fdd360148e7107bfba6b97412e8dca640440ccf70ce"
+      "sha256": "34680c20812663fca33bf35ea5e0445c5cf823b62992a5ce71f4671efec9fd42"
     },
     {
       "path": "tests/test_network_gameplay.py",
@@ -4114,7 +4122,7 @@
     },
     {
       "path": "tests/test_source_repository.py",
-      "sha256": "95c254a3703f630c2cc7c9054f6ef7af66d00cf074fa19ab48d6ce36925728d5"
+      "sha256": "6f7bf9d109cf47baded9e5b02363c7ef13e0f6a1097a56cbbeefec8311a12ef8"
     },
     {
       "path": "textscreen/CMakeLists.txt",
@@ -4369,12 +4377,16 @@
       "sha256": "706837acc18b342ede6ab7b62e27c0f432bd79b938dcf7e94cd9fd07f14b544b"
     },
     {
+      "path": "tools/doom_companion/level_select_layout.h",
+      "sha256": "85469d089f3246f5f7619081b26725e5d7d22b838fbe775bf52b9033480ad23e"
+    },
+    {
       "path": "tools/doom_companion/ln_handshake.h",
       "sha256": "939ef7466540b14355f62a9a6f185aec90584ca5dbf0b7fd8fd2e9ba7645b3ff"
     },
     {
       "path": "tools/doom_companion/local_assets.py",
-      "sha256": "03f9d6921a730c06faa3ac66d38838a21d4b4b1938a16aaba507d2ab60e8ce18"
+      "sha256": "9bf819c03547a982db31cdea6503c75887435fc41072ec02cffe2245d31fafd4"
     },
     {
       "path": "tools/doom_companion/network_gameplay.py",
@@ -4402,7 +4414,7 @@
     },
     {
       "path": "tools/doom_companion/source_repository.py",
-      "sha256": "1b72f0055ab8e82a8b5c79a9e1a8339787daaeac51aaa71b6d7786db0edd6d6c"
+      "sha256": "7a24479c9b27f2b266d9958383753482507ec98cc9485c4e61c08d12656154ea"
     },
     {
       "path": "tools/doom_companion/source_templates/.gitignore",
@@ -20668,6 +20680,14 @@
       ]
     },
     {
+      "path": "src/doom/level_select.c",
+      "before_sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8",
+      "after_sha256": "6b61cc8cc5c62b366f97b80b8e215c860fc37c461276f8b726a52c24c02b3cc8",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
       "path": "src/heretic-res.rc.in",
       "before_sha256": "2a575220cb90d355d8ac35bcaaa4d6f44ab61e93aa3ff287a2de3e9780503203",
       "after_sha256": "a030b931615bcda71715b04bc48a24708a3508f6c03baffd78d9d8e87fc0d482",
@@ -21433,11 +21453,26 @@
       ]
     },
     {
+      "path": "src/doom/level_select_layout.h",
+      "sha256": "85469d089f3246f5f7619081b26725e5d7d22b838fbe775bf52b9033480ad23e",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
       "path": "src/launcher/ln_handshake.h",
       "sha256": "939ef7466540b14355f62a9a6f185aec90584ca5dbf0b7fd8fd2e9ba7645b3ff",
       "modification_dates": [
         "2026-10-12"
       ]
+    },
+    {
+      "path": "tests/test_level_select_layout.py",
+      "sha256": "e4c6a36ea3c498f107284e9d21dbb5a375c0c5e49fd134e6d2c95ea6b22cba07"
+    },
+    {
+      "path": "tools/doom_companion/level_select_layout.h",
+      "sha256": "85469d089f3246f5f7619081b26725e5d7d22b838fbe775bf52b9033480ad23e"
     }
   ],
   "remaining": [
@@ -21485,5 +21520,20 @@
         "kind": "publication-documentation-or-license-filename"
       }
     ]
+  },
+  "menu_layout_revision": {
+    "date": "2026-10-13",
+    "previous_snapshot_sha256": "0a4fc992f71a5580c0f3524f28820517c7855054318f9102b0e0f41002199634",
+    "reviewed_paths": [
+      "src/doom/level_select.c",
+      "src/doom/level_select_layout.h",
+      "tools/doom_companion/level_select_layout.h",
+      "tools/doom_companion/local_assets.py",
+      "tools/doom_companion/source_repository.py",
+      "tests/test_local_assets.py",
+      "tests/test_level_select_layout.py",
+      "tests/test_source_repository.py"
+    ],
+    "scope": "Menu layout and player-local symbols; no original artwork or binary release"
   }
 }
