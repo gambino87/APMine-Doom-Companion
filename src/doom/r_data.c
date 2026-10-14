@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: initialize metrics from composed pickup sprites.
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
@@ -32,6 +33,8 @@
 #include "doomdef.h"
 #include "m_misc.h"
 #include "r_local.h"
+#include "pickup_sprites.h"
+#include "ap_notif.h"
 #include "p_local.h"
 
 #include "doomstat.h"
@@ -1042,6 +1045,8 @@ void R_InitSpriteLumps (void)
 {
     int		i;
     patch_t	*patch;
+
+    APC_SetIconPatchProvider(APMinePickupIconPatch);
 	
     firstspritelump = W_GetNumForName (DEH_String("S_START")) + 1;
     lastspritelump = W_GetNumForName (DEH_String("S_END")) - 1;
@@ -1056,7 +1061,7 @@ void R_InitSpriteLumps (void)
 	if (!(i&63))
 	    printf (".");
 
-	patch = W_CacheLumpNum (firstspritelump+i, PU_CACHE);
+	patch = APMinePickupSpritePatch(firstspritelump+i, -1);
 	spritewidth[i] = SHORT(patch->width)<<FRACBITS;
 	spriteoffset[i] = SHORT(patch->leftoffset)<<FRACBITS;
 	spritetopoffset[i] = SHORT(patch->topoffset)<<FRACBITS;

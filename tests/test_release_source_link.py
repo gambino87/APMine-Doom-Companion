@@ -69,6 +69,20 @@ class DoomReleaseSourceLinkTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not URL references"):
             self.link()
 
+    def test_native_pickup_source_requires_built_capability_and_binds_recipe_hash(self):
+        source = self.source / "src/doom/pickup_sprites.c"
+        source.parent.mkdir(parents=True)
+        source.write_text("// synthetic compositor\n")
+        recipe = self.source / "tools/doom_companion/local_assets.py"
+        recipe.write_text("# synthetic asset recipe\n")
+        with self.assertRaisesRegex(ValueError, "not been built"):
+            self.link()
+        binary = self.build / "bin/archipelago-doom.exe"
+        binary.write_bytes(binary.read_bytes() + binding.NATIVE_PICKUP_MARKER)
+        report = self.link()
+        self.assertEqual(binding.NATIVE_PICKUP_PROFILE, report["pickup_sprite_profile"])
+        self.assertEqual(digest(recipe), report["asset_recipe_sha256"])
+
     def test_prefix_from_a_different_source_bundle_is_rejected(self):
         path = self.dependency_build / "dependency-build.json"
         marker = json.loads(path.read_text())

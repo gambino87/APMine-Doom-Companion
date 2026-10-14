@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: reuse composed pickup patches in receipt/shop icons.
 //
 // Copyright(C) 2023 David St-Louis
 // Copyright(C) 2026 Kay "Kaito" Sinclaire
@@ -41,6 +42,12 @@ typedef struct icon_cache_s
 
 static icon_cache_t cache_head = {0, NULL, NULL};
 static icon_cache_t *cache_tail = &cache_head;
+static patch_t *(*icon_patch_provider)(int lump);
+
+void APC_SetIconPatchProvider(patch_t *(*provider)(int lump))
+{
+    icon_patch_provider = provider;
+}
 
 // Takes a lump name (patch) and converts it to a pixel block.
 // Result is stored in the cache for later use.
@@ -62,7 +69,7 @@ static pixel_t* convert_cache_icon(const char* name)
     icon->next = NULL;
     cache_tail = (cache_tail->next = icon);
 
-    patch_t *patch = W_CacheLumpNum(lumpnum, PU_CACHE);
+    patch_t *patch = icon_patch_provider ? icon_patch_provider(lumpnum) : W_CacheLumpNum(lumpnum, PU_CACHE);
     pixel_t *raw = malloc(patch->width * patch->height);
     memset(raw, 0, patch->width * patch->height);
 

@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: expose scouted pickup display category.
 //
 // Copyright(C) 2023 David St-Louis
 //
@@ -408,6 +409,7 @@ void apdoom_save_state();
 void apdoom_check_location(ap_level_index_t idx, int index);
 int apdoom_is_location_progression(ap_level_index_t idx, int index);
 int apdoom_get_location_ap_icon_type(ap_level_index_t idx, int index, int doom_type);
+int apdoom_get_location_sprite_category(ap_level_index_t idx, int index);
 int apdoom_should_show_location_on_automap(ap_level_index_t idx, int index);
 int apdoom_get_location_item_doom_type(ap_level_index_t idx, int index);
 void apdoom_check_victory();

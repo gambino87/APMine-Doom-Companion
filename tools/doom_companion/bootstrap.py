@@ -19,7 +19,8 @@ import tempfile
 import zipfile
 
 from .inventory import DIAGNOSTIC_MARKERS, GAMEPLAY_DIAGNOSTIC_MARKER, embedded_zips, sha256
-from .local_assets import build_local_cache
+from . import local_assets
+from .local_assets import build_local_cache, NATIVE_PICKUP_PROFILE, NATIVE_PICKUP_MARKER
 
 
 GAMES = {"doom": ("doom_1993", "DOOM 1993", "DOOM.WAD"), "doom2": ("doom_ii", "DOOM II", "DOOM2.WAD")}
@@ -83,6 +84,11 @@ def linked_binaries(client: Path, libraries: list[Path], source_link: Path) -> d
         raise ValueError("Source record must cover all four companion targets and nine runtime libraries")
     if any(binaries[name].parent != client for name in CORE_BINARIES):
         raise ValueError("All native companion targets must be in the selected client directory")
+    if "pickup_sprite_profile" in record:
+        if (record["pickup_sprite_profile"] != NATIVE_PICKUP_PROFILE
+                or record.get("asset_recipe_sha256") != sha256(Path(local_assets.__file__).read_bytes())
+                or NATIVE_PICKUP_MARKER not in binaries["archipelago-doom.exe"].read_bytes()):
+            raise ValueError("Native pickup profile requires its matching renderer and asset recipe")
     system_libraries = {name.lower() for name in record.get("system_library_candidates", [])}
     for directory in (client, *libraries):
         for path in directory.iterdir():
@@ -172,7 +178,8 @@ def prepare_runtime(client: Path, libraries: list[Path], source_link: Path, iwad
         payloads[f"games/{GAMES[game][0]}.apworld"] = raw
     if not selected:
         raise ValueError("At least one rules-only APWorld is required")
-    cache = build_local_cache(iwads, managed_path(root, "assets"))
+    native_pickups = json.loads(source_link.read_text()).get("pickup_sprite_profile") == NATIVE_PICKUP_PROFILE
+    cache = build_local_cache(iwads, managed_path(root, "assets"), native_pickups=native_pickups)
     assets = cache.read_bytes()
     with zipfile.ZipFile(io.BytesIO(assets)) as archive:
         provenance = json.loads(archive.read("APMine-local-assets.json"))

@@ -13,6 +13,31 @@ from .inventory import sha256, wad_lumps
 
 
 PixelRows = list[list[int | None]]
+NATIVE_PICKUP_PROFILE = "native-composite-v1"
+NATIVE_PICKUP_MARKER = b"APMinePickupSprites: native-composite-v1"
+PICKUP_SYMBOLS = (
+    (".........", "...###...", "..#####..", "..#####..", "..#####..", "...###...", "........."),
+    ("...###...", "...###...", ".#######.", ".#######.", ".#######.", "...###...", "...###..."),
+    ("....#....", "...#.#...", "..#...#..", ".........", "....#....", "...#.#...", "..#...#.."),
+)
+PICKUP_COLORS = ((176, 176, 176), (72, 220, 112), (252, 204, 56))
+
+
+def pickup_symbol(category: int, selected: int, outline: int) -> bytes:
+    if category not in range(3):
+        raise ValueError("Unknown pickup category")
+    pixels: PixelRows = [[None] * 13 for _ in range(13)]
+    for y, row in enumerate(PICKUP_SYMBOLS[category]):
+        for x, value in enumerate(row):
+            if value == "#":
+                for dy in (-1, 0, 1):
+                    for dx in (-1, 0, 1):
+                        pixels[y + 3 + dy][x + 2 + dx] = outline
+    for y, row in enumerate(PICKUP_SYMBOLS[category]):
+        for x, value in enumerate(row):
+            if value == "#":
+                pixels[y + 3][x + 2] = selected
+    return encode_patch(pixels, 6, 16)
 
 
 def decode_patch(raw: bytes) -> tuple[PixelRows, int, int]:
@@ -86,7 +111,7 @@ def resize(pixels: PixelRows, width: int, height: int) -> PixelRows:
              for x in range(width)] for y in range(height)]
 
 
-def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) -> bytes:
+def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict], native_pickups: bool = False) -> bytes:
     supplied = {}
     for game in ("doom", "doom2"):
         supplied.update(wads.get(game, {}))
@@ -189,9 +214,12 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
         for index in range(count):
             common[f"WIA3{group:02d}{index:02d}"] = encode_patch([[None]])
     common["S_START"] = b""
+    icons = [pickup_symbol(category, color(rgb), color((24, 24, 24)))
+             for category, rgb in enumerate(PICKUP_COLORS)]
     for prefix, count, left, top in (("APJI", 7, 14, 39), ("APPI", 7, 14, 23), ("LVST", 4, 14, 28)):
         for index in range(count):
-            common[f"{prefix}{chr(65 + index)}0"] = badge(28, 28, teal if prefix != "APPI" else red, left, top)
+            common[f"{prefix}{chr(65 + index)}0"] = (badge(28, 28, teal, left, top) if prefix == "LVST"
+                else encode_patch([[None]]) if native_pickups else icons[2 if prefix == "APPI" else 0])
     aliases = {
         "APBH": ("BON1", 4), "APBA": ("BON2", 4), "APAR": ("ARM1", 2), "APMA": ("ARM2", 2),
         "APSC": ("SOUL", 4), "APMS": ("MEGA", 4), "APIN": ("PINV", 4), "APIS": ("PINS", 4),
@@ -199,17 +227,22 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
     for target, (source, count) in aliases.items():
         for index in range(count):
             name = f"{target}{chr(65 + index)}0"
-            common[name] = supplied.get(f"{source}{chr(65 + index)}0", badge(24, 24, teal, 12, 24))
+            common[name] = (encode_patch([[None]]) if native_pickups else
+                            supplied.get(f"{source}{chr(65 + index)}0", badge(24, 24, teal, 12, 24)))
     for name, source in {"APBEA0": "PSTRA0", "APCLA0": "CLIPA0", "APAMA0": "AMMOA0", "APRKA0": "ROCKA0",
                          "APBRA0": "BROKA0", "APCEA0": "CELLA0", "APCPA0": "CELPA0", "APSHA0": "SHELA0",
                          "APSBA0": "SBOXA0", "APBPA0": "BPAKA0"}.items():
-        common[name] = supplied.get(source, badge(24, 24, teal, 12, 24))
+        common[name] = (encode_patch([[None]]) if native_pickups else
+                        supplied.get(source, badge(24, 24, teal, 12, 24)))
     common["S_END"] = b""
+    for category, patch in enumerate(icons):
+        common[f"APICON{category}"] = patch
     common["F_START"] = b""
     common["AP_FLAT"] = bytes(dark if (x // 8 + y // 8) % 2 else teal for y in range(64) for x in range(64))
     common["F_END"] = b""
     manifest = {"schema_version": 1, "private_cache": True, "release_ready": False,
                 "supported_games": sorted(wads), "sources": sources,
+                "pickup_sprite_profile": NATIVE_PICKUP_PROFILE if native_pickups else "legacy-local-aliases",
                 "recipe_sha256": sha256(Path(__file__).read_bytes())}
     output = io.BytesIO()
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
@@ -227,7 +260,7 @@ def runtime_resources(wads: dict[str, dict[str, bytes]], sources: list[dict]) ->
     return output.getvalue()
 
 
-def build_local_cache(iwads: list[Path], cache_root: Path) -> Path:
+def build_local_cache(iwads: list[Path], cache_root: Path, native_pickups: bool = False) -> Path:
     repository = Path(__file__).resolve().parents[2]
     if cache_root.resolve().is_relative_to(repository):
         raise ValueError("Player asset caches must stay outside the platform repository")
@@ -254,9 +287,10 @@ def build_local_cache(iwads: list[Path], cache_root: Path) -> Path:
     if not wads:
         raise ValueError("At least one player-supplied IWAD is required")
     sources.sort(key=lambda entry: entry["game"])
-    key = sha256((json.dumps(sources, sort_keys=True) + sha256(Path(__file__).read_bytes())).encode())[:24]
+    profile = NATIVE_PICKUP_PROFILE if native_pickups else "legacy-local-aliases"
+    key = sha256((json.dumps(sources, sort_keys=True) + sha256(Path(__file__).read_bytes()) + profile).encode())[:24]
     output = cache_root / key / "BaseAssets.zip"
-    payload = runtime_resources(wads, sources)
+    payload = runtime_resources(wads, sources, native_pickups=native_pickups)
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
         if output.read_bytes() != payload:

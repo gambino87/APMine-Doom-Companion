@@ -96,6 +96,19 @@ https://docs.github.com/en/rest/repos/contents#download-a-repository-archive-zip
 
 ## Player-Local Resources
 
+This candidate adds `native-composite-v1` pickup rendering. Its source-linked
+bootstrap selects the matching resource profile automatically; do not mix its
+transparent sprite-reference placeholders with an older engine. The renderer
+reads the player's loaded WAD sprite frames, preserves their ground anchors,
+and builds the filler dot, useful plus and progression chevrons in memory at
+startup. Notifications and the Energy Link menu share that sprite provider.
+World pickup categories use the server's scouted item flags, not the vanilla
+pickup's name. These symbols are newly authored source code, not the AP logo.
+No composed pickup image is written back to the IWAD or included in a release.
+DOOM's absent MegaSphere frames use only our original standalone symbol;
+DOOM II uses its player-supplied MegaSphere frames. No cross-game art is needed.
+The older source-link profile still uses private local aliases for compatibility.
+
 ```powershell
 python -m tools.doom_companion.local_assets --iwad "C:\Games\DOOM\DOOM.WAD" --iwad "C:\Games\DOOM\DOOM2.WAD" --cache-root "$env:LOCALAPPDATA\APMine\DoomAssets"
 ```

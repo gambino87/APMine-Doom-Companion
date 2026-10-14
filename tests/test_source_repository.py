@@ -246,7 +246,9 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
         for name in OWNED_NATIVE_ADDITIONS:
             with self.subTest(name=name):
                 entry = next(entry for entry in manifest["source_additions_since_preparation"] if entry["path"] == name)
-                expected_date = "2026-10-13" if name == "src/doom/level_select_layout.h" else "2026-10-12"
+                expected_date = "2026-10-13" if name in {
+                    "src/doom/level_select_layout.h", "src/doom/pickup_patch.h",
+                    "src/doom/pickup_sprites.c", "src/doom/pickup_sprites.h"} else "2026-10-12"
                 self.assertEqual([expected_date], entry["modification_dates"])
                 self.assertEqual((self.source / name).read_bytes(), (self.destination / name).read_bytes())
         self.assertEqual(manifest, verify_source_snapshot(self.destination))

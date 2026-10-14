@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: transient pickup category on render records only.
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
@@ -407,6 +408,7 @@ typedef struct vissprite_s
 
     fixed_t		texturemid;
     int			patch;
+    int             ap_pickup_category;
 
     // for color translation and shadow draw,
     //  maxbright frames as well

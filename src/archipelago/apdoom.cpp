@@ -1,4 +1,5 @@
 // APMine companion change, 2026-10-12: external resources and practice reward lookup.
+// APMine companion change, 2026-10-13: category-only sprite lookup; no pickup effects changed.
 //
 // Copyright(C) 2023 David St-Louis
 // Copyright(C) 2025 Kay "Kaito" Sinclaire
@@ -2716,6 +2717,18 @@ static bool item_type_should_use_progression_icon(int doom_type)
 	if (get_weapons_map().count(doom_type))
 		return true;
 	return false;
+}
+
+int apdoom_get_location_sprite_category(ap_level_index_t idx, int index)
+{
+	int64_t id = 0;
+	if (!find_location_table_entry(idx, index, id) || !ap_scouted_locations.count(id))
+		return -1;
+	if (ap_progressive_locations.count(id))
+		return 2;
+	if (ap_useful_locations.count(id))
+		return 1;
+	return 0;
 }
 
 int apdoom_get_location_ap_icon_type(ap_level_index_t idx, int index, int doom_type)

@@ -9,7 +9,8 @@ import zipfile
 
 from tools.doom_companion import bootstrap
 from tools.doom_companion.inventory import sha256
-from tools.doom_companion.local_assets import encode_patch, encode_wad
+from tools.doom_companion.local_assets import encode_patch, encode_wad, NATIVE_PICKUP_PROFILE, NATIVE_PICKUP_MARKER
+from tools.doom_companion.inventory import wad_lumps
 
 
 def fixture_iwad(game):
@@ -88,6 +89,29 @@ class DoomBootstrapTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "without gameplay diagnostics"):
                     self.prepare()
                 self.assertFalse(self.state.exists())
+
+    def test_native_pickup_placeholders_require_matching_binary_capability_and_recipe(self):
+        record = json.loads(self.link.read_text())
+        record.update(pickup_sprite_profile=NATIVE_PICKUP_PROFILE,
+                      asset_recipe_sha256=sha256(Path(bootstrap.local_assets.__file__).read_bytes()))
+        self.link.write_text(json.dumps(record))
+        with self.assertRaisesRegex(ValueError, "matching renderer"):
+            self.prepare()
+        self.assertFalse(self.state.exists())
+        binary = self.client / "archipelago-doom.exe"
+        binary.write_bytes(binary.read_bytes() + NATIVE_PICKUP_MARKER)
+        for entry in record["binaries"]:
+            if entry["name"] == binary.name:
+                entry["sha256"] = sha256(binary.read_bytes())
+        self.link.write_text(json.dumps(record))
+        runtime = self.prepare()
+        with zipfile.ZipFile(runtime.directory / "BaseAssets.zip") as archive:
+            resources = dict(wad_lumps(archive.read("ArchipelagoDoom.wad")))
+            self.assertEqual(([[None]], 0, 0), bootstrap.local_assets.decode_patch(resources["APCLA0"]))
+        record["asset_recipe_sha256"] = "0" * 64
+        self.link.write_text(json.dumps(record))
+        with self.assertRaisesRegex(ValueError, "matching renderer"):
+            self.prepare()
 
     def test_hash_matched_diagnostic_binary_is_rejected_without_a_diagnostic_flag(self):
         binary = self.client / "archipelago-doom.exe"

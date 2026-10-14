@@ -24,11 +24,12 @@ DEPENDENCIES = {
 HELPERS = ("__init__.py", "inventory.py", "prepare.py", "local_assets.py", "bootstrap.py", "build_local.ps1", "source_repository.py",
            "dependency_sources.py", "prove_dependency_sources.py", "build_dependencies.ps1", "release_source_link.py",
            "ln_handshake.h", "apmine_gameplay_test.h", "apmine_network_test.h", "practice_items.h", "gameplay.py",
-           "network_gameplay.py", "source_access.py", "level_select_layout.h")
+           "network_gameplay.py", "source_access.py", "level_select_layout.h", "pickup_patch.h", "pickup_sprites.c", "pickup_sprites.h")
 OMIT_DIRECTORIES = {".git", "__pycache__", ".github", ".devcontainer", "data", "quickcheck", "pkg", "mbedtls-3.4.0"}
 OMIT_FILES = {"prepare-manifest.json", ".travis.sh", "create_release.bat", "appimage.sh"}
 OWNED_NATIVE_ADDITIONS = {"src/launcher/ln_handshake.h", "src/doom/apmine_gameplay_test.h", "src/doom/apmine_network_test.h",
-                          "src/archipelago/practice_items.h", "src/doom/level_select_layout.h"}
+                          "src/archipelago/practice_items.h", "src/doom/level_select_layout.h",
+                          "src/doom/pickup_patch.h", "src/doom/pickup_sprites.c", "src/doom/pickup_sprites.h"}
 MODIFICATION_NOTICE = re.compile(
     r"^(?:#|//|/\*|<!--) APMine companion change, (\d{4}-\d{2}-\d{2})[.:]", re.MULTILINE)
 
@@ -215,7 +216,7 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
     if not handshake_tests.is_file():
         handshake_tests = repository / "tests/test_handshake.py"
     payloads["tests/test_handshake.py"] = handshake_tests.read_bytes()
-    for name in ("gameplay", "practice_items", "network_gameplay", "source_access", "level_select_layout"):
+    for name in ("gameplay", "practice_items", "network_gameplay", "source_access", "level_select_layout", "pickup_patch"):
         tests = repository / f"test/tools/test_doom_companion_{name}.py"
         if not tests.is_file():
             tests = repository / f"tests/test_{name}.py"
@@ -230,7 +231,10 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
     for native_path, helper in (("src/doom/apmine_gameplay_test.h", "apmine_gameplay_test.h"),
                                 ("src/doom/apmine_network_test.h", "apmine_network_test.h"),
                                 ("src/archipelago/practice_items.h", "practice_items.h"),
-                                ("src/doom/level_select_layout.h", "level_select_layout.h")):
+                                ("src/doom/level_select_layout.h", "level_select_layout.h"),
+                                ("src/doom/pickup_patch.h", "pickup_patch.h"),
+                                ("src/doom/pickup_sprites.c", "pickup_sprites.c"),
+                                ("src/doom/pickup_sprites.h", "pickup_sprites.h")):
         native = payloads.get(native_path)
         if native is not None and native != payloads[f"tools/doom_companion/{helper}"]:
             raise ValueError(f"Native {helper} differs from the acceptance-test input")

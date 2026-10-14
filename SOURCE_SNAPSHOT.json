@@ -1242,7 +1242,7 @@
     },
     {
       "path": "BUILDING.md",
-      "sha256": "94798fc90c5e2ab67a78d8140552661d0276243534b7f423214b44d7bc2ff335"
+      "sha256": "4aa1c6cda95581ae7de70e0f32b3ca81a153ff5eaaa8a5367569a899ba4237da"
     },
     {
       "path": "CHANGELOG.md",
@@ -1686,11 +1686,11 @@
     },
     {
       "path": "src/ap_notif.c",
-      "sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303"
+      "sha256": "99446a73e3fc728a84fec83bfb39f6aa899eadd8f7b7fd0d8b8f1b6cc072da51"
     },
     {
       "path": "src/ap_notif.h",
-      "sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd"
+      "sha256": "ab6da73b98b93de5d6f8eefcb79009b52612b7ef54aeb6f31b02f071ab560b01"
     },
     {
       "path": "src/apzip/CMakeLists.txt",
@@ -1710,11 +1710,11 @@
     },
     {
       "path": "src/archipelago/apdoom.cpp",
-      "sha256": "c257c02847159b921ec9c97b87df413947764ee2c48bf835bb0f085c0e7bd207"
+      "sha256": "074be16ef132e88427f8dab2bb1eb504cb1e8088b0ecad8fb19fe3252a62df2e"
     },
     {
       "path": "src/archipelago/apdoom.h",
-      "sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe"
+      "sha256": "2b57df49f29d535776e25e2f0d3883d3a6204c6806c8be58efa7163ac58adc9f"
     },
     {
       "path": "src/archipelago/gamedata.cpp",
@@ -1842,7 +1842,7 @@
     },
     {
       "path": "src/doom/CMakeLists.txt",
-      "sha256": "3b8bf67320394f470e181d46649757ed3cf8d0d6edb76a667edb5783788a1441"
+      "sha256": "711fcea8d73c78bfd155c20bc30fec4c6df2621a35cad515a11b800c1b47cd2e"
     },
     {
       "path": "src/doom/Makefile.am",
@@ -2229,6 +2229,18 @@
       "sha256": "c7c129ffe5eb79bfcab7f6bce6d0391d62e75a1583c18f45094749ed3e682f5a"
     },
     {
+      "path": "src/doom/pickup_patch.h",
+      "sha256": "fe6a3af8e709b78c2e91175a862ff43cca5fe7acd39239a407e1be6ee4e59e0a"
+    },
+    {
+      "path": "src/doom/pickup_sprites.c",
+      "sha256": "62a48a23764997c3b945c4bb23b493ff937d7d83de52abfba6a8807222942509"
+    },
+    {
+      "path": "src/doom/pickup_sprites.h",
+      "sha256": "c05121d5407d01e5fc4f90609dfea91963ed583d9aad972c89ea7cc1a73c9e1f"
+    },
+    {
       "path": "src/doom/r_bmaps.c",
       "sha256": "95ca8badb58a3ad6dbb129d55072551eb00c4ac433262036891ff708e75e7d64"
     },
@@ -2246,7 +2258,7 @@
     },
     {
       "path": "src/doom/r_data.c",
-      "sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71"
+      "sha256": "e8e5b6684d5a27d82cd1e5512201823ae1dac347105b750142015c3913ec6b9f"
     },
     {
       "path": "src/doom/r_data.h",
@@ -2254,7 +2266,7 @@
     },
     {
       "path": "src/doom/r_defs.h",
-      "sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec"
+      "sha256": "0ea39bd0fb3caa15516e8540369ae4d7cdc42f21c6d6b5fa300f58d5c9a24f65"
     },
     {
       "path": "src/doom/r_draw.c",
@@ -2314,7 +2326,7 @@
     },
     {
       "path": "src/doom/r_things.c",
-      "sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009"
+      "sha256": "9df6bb389d03c1460d8fd457f869ea2403e198795973342691e83e8314cc7c5c"
     },
     {
       "path": "src/doom/r_things.h",
@@ -4082,7 +4094,7 @@
     },
     {
       "path": "tests/test_bootstrap.py",
-      "sha256": "396b508c5fab9b34453809fc0da544a484e4650a651eab090ce620319a43f0e2"
+      "sha256": "ce7d9b86bfd54fe3369992ee9586f8464d60101501e2044da7bc9dbbd492f04b"
     },
     {
       "path": "tests/test_dependency_sources.py",
@@ -4102,11 +4114,15 @@
     },
     {
       "path": "tests/test_local_assets.py",
-      "sha256": "34680c20812663fca33bf35ea5e0445c5cf823b62992a5ce71f4671efec9fd42"
+      "sha256": "ccefa55fce19f13141c267e12cc54d0205d3114dccacda16b759cdebb10d33e6"
     },
     {
       "path": "tests/test_network_gameplay.py",
       "sha256": "160dd0d0fbf0b913b91052ac900adb8689b8dbfdd4d52e26356b5a383e34f111"
+    },
+    {
+      "path": "tests/test_pickup_patch.py",
+      "sha256": "43a56066d2eac41200f8a3f313b36d2aa04f06a0bb2daf5b9fe63aeb2869e595"
     },
     {
       "path": "tests/test_practice_items.py",
@@ -4114,7 +4130,7 @@
     },
     {
       "path": "tests/test_release_source_link.py",
-      "sha256": "61225df61a41443facc2948db7624cb691a2dbcafa30a256c55d84719469c71c"
+      "sha256": "58bb7d604a504fca8faa08c8a0474cad9cd38c0c821f4fe62b23c6d6655639a4"
     },
     {
       "path": "tests/test_source_access.py",
@@ -4122,7 +4138,7 @@
     },
     {
       "path": "tests/test_source_repository.py",
-      "sha256": "6f7bf9d109cf47baded9e5b02363c7ef13e0f6a1097a56cbbeefec8311a12ef8"
+      "sha256": "a15e62b1e109769fdf646ebca55b95ea454823e52a104b7abcd210f9065c6c04"
     },
     {
       "path": "textscreen/CMakeLists.txt",
@@ -4354,7 +4370,7 @@
     },
     {
       "path": "tools/doom_companion/bootstrap.py",
-      "sha256": "52950aa26da1794600a7b08c9a0b9db58648b3e6ada2bc998751108537c9337f"
+      "sha256": "31a71663f22e739898d5e915bd63636cd4b66bc004bae3f601b04127af5b56f8"
     },
     {
       "path": "tools/doom_companion/build_dependencies.ps1",
@@ -4386,11 +4402,23 @@
     },
     {
       "path": "tools/doom_companion/local_assets.py",
-      "sha256": "9bf819c03547a982db31cdea6503c75887435fc41072ec02cffe2245d31fafd4"
+      "sha256": "ebf538ad3b64b28b02feee1b4134239dcfdad7306fab9fb082c4a0cfa2cd7f39"
     },
     {
       "path": "tools/doom_companion/network_gameplay.py",
       "sha256": "53cd3fd73d1e8459bc68465e1d1c28bac53257ed246ca1c0b7003d97ef058466"
+    },
+    {
+      "path": "tools/doom_companion/pickup_patch.h",
+      "sha256": "fe6a3af8e709b78c2e91175a862ff43cca5fe7acd39239a407e1be6ee4e59e0a"
+    },
+    {
+      "path": "tools/doom_companion/pickup_sprites.c",
+      "sha256": "62a48a23764997c3b945c4bb23b493ff937d7d83de52abfba6a8807222942509"
+    },
+    {
+      "path": "tools/doom_companion/pickup_sprites.h",
+      "sha256": "c05121d5407d01e5fc4f90609dfea91963ed583d9aad972c89ea7cc1a73c9e1f"
     },
     {
       "path": "tools/doom_companion/practice_items.h",
@@ -4406,7 +4434,7 @@
     },
     {
       "path": "tools/doom_companion/release_source_link.py",
-      "sha256": "ed1dfa83f560a1b8451599cda7b0087a4108529cc7bf4a56bf04761c0f2be161"
+      "sha256": "1f68e7c8a5d857dea1430b451eedfdba476572efefe57c334f0ea7d572d9961e"
     },
     {
       "path": "tools/doom_companion/source_access.py",
@@ -4414,7 +4442,7 @@
     },
     {
       "path": "tools/doom_companion/source_repository.py",
-      "sha256": "7a24479c9b27f2b266d9958383753482507ec98cc9485c4e61c08d12656154ea"
+      "sha256": "f3d4ef397adf21e5cb51ad523b9ac7da7be61a79bacde31cdd07ad3024b8a449"
     },
     {
       "path": "tools/doom_companion/source_templates/.gitignore",
@@ -20640,11 +20668,36 @@
       ]
     },
     {
+      "path": "src/ap_notif.c",
+      "before_sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303",
+      "after_sha256": "99446a73e3fc728a84fec83bfb39f6aa899eadd8f7b7fd0d8b8f1b6cc072da51",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/ap_notif.h",
+      "before_sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd",
+      "after_sha256": "ab6da73b98b93de5d6f8eefcb79009b52612b7ef54aeb6f31b02f071ab560b01",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
       "path": "src/archipelago/apdoom.cpp",
       "before_sha256": "596d311add5f281033f648d53f28cfe16956b211592fc353b7dc5c3d5bfab4bc",
-      "after_sha256": "c257c02847159b921ec9c97b87df413947764ee2c48bf835bb0f085c0e7bd207",
+      "after_sha256": "074be16ef132e88427f8dab2bb1eb504cb1e8088b0ecad8fb19fe3252a62df2e",
       "modification_dates": [
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/archipelago/apdoom.h",
+      "before_sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe",
+      "after_sha256": "2b57df49f29d535776e25e2f0d3883d3a6204c6806c8be58efa7163ac58adc9f",
+      "modification_dates": [
+        "2026-10-13"
       ]
     },
     {
@@ -20658,9 +20711,10 @@
     {
       "path": "src/doom/CMakeLists.txt",
       "before_sha256": "ffdfffc7a9c21680851d2b96f455d47914cf38d23558efd112c7236e14d93bc5",
-      "after_sha256": "3b8bf67320394f470e181d46649757ed3cf8d0d6edb76a667edb5783788a1441",
+      "after_sha256": "711fcea8d73c78bfd155c20bc30fec4c6df2621a35cad515a11b800c1b47cd2e",
       "modification_dates": [
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ]
     },
     {
@@ -20683,6 +20737,30 @@
       "path": "src/doom/level_select.c",
       "before_sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8",
       "after_sha256": "6b61cc8cc5c62b366f97b80b8e215c860fc37c461276f8b726a52c24c02b3cc8",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/doom/r_data.c",
+      "before_sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71",
+      "after_sha256": "e8e5b6684d5a27d82cd1e5512201823ae1dac347105b750142015c3913ec6b9f",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/doom/r_defs.h",
+      "before_sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec",
+      "after_sha256": "0ea39bd0fb3caa15516e8540369ae4d7cdc42f21c6d6b5fa300f58d5c9a24f65",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/doom/r_things.c",
+      "before_sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009",
+      "after_sha256": "9df6bb389d03c1460d8fd457f869ea2403e198795973342691e83e8314cc7c5c",
       "modification_dates": [
         "2026-10-13"
       ]
@@ -21460,6 +21538,27 @@
       ]
     },
     {
+      "path": "src/doom/pickup_patch.h",
+      "sha256": "fe6a3af8e709b78c2e91175a862ff43cca5fe7acd39239a407e1be6ee4e59e0a",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/doom/pickup_sprites.c",
+      "sha256": "62a48a23764997c3b945c4bb23b493ff937d7d83de52abfba6a8807222942509",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
+      "path": "src/doom/pickup_sprites.h",
+      "sha256": "c05121d5407d01e5fc4f90609dfea91963ed583d9aad972c89ea7cc1a73c9e1f",
+      "modification_dates": [
+        "2026-10-13"
+      ]
+    },
+    {
       "path": "src/launcher/ln_handshake.h",
       "sha256": "939ef7466540b14355f62a9a6f185aec90584ca5dbf0b7fd8fd2e9ba7645b3ff",
       "modification_dates": [
@@ -21471,8 +21570,24 @@
       "sha256": "e4c6a36ea3c498f107284e9d21dbb5a375c0c5e49fd134e6d2c95ea6b22cba07"
     },
     {
+      "path": "tests/test_pickup_patch.py",
+      "sha256": "43a56066d2eac41200f8a3f313b36d2aa04f06a0bb2daf5b9fe63aeb2869e595"
+    },
+    {
       "path": "tools/doom_companion/level_select_layout.h",
       "sha256": "85469d089f3246f5f7619081b26725e5d7d22b838fbe775bf52b9033480ad23e"
+    },
+    {
+      "path": "tools/doom_companion/pickup_patch.h",
+      "sha256": "fe6a3af8e709b78c2e91175a862ff43cca5fe7acd39239a407e1be6ee4e59e0a"
+    },
+    {
+      "path": "tools/doom_companion/pickup_sprites.c",
+      "sha256": "62a48a23764997c3b945c4bb23b493ff937d7d83de52abfba6a8807222942509"
+    },
+    {
+      "path": "tools/doom_companion/pickup_sprites.h",
+      "sha256": "c05121d5407d01e5fc4f90609dfea91963ed583d9aad972c89ea7cc1a73c9e1f"
     }
   ],
   "remaining": [
@@ -21535,5 +21650,36 @@
       "tests/test_source_repository.py"
     ],
     "scope": "Menu layout and player-local symbols; no original artwork or binary release"
+  },
+  "pickup_render_revision": {
+    "date": "2026-10-13",
+    "previous_snapshot_sha256": "7b7a4eec02b57c70d020fa712e0307f89b06fc03fd75ad6fddfec0df9b38b3a6",
+    "reviewed_paths": [
+      "BUILDING.md",
+      "src/doom/CMakeLists.txt",
+      "src/doom/r_data.c",
+      "src/doom/r_things.c",
+      "src/doom/r_defs.h",
+      "src/archipelago/apdoom.cpp",
+      "src/archipelago/apdoom.h",
+      "src/ap_notif.c",
+      "src/ap_notif.h",
+      "src/doom/pickup_patch.h",
+      "src/doom/pickup_sprites.c",
+      "src/doom/pickup_sprites.h",
+      "tools/doom_companion/pickup_patch.h",
+      "tools/doom_companion/pickup_sprites.c",
+      "tools/doom_companion/pickup_sprites.h",
+      "tools/doom_companion/local_assets.py",
+      "tools/doom_companion/bootstrap.py",
+      "tools/doom_companion/source_repository.py",
+      "tools/doom_companion/release_source_link.py",
+      "tests/test_local_assets.py",
+      "tests/test_bootstrap.py",
+      "tests/test_source_repository.py",
+      "tests/test_release_source_link.py",
+      "tests/test_pickup_patch.py"
+    ],
+    "scope": "Original category symbols, read-only player sprite composition and render-only classification; no public release"
   }
 }

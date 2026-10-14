@@ -107,6 +107,27 @@ class DoomCompanionLocalAssetTests(unittest.TestCase):
         self.assertIsNone(check[0][0])
         self.assertIsNotNone(check[0][-1])
 
+    def test_native_profile_stores_no_player_sprite_pixels_in_ap_aliases(self) -> None:
+        source = dict(wad_lumps(self.iwad.read_bytes()))
+        with zipfile.ZipFile(io.BytesIO(runtime_resources({"doom2": source}, [], native_pickups=True))) as archive:
+            resources = dict(wad_lumps(archive.read("ArchipelagoDoom.wad")))
+            self.assertEqual(local_assets.NATIVE_PICKUP_PROFILE,
+                             json.loads(archive.read("APMine-local-assets.json"))["pickup_sprite_profile"])
+        for name in ("APCLA0", "APJIA0", "APPIA0", "APBHA0", "APSCD0", "APBPA0"):
+            self.assertEqual(([[None]], 0, 0), decode_patch(resources[name]))
+        self.assertNotEqual(source["CLIPA0"], resources["APCLA0"])
+        shapes = [decode_patch(resources[f"APICON{category}"])[0] for category in range(3)]
+        self.assertNotEqual(shapes[0], shapes[1])
+        self.assertNotEqual(shapes[1], shapes[2])
+
+    def test_native_and_legacy_caches_are_distinct_and_keep_previous_versions(self) -> None:
+        legacy = build_local_cache([self.iwad], self.cache)
+        old = legacy.read_bytes()
+        native = build_local_cache([self.iwad], self.cache, native_pickups=True)
+        self.assertNotEqual(legacy, native)
+        self.assertEqual(old, legacy.read_bytes())
+        self.assertEqual(native, build_local_cache([self.iwad], self.cache, native_pickups=True))
+
     def test_cache_is_repeatable_and_never_mutates_original_iwad(self) -> None:
         original = self.iwad.read_bytes()
         output = build_local_cache([self.iwad], self.cache)

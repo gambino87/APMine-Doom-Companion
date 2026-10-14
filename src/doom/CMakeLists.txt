@@ -1,5 +1,7 @@
 # APMine companion change, 2026-10-12: opt-in offline gameplay diagnostics.
+# APMine companion change, 2026-10-13: in-memory player-derived pickup sprites.
 add_library(doom STATIC
+            pickup_sprites.c pickup_sprites.h pickup_patch.h
             level_select.c  level_select.h
             ap_spec.c       ap_spec.h
             

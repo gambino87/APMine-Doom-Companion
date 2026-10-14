@@ -10,6 +10,7 @@ import re
 from .dependency_sources import COMPANION_BINARIES, digest, dumpbin_imports, runtime_closure, verify
 from .inventory import DIAGNOSTIC_MARKERS, GAMEPLAY_DIAGNOSTIC_MARKER, embedded_zips
 from .source_repository import verify_source_snapshot
+from .local_assets import NATIVE_PICKUP_PROFILE, NATIVE_PICKUP_MARKER
 
 
 def cache_path(cache: Path, key: str) -> Path:
@@ -85,7 +86,13 @@ def link(source: Path, build: Path, prefix: Path, imports) -> dict:
             raise ValueError(f"Normal-client linkage rejects a gameplay diagnostic binary: {name}")
         binaries.append({"name": path.name, "sha256": binary["sha256"], "source_component": owner,
                          "preferred_source": source_path, "imports": binary["imports"]})
-    return {"schema_version": 1, "release_ready": False, "published": False,
+    pickup_profile = {}
+    if (source / "src/doom/pickup_sprites.c").is_file():
+        if NATIVE_PICKUP_MARKER not in (build / "bin/archipelago-doom.exe").read_bytes():
+            raise ValueError("Native pickup source has not been built into the engine")
+        pickup_profile = {"pickup_sprite_profile": NATIVE_PICKUP_PROFILE,
+                          "asset_recipe_sha256": digest(source / "tools/doom_companion/local_assets.py")}
+    return {"schema_version": 1, "release_ready": False, "published": False, **pickup_profile,
             "status": "private-binary-source-link", "source_snapshot_sha256": source_hash,
             "gameplay_diagnostics": False,
             "dependency_snapshot_sha256": dependency_hash, "preferred_source_inputs": len(snapshot["copied_inputs"]),

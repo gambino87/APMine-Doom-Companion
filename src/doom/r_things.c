@@ -1,3 +1,4 @@
+// APMine companion change, 2026-10-13: draw cached category-specific pickup composites.
 //
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
@@ -32,6 +33,8 @@
 #include "w_wad.h"
 
 #include "r_local.h"
+#include "apdoom.h"
+#include "pickup_sprites.h"
 
 #include "doomstat.h"
 
@@ -477,7 +480,7 @@ R_DrawVisSprite
     patch_t*		patch;
 	
 	
-    patch = W_CacheLumpNum (vis->patch+firstspritelump, PU_CACHE);
+    patch = APMinePickupSpritePatch(vis->patch+firstspritelump, vis->ap_pickup_category);
 
     // [crispy] brightmaps for select sprites
     dc_colormap[0] = vis->colormap[0];
@@ -752,6 +755,8 @@ void R_ProjectSprite (mobj_t* thing)
     if (vis->x1 > x1)
 	vis->startfrac += vis->xiscale*(vis->x1-x1);
     vis->patch = lump;
+    vis->ap_pickup_category = APMineIsPickupSpriteLump(lump + firstspritelump)
+        ? apdoom_get_location_sprite_category(ap_make_level_index(gameepisode, gamemap), thing->index) : -1;
     
     // get light level
     if (thing->flags & MF_SHADOW)
@@ -1049,6 +1054,7 @@ void R_DrawPSprite (pspdef_t* psp, psprnum_t psprnum) // [crispy] differentiate 
 	vis->startfrac += vis->xiscale*(vis->x1-x1);
 
     vis->patch = lump;
+    vis->ap_pickup_category = -1;
 
     if (viewplayer->powers[pw_invisibility] > 4*32
 	|| viewplayer->powers[pw_invisibility] & 8)
