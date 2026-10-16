@@ -1,4 +1,5 @@
 """Bind privately built Doom binaries to an assembled preferred-source snapshot."""
+# APMine companion change, 2026-10-15: require reviewed vendored-module notices.
 
 from __future__ import annotations
 
@@ -10,6 +11,8 @@ import re
 from .dependency_sources import COMPANION_BINARIES, digest, dumpbin_imports, runtime_closure, verify
 from .inventory import DIAGNOSTIC_MARKERS, GAMEPLAY_DIAGNOSTIC_MARKER, embedded_zips
 from .source_repository import verify_source_snapshot
+from .vendor_notices import validate as validate_vendor_notices
+from .external_test_inputs import validate as validate_external_tests
 from .local_assets import NATIVE_PICKUP_PROFILE, NATIVE_PICKUP_MARKER
 
 
@@ -23,6 +26,8 @@ def cache_path(cache: Path, key: str) -> Path:
 def link(source: Path, build: Path, prefix: Path, imports) -> dict:
     source, build, prefix = source.resolve(), build.resolve(), prefix.resolve()
     snapshot = verify_source_snapshot(source)
+    validate_external_tests(source)
+    validate_vendor_notices(source)
     if not snapshot.get("required_dependency_sources_present"):
         raise ValueError("Assembled preferred dependency source is required, not URL references")
     vendor = source / "vendor/native-dependencies"

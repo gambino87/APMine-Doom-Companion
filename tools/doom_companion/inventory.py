@@ -25,7 +25,11 @@ CODE_SUFFIXES = {
     ".c", ".cpp", ".h", ".hpp", ".cmake", ".py", ".in", ".am", ".ac",
     ".sh", ".bat", ".ps1", ".rc", ".s", ".asm", ".def",
 }
-NOTICE_NAMES = {"LICENSE", "LICENSE.txt", "COPYING", "COPYING.md", "AUTHORS", "CREDITS"}
+NOTICE_NAMES = {"LICENSE", "LICENSE.txt", "COPYING", "COPYING.md", "AUTHORS", "CREDITS", "README"}
+# These upstream image generators are source scripts despite having no suffix.
+EXTENSIONLESS_SOURCE_PATHS = {"data/convert-icon", "textscreen/fonts/convert-font"}
+DOCUMENTATION_SUFFIXES = {".md", ".rst", ".txt"}
+GRAPHICS_PROJECT_SUFFIXES = {".aseprite", ".ase"}
 
 
 def sha256(data: bytes) -> str:
@@ -146,6 +150,7 @@ def source_inventory(source_root: Path) -> dict:
     code = []
     notices = []
     omitted = []
+    unclassified = []
     stack = [source_root]
     while stack:
         directory = stack.pop()
@@ -161,10 +166,16 @@ def source_inventory(source_root: Path) -> dict:
                 omitted.append({"path": relative, "reason": "generated icon pixel array; requires asset review"})
             elif path.name in NOTICE_NAMES:
                 notices.append({"path": relative, "sha256": sha256(path.read_bytes())})
-            elif path.suffix.lower() in CODE_SUFFIXES or path.name in ("CMakeLists.txt", "vcpkg.json", ".gitmodules"):
+            elif (path.suffix.lower() in CODE_SUFFIXES | DOCUMENTATION_SUFFIXES or relative in EXTENSIONLESS_SOURCE_PATHS
+                  or path.name in ("CMakeLists.txt", "vcpkg.json", ".gitmodules")):
                 code.append({"path": relative, "sha256": sha256(path.read_bytes())})
+            elif path.suffix.lower() in GRAPHICS_PROJECT_SUFFIXES:
+                omitted.append({"path": relative, "reason": "graphics project input; needs separate provenance review"})
             elif path.suffix.lower() in (".zip", ".wad", ".png", ".ico", ".dll", ".exe", ".pk3", ".apworld", ".gz", ".xz", ".tar"):
                 omitted.append({"path": relative, "reason": "asset/archive/binary; needs separate provenance review"})
+            else:
+                unclassified.append({"path": relative, "bytes": path.stat().st_size,
+                                     "reason": "unclassified input; not copied or treated as source"})
     components = []
     for relative in (".", "APCpp", "APCpp/IXWebSocket", "APCpp/jsoncpp"):
         directory = source_root / relative
@@ -178,6 +189,7 @@ def source_inventory(source_root: Path) -> dict:
     return {"code_inputs": sorted(code, key=lambda record: record["path"]),
             "notice_inputs": sorted(notices, key=lambda record: record["path"]),
             "unreviewed_non_source_inputs": sorted(omitted, key=lambda record: record["path"]),
+            "unclassified_inputs": sorted(unclassified, key=lambda record: record["path"]),
             "components": components}
 
 
@@ -193,7 +205,8 @@ def snapshot_recovery_source(source_root: Path, source: dict, output: Path) -> d
     output.parent.mkdir(parents=True, exist_ok=True)
     manifest = {"schema_version": 1, "release_ready": False, "status": "incomplete-private-recovery-snapshot",
                 "inputs": inputs, "components": source["components"],
-                "unreviewed_non_source_inputs": source["unreviewed_non_source_inputs"]}
+                "unreviewed_non_source_inputs": source["unreviewed_non_source_inputs"],
+                "unclassified_inputs": source.get("unclassified_inputs", [])}
     with tempfile.TemporaryFile(dir=output.parent) as temporary:
         with zipfile.ZipFile(temporary, "w", zipfile.ZIP_DEFLATED) as archive:
             for entry in inputs:

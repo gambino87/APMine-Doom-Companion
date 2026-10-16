@@ -641,6 +641,10 @@
       "sha256": "36156987eb22c9aff2b5073bc6f2f5b6d2b4a0f5c2835c6233b7b105b1a36ab5"
     },
     {
+      "path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/LICENSE",
+      "sha256": "8a88960c0d6aa8b38faa6ee614597dbf18e0ea22ba20884ef3dd31d34b2a6d09"
+    },
+    {
       "path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/protocol.py",
       "sha256": "64f961a1ec2805f17090b3dc9cec2031f4ae0764d6d722c1faadb904cc14b2a4"
     },
@@ -1065,152 +1069,500 @@
       "sha256": "5602d56755bb5d07611a38e459bc6601a33b276dc6b9a4e1aed3b46756594453"
     },
     {
+      "path": "APCpp/jsoncpp/test/data/fail_invalid_quote.json",
+      "sha256": "3455f41de9c8437dec9e64208884f198b2416bfbfb8188d809b033a2c7b3452f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_array_01.json",
+      "sha256": "ffb3c9ee6bef13d6efac8437957d59e5b3b597a4013e650801edc916d11e57cc"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_array_02.json",
+      "sha256": "7dcdf8e26f2b6b62aa33a6bfaa06aad9831e2e24155d9c76236cc7e6e67f3996"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_object_01.json",
+      "sha256": "8f00da95fe0028afb593e8e84141afc4586c2ae663a6fa686d586b74cff65bde"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_stack_limit.json",
+      "sha256": "d2b7ba36d5bc6d1174a4b74d1788e6e627c70aedd40e79d091358cd40072748a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.expected",
+      "sha256": "c6f916fc27d6d6512e4a036f26a1a9fd91fbc648aaedfe92a90e00028f541828"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.json",
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.expected",
+      "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.json",
+      "sha256": "a1e35b820619d4c7eddac1396508ca0dda65191942356c460aeb1503d5744638"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.expected",
+      "sha256": "5a799f613483f70bfc8f5d8f151bb2468cbd836cf7cb2194718ee5876c224b51"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.json",
+      "sha256": "6213ec56dc1d4f44340ccb7880b6735286789ffd541c5aa63ceec10e5730bd04"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.expected",
+      "sha256": "92de9763f54fe66176e3784962ea32ef5d34b6bd5e03818eabb1d0baa4221506"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.json",
+      "sha256": "337c9e8f699615244520bd59ebf03c5fb0a277cb72bae2dda477fccf7f29b31a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.expected",
+      "sha256": "2061c6a9d0de20a027c80c5e53e25392e4ca6787ddf6bdc3fc9857fc343b2326"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.json",
+      "sha256": "15e28797a68120e90e101d0d5b56b2b935ce234d491819709b47fa0c67655465"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.expected",
+      "sha256": "c68f6fd1d80153eeaa69d72b30d9a2462e61b75fa7011d85515876427e0dae2e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.json",
+      "sha256": "00b65a4d2cbee0b1c973ced2e10bf5a344749d0bc38284e69a6f0a1fe3cb9c8b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.expected",
+      "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.json",
+      "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.expected",
+      "sha256": "665c3cef87de10b2708ed0bbf7f48d3506e699dcb6148fd734b998a6dd25d0c1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.json",
+      "sha256": "6c9dc57ad9b3bef88ea57b454bb678246d5de6748b711c71fabaef7af5539147"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.expected",
+      "sha256": "856a4fb7714ccf0d4cf25d16ef22ae952f9d49a603728e9999778e6c0a669664"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.json",
+      "sha256": "921cc466f708554b24662574002f5569435ab5af411700de634867b4a96be504"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.expected",
+      "sha256": "fb74bfa4eebb79969e3c79759b83a386ac922655ab0aff7282ca9b73a6652bd5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.json",
+      "sha256": "d6956b3ac9cd55dfdd2252a5501c0ed67caf1f0248e90c4882a34dd9698e3720"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.expected",
+      "sha256": "23e58f1eb66d22c4abe4b34f8713c978ad3dcf18e37a8f9fd5d069eb61709bfe"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.json",
+      "sha256": "b2afb781d13ac7fb1d42ee7ced1ead9e7a0a15dc8b90fe502a51ece7a7bcf5c9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.expected",
+      "sha256": "317ed08c6b55008dc2a053dc430997ba985106ca0da738ba60f3246200222634"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.json",
+      "sha256": "001bd640391fb11a28262375a464ed5730d3a1656cc7af7db5ac82d44b52cc7b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.expected",
+      "sha256": "c4547f16d1f564145393e10f48f2abefe84935f890541fd0db699df7ae4b1cab"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.json",
+      "sha256": "61db928f1db83b354eb004017cfe9da1207f76856e7ae264c40fe237e27d6ce3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.expected",
+      "sha256": "f5669393a6d41fad522b3ed4fd5993156f0620f33c063f0d1a4d9971ead5863d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.json",
+      "sha256": "36153eccdfd04866819d74a54522659362d7047c3c567e8475ff326baf7f96dd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.expected",
+      "sha256": "bae3c648bdcbd267ad223ea56630d03780d1339c269146f63ca4545b141831f5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.json",
+      "sha256": "c20e6b84e1322060a414443040a6754bea1f41c4e8afc23db9034a4fc11fa68e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.expected",
+      "sha256": "223d3ec2b1d4565c40b83a9e57fb8041bbd839ac00757e0ec6b0930cce259da3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.json",
+      "sha256": "4725609e8deeb168729c585356c09bd7deade6d3200296025827d6d5b0c7cc7d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.expected",
+      "sha256": "635f5e074d97d920f160928f204203694b26eff0068404ca7935df35904815e8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.json",
+      "sha256": "8494563934bc631b9d3ac702d3e7413e5333b2407be779fe2bd3d2f35394e123"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.expected",
+      "sha256": "eb9b4f33b5bd772763798b723f46ef1bb0c23b5eb70e88071acb2d9d916ca29e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.json",
+      "sha256": "69f053c3722c08cfe07b8ecb50ca028f1cefcf90f0ce50a745648cd7c65983f9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.expected",
+      "sha256": "d0e374cc35d8831c47f03ff5348b806e629d68d51d1bda4a1262debd138df072"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.json",
+      "sha256": "08a35bd2849aa426770362a9530cc2db42246ad091d31efad5cd025793884f23"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.expected",
+      "sha256": "45aab12f25e46d7fb45176324fe7afedf8a71274619321af37c22224ead4a601"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.json",
+      "sha256": "c716557a840af6a5c93a3e796174d3da9ace1b0051ad42fe6acbd02e56a8d553"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.expected",
+      "sha256": "0b81ab066ecc36a9cabaddbe12851bf738955869593fc1e74bb08f3097f56811"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.json",
+      "sha256": "bc307b316d7551eb681e18222ccd0a4032a9ae25735bbf98175b34b63ea48808"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.expected",
+      "sha256": "3d71a99396661c62f2be2040a1270211487b8fca38608f64c6dfb07f967a4d6f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.json",
+      "sha256": "cd56dc760b549fc0a8da8dab92042cab194d1a5b2ae1d4ddc82f59c5067a53c0"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.expected",
+      "sha256": "2e31ae6302a0b4adfb9f7a855a9554f02f774729ede933f259f9b8ac993c1a38"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.json",
+      "sha256": "384991d21aae6140267484f88989254a87c70ddcb7569e2809932b865d8f04e9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.expected",
+      "sha256": "f6a7b0b81a5f37ff4b1733cfca871f6ea31520e0f0f37b9d88116bb1aa235de1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.json",
+      "sha256": "8639cd130e448fd5a7ade95a35b23d202ab0ee0a70413d53247f2182d44518d4"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.expected",
+      "sha256": "2120d9df30ef563b2fdba5e51a232cb2f0ea8882ce4d3603bdf267aa8f5ed8e1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.json",
+      "sha256": "19a365f45a230083f170074b49072583c406ce5e20fa5929201d3f5d1be914a5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.expected",
+      "sha256": "1da42b004c9a274cc44df199565eede2f4808f7c79dd62d8b09909708b27abcb"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.json",
+      "sha256": "8968e8cb1bd5063fcea884756fe82bdf4266416b7f8778a777fd22b57a513485"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.expected",
+      "sha256": "79eaa7af14c1ea14314065e4f0ffefb163cfee337558c3aec14d9c130472f4f1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.json",
+      "sha256": "7fd42286704f2bb83448ac57660b0e69c4430ff133da677bd342fd4b26c1520b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.expected",
+      "sha256": "73abd74cce869b4b51d897e05c76066b172f577421be9d461345b2ac854efa07"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.json",
+      "sha256": "80dc9030f906dec24464b64dd40d92babe0ea0a2eb174dd6a72dca2318a5b59f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.expected",
+      "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.json",
+      "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.expected",
+      "sha256": "1c9419bbb5b0171cb3ab63bbc6eff8650a7aae9fc1ad065ef57e7169f26015da"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.expected",
+      "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.json",
+      "sha256": "82d46e925f1999d8d44425c8ee2025cb77a8b8ac970dc70afcdd2454aae6f4f9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.expected",
+      "sha256": "e7bdcba4d205a5a00165f82889bd3b49cc4ca8fad2e8e079437195f462a9088e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.json",
+      "sha256": "4794e98c00f160468bb6b3f6f95b7709f57decec63ec99158217e4d1e30f696f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.expected",
+      "sha256": "b3774c48b373deb32caf01d69eb8a794a4af0248cf270d5ab10bab0c3d90314c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.json",
+      "sha256": "f2f62184ea4824450c67c707f29a07bcc54233e0dc856bb1ce2936d921c210ba"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.expected",
+      "sha256": "a3f5009865426bc1693dc00d4348ab708242af3201c8fa612e703706d8b45a51"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.json",
+      "sha256": "9d62156dbdaedb87ab38727058012e0dd4b2577a5e228f07e93948602acfeec7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.expected",
+      "sha256": "c18d5ab587b650dc3028f6c9ea087defc72eaf6b3dde4599fd428181daeeaf8d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.json",
+      "sha256": "b59f59f1d2047aa575c5b21c5a123cba8ae26ff8397e1371a46b44d41a168063"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.expected",
+      "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.json",
+      "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.expected",
+      "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.json",
+      "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.expected",
+      "sha256": "b6e687dab6aaaba104c905ed5d59da539e37079211bf13fe1f7491c3292c9a97"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.json",
+      "sha256": "a6003c3c6fca28e6c10e453fa8d17f6045f052f5c41e4c8c75ccf2309dc066f3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.expected",
+      "sha256": "0b488ce37559454048c2c4744f2c34918269cc4a4c868da021cc57b0d0254522"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.json",
+      "sha256": "7e7265717a84f1a7a29acd312eeb4c5cc45b3df46224c3e309f26e1704638c49"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.expected",
+      "sha256": "ef38cf15ad34b27a5a9b279ce0aa53657d9f2a0bee61f5c7ebd7365ebc3c6524"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.json",
+      "sha256": "b1a88134cd33c95f609059fc66fb69afd5604da50d0ce9a5b70d0ea15759f1e8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.expected",
+      "sha256": "241c5e3ac49e1a74bdf04f6b234d36f2c99ef185402fbfcb9d79783659d11090"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.json",
+      "sha256": "7be5014caa552ada2d21dfba874a582caed18accd15b2579738da3df2e004ee2"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.expected",
+      "sha256": "7212299b1e090c8b68d97112d93238c073efc65c1409cef24944b2ae9316bfa7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.json",
+      "sha256": "e1887699d2068ae6d75482a9af63710ff0d4c553086caf27f6e55d6edaf452af"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.expected",
+      "sha256": "fb8498f3fab1db040379f29698bcd90a69349bea5afea48f6793fe86fb13d36a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.json",
+      "sha256": "1700685acdedc7dac9998663a3dc239054470a6816d83e9fd69ca0d9fa6b6809"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.expected",
+      "sha256": "2fe7db76bc01697fbfab26a6aa68e9823280ced0c3acc65cb95c4e7552e777af"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.json",
+      "sha256": "369f39da2714459488d48b59ffeb06baf2bb97e002ed339e1d9a29f8092041bf"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.expected",
+      "sha256": "594b50cc50118d0ecac4031de5e41362b2ef99c4f362f36012929dd73788aa38"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.json",
+      "sha256": "e710f0231251e7543d33fbb07d896b46093995a7fafffa04764032e178f7edec"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.expected",
+      "sha256": "6e14d006aa6015c937ee561b6dc6d1ab946358127b146f76274347b050965585"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.json",
+      "sha256": "b266aec87985868f280cd39f212beeecb68be815a1b408fd64822cfbb07807fd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.expected",
+      "sha256": "2022088378c6738dea184f907723c017e00982d08f979e14074ed1d3d73a07b4"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.json",
+      "sha256": "d9551b95e93e619936da6c45383b95fe61151f35c5fa92e0b9dcf4fe3017adaa"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.expected",
+      "sha256": "3ee77d9360068fb6e94d6386667eb2eb5651f42a262440aa1226278cbe733e83"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.json",
+      "sha256": "f5d86696f7992f02855e7cd095fb90f8896c68411d5297eb9564e4c397fa6270"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.expected",
+      "sha256": "e65f0ddcc4124dbfc99a29318b6de9425eda09b28b997394f39f5d6e83f47861"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.json",
+      "sha256": "6c11e88629a4458cf5a9f5a48017005f34a1db9fd76a5a6162f8e473f13b6f30"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.expected",
+      "sha256": "3a6800d4a108fb8281732ff5e6c7e6d4d0b653f6a73f8340e8f448eb820bf3e7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.json",
+      "sha256": "18349b657a9a1d012730cd492dce16e8e6ea73e4e351dbc60cf6a7430f7f1159"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.expected",
+      "sha256": "d3cbe32cbeb82223d210566350cf321db20585f52504a5426ba752854a7070d6"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.json",
+      "sha256": "b2dfcc6075d1c28c0b4bbb548f816136d71b4d91b2169bbf3501e7b600cf19b8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.expected",
+      "sha256": "6159cf0bbea62545be940c49517a180d290cf3a858688a07641601077f1e6f4e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.json",
+      "sha256": "f7fad4514c4c3e87e1e474d43d7362567ddec22d5bb8b888cfc46802afdac711"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.expected",
+      "sha256": "d1c437a3920a88ffb79b05d1f279a95971ba06225a3487c134acd0ea9644801e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.json",
+      "sha256": "0aeb95f62766e68469af9ce64f77530be1109235683599a36a2186b9584cbf53"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.expected",
+      "sha256": "4b8798bf8ff469055717483991149ab9dfd744aee8c5d2e5786dc41b1ea86075"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.json",
+      "sha256": "9dff52fa9c14255abd41292e881a4655655731888c35ffe6720653e881cd1d09"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.expected",
+      "sha256": "235d662d252012dadd9824a93b158f02d45c6ce3c44e9d08202ecd6f0f5fe97c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.json",
+      "sha256": "8f25aa9a5ab78e1d2ecfe9363201fa103ee046c3010124dda178a2a6e41662b7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.expected",
+      "sha256": "dba65df9fff6d98272e84070966941495ca1a0951ed3f0c01024601cfaffb4e5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.json",
+      "sha256": "9d231df813d5c2c9ba7043e768d78043eb27262ebdaab8c00ec82ba3bed7124d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.expected",
+      "sha256": "33c96b4a09eb151ba8548902e33f2344f7859e505eb0d958fe6c0f1b78bb556c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.json",
+      "sha256": "72b7af314741f7fa270965170ea838465f33666290da26b42064929f61953ffd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_array_08.expected",
+      "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_array_08.json",
+      "sha256": "55ef1791e64fd2113e3a3b3f3ff35ac60bc9275dc23cfd2e5fc3d61d7c754643"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_object_05.expected",
+      "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_object_05.json",
+      "sha256": "ca1805080392ce254dc2683670c5333e248d9e9d998ce30ea1d9516d0a506cf4"
+    },
+    {
       "path": "APCpp/jsoncpp/test/generate_expected.py",
       "sha256": "f36fecb8ea38d1b4a294d629bf438ec0af15759d5bac2fcccf203f7597657d25"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail1.json",
-      "sha256": "438b1027386f69e8ff72306d162bba30745cfc3ad99522c06b77093f6b2868b1"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail10.json",
-      "sha256": "ffea57a589f965c41b8778f1f0b69a1f4b7a14f072b868389cd6e2d249a33246"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail11.json",
-      "sha256": "ba669b02c583cdc66458f9318ec64f2787e1edded69cee94361d9d04bf87b591"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail12.json",
-      "sha256": "8033711342b67e573d96916fd820730a0a12ee291bd2e4ae324df3455c3f825f"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail13.json",
-      "sha256": "a9235f6b3a47a700d45a8cba0c0b01b62ed4b2fd8a0f10cfe7964bde5e8cc1e0"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail14.json",
-      "sha256": "4c353586a59fd208964f41f12547ef9e403520b87e9d9fe73c0bd6951de36933"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail15.json",
-      "sha256": "656c4510d2ae41d28f3bb5498a7df7e87652bbbb35a7c7ef7c28d4a3d1d59eae"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail16.json",
-      "sha256": "4514053448b28818d0d23041242b0e1705ea0bbf9f2ee84694d4e0100bd90cc4"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail17.json",
-      "sha256": "a806d560ae63698f5082c7e51189395be458d1709db63244d26846f5a1e1a91d"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail18.json",
-      "sha256": "e663fb0874bda154424bc35b9aff5f61d73d1a8cb926ccf41311827f30456997"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail19.json",
-      "sha256": "f262f8944e9f4346e80ccab07d2cc74f95928193210bc7a95c634f665f105b03"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail2.json",
-      "sha256": "9dbe48572aa40ff5e44b7b0e691e1b487d37cd4cfb34cf5bb506a5b6e965ec3b"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail20.json",
-      "sha256": "beff780d4797749a6180792d96de68b52eafbe3558578e2486b51c0fc384d3f0"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail21.json",
-      "sha256": "d786f4c34fc330006cfd6ef9a855d4233ce7ea4ffdce19a1aeb6498ae0341edc"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail22.json",
-      "sha256": "dd22ed47b00f7977a8fd058adbf448e7af9b4cf7299c8a11f21298ded07b9e03"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail23.json",
-      "sha256": "5b746985dd2a3406e0d457dc38583b5ed26c2691950a10e1e50049a93c924a78"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail24.json",
-      "sha256": "0389d0d5920ee2996811974bdcbfe05c9ca0ed79af909704b8485bc86f6eaf25"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail25.json",
-      "sha256": "8305373703e9a50e767c42929d22bb69b377cf62a5aeba4dc60bfbf28939411d"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail26.json",
-      "sha256": "032ff03c5b7bf611b5015000312a290b6fa7878ccb508c5ed5cc73cb2b649179"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail27.json",
-      "sha256": "b174b2bd7f3e16e077c68ce2b8b6400a7ae0b390a8742cdff59d648c6fccf93e"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail28.json",
-      "sha256": "327ffa4160b43e9a1fb77f3a0d2f78823bcd61d4e3347e3702034fed13a7fcdf"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail29.json",
-      "sha256": "cd279aa777afca083b346dbc2b62a1847c24f1556b619b7564842457f8949c93"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail3.json",
-      "sha256": "6903daf61af5b38e0bc66d8da4f13631e2c2d03598169fe2d7c45d2504d310b9"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail30.json",
-      "sha256": "3f54bdbbd4e3ad547fa457b5810df7c96f2d2c3bc6985e11202ffd1d42116889"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail31.json",
-      "sha256": "25981c42fdd25646ab17d57bfaa65e4b2d7b791fdf13840e75c5a9e8f66dec70"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail32.json",
-      "sha256": "15388c40b8b3920b49a317f303140234fecaa37d6adc8056f54b8d7d79cfba87"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail33.json",
-      "sha256": "df72f007b029ebe06bffcd6083deff92aae557aa172eaf7e2504a3222dc73b60"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail4.json",
-      "sha256": "15836776fdc7d0473f68c35c1295e473d57c215af1232b439b28120f674be45f"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail5.json",
-      "sha256": "40b23c469b617b09914010ee5c5aa0faa706061f77b4a96b374742c18bb17d42"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail6.json",
-      "sha256": "9cac15bfc3db16d965b9074329f4b7b26443fd4ccbf21cc545cc718114cbda20"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail7.json",
-      "sha256": "d9b01bb868ba4a6156085744bddf7acf119125aaf40e19e404b284e99b1973e0"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail8.json",
-      "sha256": "fbb0928ebab6b0f1aa7b5a7f10453bf89cc7ed56185bd783836ceedeec248ea8"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/fail9.json",
-      "sha256": "a3a4796b5ddb6c80e894113c690a75e5290ef109601dee2e277f652bc6d6a163"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/pass1.json",
-      "sha256": "c5708adb770f98c27ffa3ca20503f286df13c6ef4598c83585e8e5568c495f5f"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/pass2.json",
-      "sha256": "7f9deff2652df58a02ca676ff9494de3d93f18db64c7f20f9596dffb8c92f187"
-    },
-    {
-      "path": "APCpp/jsoncpp/test/jsonchecker/pass3.json",
-      "sha256": "4fdaf20bf45d4fa605a8297d19734b75d21ac481d72ae5a453b2c45f390c9d26"
     },
     {
       "path": "APCpp/jsoncpp/test/jsonchecker/readme.txt",
@@ -1242,7 +1594,7 @@
     },
     {
       "path": "BUILDING.md",
-      "sha256": "4aa1c6cda95581ae7de70e0f32b3ca81a153ff5eaaa8a5367569a899ba4237da"
+      "sha256": "cc5d03b56eea9deb77ec5ddaf20dc46f976b95b053a8993669c113292f42ad41"
     },
     {
       "path": "CHANGELOG.md",
@@ -1306,7 +1658,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "c75ea48eec88e4c8f0527236d9d5b8b4e0a7b9798fdc97915b3dfc010be07693"
+      "sha256": "70f0f904c5d458090a1d88cf23b773c2e4f7abbdd689365b211dfd23b9e96578"
     },
     {
       "path": "README.upstream.md",
@@ -1318,7 +1670,7 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "ee54c05f80261eba1328bc4e18d769b22a17b60795516a660f558961fef3a546"
+      "sha256": "3afe4d0728437284895225ee10af4902083a47615b8610aeb1f6fe7fa0d36841"
     },
     {
       "path": "TODO.md",
@@ -4101,6 +4453,14 @@
       "sha256": "395e1477f126eb593f129e04bc8b0e8c9b5f10dd8fed15b1d12e873321750037"
     },
     {
+      "path": "tests/test_external_test_inputs.py",
+      "sha256": "0bb955fdc566499e8ba47624674413b42ca96d586fe68253b504efd24fa242e3"
+    },
+    {
+      "path": "tests/test_font_sources.py",
+      "sha256": "9253ebbf6c7e069884f40bf9cdb6cd730226daf69b5f2cce98af9626d7606c9c"
+    },
+    {
       "path": "tests/test_gameplay.py",
       "sha256": "e797028452d3aaf942101bcc444a448af25e70d3fe361d06a8e5359d079be6e6"
     },
@@ -4130,15 +4490,19 @@
     },
     {
       "path": "tests/test_release_source_link.py",
-      "sha256": "58bb7d604a504fca8faa08c8a0474cad9cd38c0c821f4fe62b23c6d6655639a4"
+      "sha256": "c945b694163c8260c9353e36e4ad8eac5a9a99be8a142a92a0841cb7a25bae4b"
     },
     {
       "path": "tests/test_source_access.py",
-      "sha256": "c18ebe4329bcd4868980c76815315922a173f14fc5482f609ad7456319f7796b"
+      "sha256": "bcdb0dcbad86a50efceab27ed5b8dea86a5d9bea8650c36181dfed593d729eca"
     },
     {
       "path": "tests/test_source_repository.py",
-      "sha256": "a15e62b1e109769fdf646ebca55b95ea454823e52a104b7abcd210f9065c6c04"
+      "sha256": "a3967af790e47a53232f70bb15f25d97281362573e0c53c5e6f18d93ec9e2483"
+    },
+    {
+      "path": "tests/test_vendor_notices.py",
+      "sha256": "c7c5f1222f96daba730c9846cab541a5042ce32c770004e3990ae4f97705fe63"
     },
     {
       "path": "textscreen/CMakeLists.txt",
@@ -4165,20 +4529,40 @@
       "sha256": "1c61f58e21dfc52d4c3fce80a20f957aedf8f2c44245f07d075ee119455606d2"
     },
     {
+      "path": "textscreen/fonts/README",
+      "sha256": "81db9935f1592f3856af85cb000ac4b25e6066ecc651d5558487d8adc8039dcb"
+    },
+    {
       "path": "textscreen/fonts/codepage.h",
       "sha256": "b414db03a352d3665554589fad0bd76785c8529ea17cc9997b5db580e71bfaf2"
+    },
+    {
+      "path": "textscreen/fonts/convert-font",
+      "sha256": "3a44c580be759c5f533ed981314c110fe44816a89f1ab8b4415d45d5bca5e7de"
     },
     {
       "path": "textscreen/fonts/large.h",
       "sha256": "ec75d1ef95fee988ded55d269bdf8b268b1e2bd72ac14275e38319d08c9e3cf3"
     },
     {
+      "path": "textscreen/fonts/large.png",
+      "sha256": "f506b90be8fe20566e85ae2cb787a298d999dd0c8a17b515924061f57a7d9aaf"
+    },
+    {
       "path": "textscreen/fonts/normal.h",
       "sha256": "8013bf0763b34e979b8d026fa4cde88fd6146dbeb1946cf4eb84c4d0ad276e96"
     },
     {
+      "path": "textscreen/fonts/normal.png",
+      "sha256": "76fbe6bfea0dc873d15b9dddb66b0fb2f94b89445667acce33786b830cdd39c6"
+    },
+    {
       "path": "textscreen/fonts/small.h",
       "sha256": "b7217698c30c22330483bef2b1ff22ae234ca9cd28fb2f5a06e9b3bb1aa4d21c"
+    },
+    {
+      "path": "textscreen/fonts/small.png",
+      "sha256": "0cc2592a2a93cf1d4ae156de9be8b60ea90917be7734d3eb3459f0dffcc912f4"
     },
     {
       "path": "textscreen/textscreen.h",
@@ -4385,12 +4769,20 @@
       "sha256": "0cd186fe87b51cf97eabe4dd7f8d73e2c3a82e2452dc67ff444500add83848cf"
     },
     {
+      "path": "tools/doom_companion/external_test_inputs.py",
+      "sha256": "4560a38a0399ffff9311f30f3e089e49d85d348b2ef26ab00156a7969b0f65f3"
+    },
+    {
+      "path": "tools/doom_companion/font_sources.py",
+      "sha256": "08c5c3867b1782bd96523afa565746ded6e989e094513c8d0087cb25c89c1ac7"
+    },
+    {
       "path": "tools/doom_companion/gameplay.py",
       "sha256": "40c1e1bebc3f530c3a03ec7b1dc49cc7b3cd87a3299161ce32512bd7a8b79694"
     },
     {
       "path": "tools/doom_companion/inventory.py",
-      "sha256": "706837acc18b342ede6ab7b62e27c0f432bd79b938dcf7e94cd9fd07f14b544b"
+      "sha256": "62612cf716bd56deee85f2b4741e1faf5bde330c44e204a37b6ad98bd8c227e4"
     },
     {
       "path": "tools/doom_companion/level_select_layout.h",
@@ -4426,7 +4818,7 @@
     },
     {
       "path": "tools/doom_companion/prepare.py",
-      "sha256": "c1aaef53459b129c822849dda37a09fe3a69b9fe21e03f7c89d8fffd45ead2e2"
+      "sha256": "7b16834926df4422ad06b4a3ae8603a56f3150e60250fb30966171c78115d666"
     },
     {
       "path": "tools/doom_companion/prove_dependency_sources.py",
@@ -4434,15 +4826,15 @@
     },
     {
       "path": "tools/doom_companion/release_source_link.py",
-      "sha256": "1f68e7c8a5d857dea1430b451eedfdba476572efefe57c334f0ea7d572d9961e"
+      "sha256": "ed26f4d59d4d95c30db9e559af82dc991e32674a4d3428a1b45e449fbbcbddee"
     },
     {
       "path": "tools/doom_companion/source_access.py",
-      "sha256": "27b553fb97a50d386d87819713ed8c8a2b3a89fed61d09b6a4e373a163600640"
+      "sha256": "b0900f9b1cf1f570cc3cf52a2832620ecbaa133b647b653949dd2f01b3a4d7cf"
     },
     {
       "path": "tools/doom_companion/source_repository.py",
-      "sha256": "f3d4ef397adf21e5cb51ad523b9ac7da7be61a79bacde31cdd07ad3024b8a449"
+      "sha256": "8591f0c56f660ebc4423397e71e9ae68db46f96ce357960b413fd8726976d9b5"
     },
     {
       "path": "tools/doom_companion/source_templates/.gitignore",
@@ -4450,7 +4842,7 @@
     },
     {
       "path": "tools/doom_companion/source_templates/BUILDING.md",
-      "sha256": "0a475a81d21b8533318b244b0aa78971b689a609508ef037d7598f6c4cee886a"
+      "sha256": "88bac1c2dfb62c2efcc9510d0220f7b53ebc145aa68ed6fffbe9c3c1b44da60d"
     },
     {
       "path": "tools/doom_companion/source_templates/README.md",
@@ -4458,7 +4850,15 @@
     },
     {
       "path": "tools/doom_companion/source_templates/THIRD_PARTY_NOTICES.md",
-      "sha256": "063d039919e1d8b36723af8f14907bdf3e5a2b9a32860509c71b0f640977f5c4"
+      "sha256": "eb45854de09f023d637b65e1f4f416414f05e7f53fc6d52de121cd7c66631b68"
+    },
+    {
+      "path": "tools/doom_companion/source_templates/notices/websockets-8.1.LICENSE.txt",
+      "sha256": "8a88960c0d6aa8b38faa6ee614597dbf18e0ea22ba20884ef3dd31d34b2a6d09"
+    },
+    {
+      "path": "tools/doom_companion/vendor_notices.py",
+      "sha256": "ac6e73bf828f301ca88f48288874a500ddcfbce05fd1392401b49f46e36b52de"
     },
     {
       "path": "vcpkg.json",
@@ -20886,6 +21286,42 @@
     ".travis.sh",
     "APCpp/jsoncpp/.github/ISSUE_TEMPLATE/bug_report.md",
     "APCpp/jsoncpp/.github/ISSUE_TEMPLATE/feature_request.md",
+    "APCpp/jsoncpp/test/jsonchecker/fail1.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail10.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail11.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail12.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail13.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail14.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail15.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail16.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail17.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail18.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail19.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail2.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail20.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail21.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail22.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail23.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail24.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail25.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail26.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail27.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail28.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail29.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail3.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail30.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail31.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail32.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail33.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail4.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail5.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail6.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail7.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail8.json",
+    "APCpp/jsoncpp/test/jsonchecker/fail9.json",
+    "APCpp/jsoncpp/test/jsonchecker/pass1.json",
+    "APCpp/jsoncpp/test/jsonchecker/pass2.json",
+    "APCpp/jsoncpp/test/jsonchecker/pass3.json",
     "appimage.sh",
     "create_release.bat",
     "mbedtls-3.4.0/.github/ISSUE_TEMPLATE/bug_report.md",
@@ -21588,6 +22024,554 @@
     {
       "path": "tools/doom_companion/pickup_sprites.h",
       "sha256": "c05121d5407d01e5fc4f90609dfea91963ed583d9aad972c89ea7cc1a73c9e1f"
+    },
+    {
+      "path": "textscreen/fonts/README",
+      "sha256": "81db9935f1592f3856af85cb000ac4b25e6066ecc651d5558487d8adc8039dcb",
+      "source_url": "https://raw.githubusercontent.com/Daivuk/apdoom/2059fc2170e8762ad0ac1e29a054c15d33601e6d/textscreen/fonts/README",
+      "origin": "Unmodified upstream notice/generator restored after a collection omission"
+    },
+    {
+      "path": "textscreen/fonts/convert-font",
+      "sha256": "3a44c580be759c5f533ed981314c110fe44816a89f1ab8b4415d45d5bca5e7de",
+      "source_url": "https://raw.githubusercontent.com/Daivuk/apdoom/2059fc2170e8762ad0ac1e29a054c15d33601e6d/textscreen/fonts/convert-font",
+      "origin": "Unmodified upstream notice/generator restored after a collection omission"
+    },
+    {
+      "path": "tests/test_font_sources.py",
+      "sha256": "9253ebbf6c7e069884f40bf9cdb6cd730226daf69b5f2cce98af9626d7606c9c"
+    },
+    {
+      "path": "textscreen/fonts/large.png",
+      "sha256": "f506b90be8fe20566e85ae2cb787a298d999dd0c8a17b515924061f57a7d9aaf"
+    },
+    {
+      "path": "textscreen/fonts/normal.png",
+      "sha256": "76fbe6bfea0dc873d15b9dddb66b0fb2f94b89445667acce33786b830cdd39c6"
+    },
+    {
+      "path": "textscreen/fonts/small.png",
+      "sha256": "0cc2592a2a93cf1d4ae156de9be8b60ea90917be7734d3eb3459f0dffcc912f4"
+    },
+    {
+      "path": "tools/doom_companion/font_sources.py",
+      "sha256": "08c5c3867b1782bd96523afa565746ded6e989e094513c8d0087cb25c89c1ac7"
+    },
+    {
+      "path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/LICENSE",
+      "sha256": "8a88960c0d6aa8b38faa6ee614597dbf18e0ea22ba20884ef3dd31d34b2a6d09"
+    },
+    {
+      "path": "tests/test_vendor_notices.py",
+      "sha256": "c7c5f1222f96daba730c9846cab541a5042ce32c770004e3990ae4f97705fe63"
+    },
+    {
+      "path": "tools/doom_companion/source_templates/notices/websockets-8.1.LICENSE.txt",
+      "sha256": "8a88960c0d6aa8b38faa6ee614597dbf18e0ea22ba20884ef3dd31d34b2a6d09"
+    },
+    {
+      "path": "tools/doom_companion/vendor_notices.py",
+      "sha256": "ac6e73bf828f301ca88f48288874a500ddcfbce05fd1392401b49f46e36b52de"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_invalid_quote.json",
+      "sha256": "3455f41de9c8437dec9e64208884f198b2416bfbfb8188d809b033a2c7b3452f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_array_01.json",
+      "sha256": "ffb3c9ee6bef13d6efac8437957d59e5b3b597a4013e650801edc916d11e57cc"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_array_02.json",
+      "sha256": "7dcdf8e26f2b6b62aa33a6bfaa06aad9831e2e24155d9c76236cc7e6e67f3996"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_object_01.json",
+      "sha256": "8f00da95fe0028afb593e8e84141afc4586c2ae663a6fa686d586b74cff65bde"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/fail_test_stack_limit.json",
+      "sha256": "d2b7ba36d5bc6d1174a4b74d1788e6e627c70aedd40e79d091358cd40072748a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.expected",
+      "sha256": "c6f916fc27d6d6512e4a036f26a1a9fd91fbc648aaedfe92a90e00028f541828"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.json",
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.expected",
+      "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.json",
+      "sha256": "a1e35b820619d4c7eddac1396508ca0dda65191942356c460aeb1503d5744638"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.expected",
+      "sha256": "5a799f613483f70bfc8f5d8f151bb2468cbd836cf7cb2194718ee5876c224b51"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.json",
+      "sha256": "6213ec56dc1d4f44340ccb7880b6735286789ffd541c5aa63ceec10e5730bd04"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.expected",
+      "sha256": "92de9763f54fe66176e3784962ea32ef5d34b6bd5e03818eabb1d0baa4221506"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.json",
+      "sha256": "337c9e8f699615244520bd59ebf03c5fb0a277cb72bae2dda477fccf7f29b31a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.expected",
+      "sha256": "2061c6a9d0de20a027c80c5e53e25392e4ca6787ddf6bdc3fc9857fc343b2326"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.json",
+      "sha256": "15e28797a68120e90e101d0d5b56b2b935ce234d491819709b47fa0c67655465"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.expected",
+      "sha256": "c68f6fd1d80153eeaa69d72b30d9a2462e61b75fa7011d85515876427e0dae2e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.json",
+      "sha256": "00b65a4d2cbee0b1c973ced2e10bf5a344749d0bc38284e69a6f0a1fe3cb9c8b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.expected",
+      "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.json",
+      "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.expected",
+      "sha256": "665c3cef87de10b2708ed0bbf7f48d3506e699dcb6148fd734b998a6dd25d0c1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.json",
+      "sha256": "6c9dc57ad9b3bef88ea57b454bb678246d5de6748b711c71fabaef7af5539147"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.expected",
+      "sha256": "856a4fb7714ccf0d4cf25d16ef22ae952f9d49a603728e9999778e6c0a669664"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.json",
+      "sha256": "921cc466f708554b24662574002f5569435ab5af411700de634867b4a96be504"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.expected",
+      "sha256": "fb74bfa4eebb79969e3c79759b83a386ac922655ab0aff7282ca9b73a6652bd5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.json",
+      "sha256": "d6956b3ac9cd55dfdd2252a5501c0ed67caf1f0248e90c4882a34dd9698e3720"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.expected",
+      "sha256": "23e58f1eb66d22c4abe4b34f8713c978ad3dcf18e37a8f9fd5d069eb61709bfe"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.json",
+      "sha256": "b2afb781d13ac7fb1d42ee7ced1ead9e7a0a15dc8b90fe502a51ece7a7bcf5c9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.expected",
+      "sha256": "317ed08c6b55008dc2a053dc430997ba985106ca0da738ba60f3246200222634"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.json",
+      "sha256": "001bd640391fb11a28262375a464ed5730d3a1656cc7af7db5ac82d44b52cc7b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.expected",
+      "sha256": "c4547f16d1f564145393e10f48f2abefe84935f890541fd0db699df7ae4b1cab"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.json",
+      "sha256": "61db928f1db83b354eb004017cfe9da1207f76856e7ae264c40fe237e27d6ce3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.expected",
+      "sha256": "f5669393a6d41fad522b3ed4fd5993156f0620f33c063f0d1a4d9971ead5863d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.json",
+      "sha256": "36153eccdfd04866819d74a54522659362d7047c3c567e8475ff326baf7f96dd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.expected",
+      "sha256": "bae3c648bdcbd267ad223ea56630d03780d1339c269146f63ca4545b141831f5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.json",
+      "sha256": "c20e6b84e1322060a414443040a6754bea1f41c4e8afc23db9034a4fc11fa68e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.expected",
+      "sha256": "223d3ec2b1d4565c40b83a9e57fb8041bbd839ac00757e0ec6b0930cce259da3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.json",
+      "sha256": "4725609e8deeb168729c585356c09bd7deade6d3200296025827d6d5b0c7cc7d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.expected",
+      "sha256": "635f5e074d97d920f160928f204203694b26eff0068404ca7935df35904815e8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.json",
+      "sha256": "8494563934bc631b9d3ac702d3e7413e5333b2407be779fe2bd3d2f35394e123"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.expected",
+      "sha256": "eb9b4f33b5bd772763798b723f46ef1bb0c23b5eb70e88071acb2d9d916ca29e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.json",
+      "sha256": "69f053c3722c08cfe07b8ecb50ca028f1cefcf90f0ce50a745648cd7c65983f9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.expected",
+      "sha256": "d0e374cc35d8831c47f03ff5348b806e629d68d51d1bda4a1262debd138df072"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.json",
+      "sha256": "08a35bd2849aa426770362a9530cc2db42246ad091d31efad5cd025793884f23"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.expected",
+      "sha256": "45aab12f25e46d7fb45176324fe7afedf8a71274619321af37c22224ead4a601"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.json",
+      "sha256": "c716557a840af6a5c93a3e796174d3da9ace1b0051ad42fe6acbd02e56a8d553"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.expected",
+      "sha256": "0b81ab066ecc36a9cabaddbe12851bf738955869593fc1e74bb08f3097f56811"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.json",
+      "sha256": "bc307b316d7551eb681e18222ccd0a4032a9ae25735bbf98175b34b63ea48808"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.expected",
+      "sha256": "3d71a99396661c62f2be2040a1270211487b8fca38608f64c6dfb07f967a4d6f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.json",
+      "sha256": "cd56dc760b549fc0a8da8dab92042cab194d1a5b2ae1d4ddc82f59c5067a53c0"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.expected",
+      "sha256": "2e31ae6302a0b4adfb9f7a855a9554f02f774729ede933f259f9b8ac993c1a38"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.json",
+      "sha256": "384991d21aae6140267484f88989254a87c70ddcb7569e2809932b865d8f04e9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.expected",
+      "sha256": "f6a7b0b81a5f37ff4b1733cfca871f6ea31520e0f0f37b9d88116bb1aa235de1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.json",
+      "sha256": "8639cd130e448fd5a7ade95a35b23d202ab0ee0a70413d53247f2182d44518d4"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.expected",
+      "sha256": "2120d9df30ef563b2fdba5e51a232cb2f0ea8882ce4d3603bdf267aa8f5ed8e1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.json",
+      "sha256": "19a365f45a230083f170074b49072583c406ce5e20fa5929201d3f5d1be914a5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.expected",
+      "sha256": "1da42b004c9a274cc44df199565eede2f4808f7c79dd62d8b09909708b27abcb"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.json",
+      "sha256": "8968e8cb1bd5063fcea884756fe82bdf4266416b7f8778a777fd22b57a513485"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.expected",
+      "sha256": "79eaa7af14c1ea14314065e4f0ffefb163cfee337558c3aec14d9c130472f4f1"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.json",
+      "sha256": "7fd42286704f2bb83448ac57660b0e69c4430ff133da677bd342fd4b26c1520b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.expected",
+      "sha256": "73abd74cce869b4b51d897e05c76066b172f577421be9d461345b2ac854efa07"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.json",
+      "sha256": "80dc9030f906dec24464b64dd40d92babe0ea0a2eb174dd6a72dca2318a5b59f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.expected",
+      "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.json",
+      "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.expected",
+      "sha256": "1c9419bbb5b0171cb3ab63bbc6eff8650a7aae9fc1ad065ef57e7169f26015da"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.expected",
+      "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.json",
+      "sha256": "82d46e925f1999d8d44425c8ee2025cb77a8b8ac970dc70afcdd2454aae6f4f9"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.expected",
+      "sha256": "e7bdcba4d205a5a00165f82889bd3b49cc4ca8fad2e8e079437195f462a9088e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.json",
+      "sha256": "4794e98c00f160468bb6b3f6f95b7709f57decec63ec99158217e4d1e30f696f"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.expected",
+      "sha256": "b3774c48b373deb32caf01d69eb8a794a4af0248cf270d5ab10bab0c3d90314c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.json",
+      "sha256": "f2f62184ea4824450c67c707f29a07bcc54233e0dc856bb1ce2936d921c210ba"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.expected",
+      "sha256": "a3f5009865426bc1693dc00d4348ab708242af3201c8fa612e703706d8b45a51"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.json",
+      "sha256": "9d62156dbdaedb87ab38727058012e0dd4b2577a5e228f07e93948602acfeec7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.expected",
+      "sha256": "c18d5ab587b650dc3028f6c9ea087defc72eaf6b3dde4599fd428181daeeaf8d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.json",
+      "sha256": "b59f59f1d2047aa575c5b21c5a123cba8ae26ff8397e1371a46b44d41a168063"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.expected",
+      "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.json",
+      "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.expected",
+      "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.json",
+      "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.expected",
+      "sha256": "b6e687dab6aaaba104c905ed5d59da539e37079211bf13fe1f7491c3292c9a97"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.json",
+      "sha256": "a6003c3c6fca28e6c10e453fa8d17f6045f052f5c41e4c8c75ccf2309dc066f3"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.expected",
+      "sha256": "0b488ce37559454048c2c4744f2c34918269cc4a4c868da021cc57b0d0254522"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.json",
+      "sha256": "7e7265717a84f1a7a29acd312eeb4c5cc45b3df46224c3e309f26e1704638c49"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.expected",
+      "sha256": "ef38cf15ad34b27a5a9b279ce0aa53657d9f2a0bee61f5c7ebd7365ebc3c6524"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.json",
+      "sha256": "b1a88134cd33c95f609059fc66fb69afd5604da50d0ce9a5b70d0ea15759f1e8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.expected",
+      "sha256": "241c5e3ac49e1a74bdf04f6b234d36f2c99ef185402fbfcb9d79783659d11090"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.json",
+      "sha256": "7be5014caa552ada2d21dfba874a582caed18accd15b2579738da3df2e004ee2"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.expected",
+      "sha256": "7212299b1e090c8b68d97112d93238c073efc65c1409cef24944b2ae9316bfa7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.json",
+      "sha256": "e1887699d2068ae6d75482a9af63710ff0d4c553086caf27f6e55d6edaf452af"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.expected",
+      "sha256": "fb8498f3fab1db040379f29698bcd90a69349bea5afea48f6793fe86fb13d36a"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.json",
+      "sha256": "1700685acdedc7dac9998663a3dc239054470a6816d83e9fd69ca0d9fa6b6809"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.expected",
+      "sha256": "2fe7db76bc01697fbfab26a6aa68e9823280ced0c3acc65cb95c4e7552e777af"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.json",
+      "sha256": "369f39da2714459488d48b59ffeb06baf2bb97e002ed339e1d9a29f8092041bf"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.expected",
+      "sha256": "594b50cc50118d0ecac4031de5e41362b2ef99c4f362f36012929dd73788aa38"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.json",
+      "sha256": "e710f0231251e7543d33fbb07d896b46093995a7fafffa04764032e178f7edec"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.expected",
+      "sha256": "6e14d006aa6015c937ee561b6dc6d1ab946358127b146f76274347b050965585"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.json",
+      "sha256": "b266aec87985868f280cd39f212beeecb68be815a1b408fd64822cfbb07807fd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.expected",
+      "sha256": "2022088378c6738dea184f907723c017e00982d08f979e14074ed1d3d73a07b4"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.json",
+      "sha256": "d9551b95e93e619936da6c45383b95fe61151f35c5fa92e0b9dcf4fe3017adaa"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.expected",
+      "sha256": "3ee77d9360068fb6e94d6386667eb2eb5651f42a262440aa1226278cbe733e83"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.json",
+      "sha256": "f5d86696f7992f02855e7cd095fb90f8896c68411d5297eb9564e4c397fa6270"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.expected",
+      "sha256": "e65f0ddcc4124dbfc99a29318b6de9425eda09b28b997394f39f5d6e83f47861"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.json",
+      "sha256": "6c11e88629a4458cf5a9f5a48017005f34a1db9fd76a5a6162f8e473f13b6f30"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.expected",
+      "sha256": "3a6800d4a108fb8281732ff5e6c7e6d4d0b653f6a73f8340e8f448eb820bf3e7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.json",
+      "sha256": "18349b657a9a1d012730cd492dce16e8e6ea73e4e351dbc60cf6a7430f7f1159"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.expected",
+      "sha256": "d3cbe32cbeb82223d210566350cf321db20585f52504a5426ba752854a7070d6"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.json",
+      "sha256": "b2dfcc6075d1c28c0b4bbb548f816136d71b4d91b2169bbf3501e7b600cf19b8"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.expected",
+      "sha256": "6159cf0bbea62545be940c49517a180d290cf3a858688a07641601077f1e6f4e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.json",
+      "sha256": "f7fad4514c4c3e87e1e474d43d7362567ddec22d5bb8b888cfc46802afdac711"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.expected",
+      "sha256": "d1c437a3920a88ffb79b05d1f279a95971ba06225a3487c134acd0ea9644801e"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.json",
+      "sha256": "0aeb95f62766e68469af9ce64f77530be1109235683599a36a2186b9584cbf53"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.expected",
+      "sha256": "4b8798bf8ff469055717483991149ab9dfd744aee8c5d2e5786dc41b1ea86075"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.json",
+      "sha256": "9dff52fa9c14255abd41292e881a4655655731888c35ffe6720653e881cd1d09"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.expected",
+      "sha256": "235d662d252012dadd9824a93b158f02d45c6ce3c44e9d08202ecd6f0f5fe97c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.json",
+      "sha256": "8f25aa9a5ab78e1d2ecfe9363201fa103ee046c3010124dda178a2a6e41662b7"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.expected",
+      "sha256": "dba65df9fff6d98272e84070966941495ca1a0951ed3f0c01024601cfaffb4e5"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.json",
+      "sha256": "9d231df813d5c2c9ba7043e768d78043eb27262ebdaab8c00ec82ba3bed7124d"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.expected",
+      "sha256": "33c96b4a09eb151ba8548902e33f2344f7859e505eb0d958fe6c0f1b78bb556c"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.json",
+      "sha256": "72b7af314741f7fa270965170ea838465f33666290da26b42064929f61953ffd"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_array_08.expected",
+      "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_array_08.json",
+      "sha256": "55ef1791e64fd2113e3a3b3f3ff35ac60bc9275dc23cfd2e5fc3d61d7c754643"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_object_05.expected",
+      "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+    },
+    {
+      "path": "APCpp/jsoncpp/test/data/test_object_05.json",
+      "sha256": "ca1805080392ce254dc2683670c5333e248d9e9d998ce30ea1d9516d0a506cf4"
+    },
+    {
+      "path": "tests/test_external_test_inputs.py",
+      "sha256": "0bb955fdc566499e8ba47624674413b42ca96d586fe68253b504efd24fa242e3"
+    },
+    {
+      "path": "tools/doom_companion/external_test_inputs.py",
+      "sha256": "4560a38a0399ffff9311f30f3e089e49d85d348b2ef26ab00156a7969b0f65f3"
     }
   ],
   "remaining": [
@@ -21681,5 +22665,928 @@
       "tests/test_pickup_patch.py"
     ],
     "scope": "Original category symbols, read-only player sprite composition and render-only classification; no public release"
+  },
+  "font_notice_revision": {
+    "date": "2026-10-15",
+    "base_revision": "1c286d337dd6c39e5fc992a5533b47b8b88d698a",
+    "restored_original_inputs": [
+      {
+        "path": "textscreen/fonts/README",
+        "sha256": "81db9935f1592f3856af85cb000ac4b25e6066ecc651d5558487d8adc8039dcb",
+        "source_url": "https://raw.githubusercontent.com/Daivuk/apdoom/2059fc2170e8762ad0ac1e29a054c15d33601e6d/textscreen/fonts/README",
+        "origin": "Unmodified upstream notice/generator restored after a collection omission"
+      },
+      {
+        "path": "textscreen/fonts/convert-font",
+        "sha256": "3a44c580be759c5f533ed981314c110fe44816a89f1ab8b4415d45d5bca5e7de",
+        "source_url": "https://raw.githubusercontent.com/Daivuk/apdoom/2059fc2170e8762ad0ac1e29a054c15d33601e6d/textscreen/fonts/convert-font",
+        "origin": "Unmodified upstream notice/generator restored after a collection omission"
+      }
+    ],
+    "native_sources_changed": false,
+    "png_font_inputs_included": false,
+    "historical_corresponding_source_complete": false,
+    "publication_performed": false
+  },
+  "reviewed_font_source_inputs": {
+    "schema_version": 1,
+    "status": "reviewed-upstream-font-source-inputs",
+    "upstream_revision": "e6f632a4397023b6b17cc312525a16b2aacd64d6",
+    "inputs": [
+      {
+        "path": "COPYING.md",
+        "bytes": 17895,
+        "sha256": "aef8b4222b79d0dbf6bf17cfff71c90a6a6bb8917a4162abe417b469ed22da2e",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/COPYING.md"
+      },
+      {
+        "path": "textscreen/fonts/README",
+        "bytes": 1509,
+        "sha256": "81db9935f1592f3856af85cb000ac4b25e6066ecc651d5558487d8adc8039dcb",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/textscreen/fonts/README"
+      },
+      {
+        "path": "textscreen/fonts/convert-font",
+        "bytes": 3344,
+        "sha256": "3a44c580be759c5f533ed981314c110fe44816a89f1ab8b4415d45d5bca5e7de",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/textscreen/fonts/convert-font"
+      },
+      {
+        "path": "textscreen/fonts/large.png",
+        "bytes": 7837,
+        "sha256": "f506b90be8fe20566e85ae2cb787a298d999dd0c8a17b515924061f57a7d9aaf",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/textscreen/fonts/large.png"
+      },
+      {
+        "path": "textscreen/fonts/normal.png",
+        "bytes": 3783,
+        "sha256": "76fbe6bfea0dc873d15b9dddb66b0fb2f94b89445667acce33786b830cdd39c6",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/textscreen/fonts/normal.png"
+      },
+      {
+        "path": "textscreen/fonts/small.png",
+        "bytes": 1750,
+        "sha256": "0cc2592a2a93cf1d4ae156de9be8b60ea90917be7734d3eb3459f0dffcc912f4",
+        "source_url": "https://raw.githubusercontent.com/chocolate-doom/chocolate-doom/e6f632a4397023b6b17cc312525a16b2aacd64d6/textscreen/fonts/small.png"
+      }
+    ],
+    "normal_font_origin": {
+      "project": "DOSBox",
+      "release": "0.74-3",
+      "archive_sha256": "c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a",
+      "source_path": "src/ints/int10_memory.cpp",
+      "source_sha256": "69f641681c3c2ac7ff8269360554dfaf15b807a7825def8885475158a6944c93",
+      "glyph_table_sha256": "c7dd5990fa5401649cf69e9bbb4c8a51f86865939b9318281a27de7f314eda3a",
+      "all_256_glyphs_match": true,
+      "source_header_license": "GPL-2.0-or-later"
+    },
+    "notice_context": "Original DOSBox, Thomas A. Fine permission and Simon Howard notices remain in the font README; the full upstream GPL remains in COPYING.md",
+    "source_delivery_complete": false,
+    "historical_corresponding_source_complete": false,
+    "scope": "Three exact upstream font PNG inputs only; no game artwork or aggregate historical rights clearance"
+  },
+  "font_preferred_source_revision": {
+    "date": "2026-10-15",
+    "native_base_revision": "1c286d337dd6c39e5fc992a5533b47b8b88d698a",
+    "based_on_private_notice_proposal_sha256": "a2461ac5acad899b11a9cfe3a5dd0aff174c13a09c506e46da445943f20ce825",
+    "native_compilation_inputs_unchanged": true,
+    "reviewed_png_inputs_included": [
+      "textscreen/fonts/large.png",
+      "textscreen/fonts/normal.png",
+      "textscreen/fonts/small.png"
+    ],
+    "owned_helper_test_and_notice_updates": [
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "before_sha256": "d174bca761e0fe51d3c69ec00e4114385317aef3a97aaeac032e2a688b22bed1",
+        "after_sha256": "f1f3fe858108d954f1a5c6a22b5f2b0dc4bd46a967dcb8d1dd41aaa8e6510c25"
+      },
+      {
+        "path": "tests/test_source_repository.py",
+        "before_sha256": "a15e62b1e109769fdf646ebca55b95ea454823e52a104b7abcd210f9065c6c04",
+        "after_sha256": "bc8c41fd6f4115e9654e682e76a375aa67612974d2d23db5fe9fa75b91954f61"
+      },
+      {
+        "path": "tools/doom_companion/inventory.py",
+        "before_sha256": "706837acc18b342ede6ab7b62e27c0f432bd79b938dcf7e94cd9fd07f14b544b",
+        "after_sha256": "62612cf716bd56deee85f2b4741e1faf5bde330c44e204a37b6ad98bd8c227e4"
+      },
+      {
+        "path": "tools/doom_companion/prepare.py",
+        "before_sha256": "c1aaef53459b129c822849dda37a09fe3a69b9fe21e03f7c89d8fffd45ead2e2",
+        "after_sha256": "5309e11999023c1d01783a7552bb78795d08cf0f87bdf666ba50149427ebb351"
+      },
+      {
+        "path": "tools/doom_companion/source_repository.py",
+        "before_sha256": "f3d4ef397adf21e5cb51ad523b9ac7da7be61a79bacde31cdd07ad3024b8a449",
+        "after_sha256": "799c8138cf007a351a5478a7f6bf73a696086797fdb32f3912fd9af83d82c6ef"
+      },
+      {
+        "path": "tools/doom_companion/source_templates/THIRD_PARTY_NOTICES.md",
+        "before_sha256": "068d2a2a235181adbf696ce6a239fe4c396c2c047d4be547a445324c2eaff5a1",
+        "after_sha256": "3073149e548719f5e7a18cc30fb4cff4362ddc5d30d873ec9b75ab3b149f8051"
+      }
+    ],
+    "publication_performed": false,
+    "historical_corresponding_source_complete": false
+  },
+  "reviewed_vendor_notices": {
+    "schema_version": 1,
+    "component": "websockets",
+    "version": "8.1",
+    "upstream_revision": "139085fe2624192a5a6c72b1e5db211dcec6ced1",
+    "source_path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/protocol.py",
+    "source_sha256": "64f961a1ec2805f17090b3dc9cec2031f4ae0764d6d722c1faadb904cc14b2a4",
+    "source_lf_sha256": "a2a065a2a178e668ffd77bce21dfc24baa1a49f7c45ad525f15fefff460777be",
+    "notice_path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/LICENSE",
+    "notice_sha256": "8a88960c0d6aa8b38faa6ee614597dbf18e0ea22ba20884ef3dd31d34b2a6d09",
+    "notice_url": "https://raw.githubusercontent.com/python-websockets/websockets/139085fe2624192a5a6c72b1e5db211dcec6ced1/LICENSE",
+    "scope": "Original Python websockets notice; separate from IXWebSocket's own BSD notice",
+    "historical_source_delivery_complete": false,
+    "overall_rights_cleared": false
+  },
+  "vendor_notice_revision": {
+    "date": "2026-10-15",
+    "native_compilation_inputs_unchanged": true,
+    "upstream_module_unchanged": true,
+    "new_original_notice_path": "APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/LICENSE",
+    "owned_updates": [
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "before_sha256": "f1f3fe858108d954f1a5c6a22b5f2b0dc4bd46a967dcb8d1dd41aaa8e6510c25",
+        "after_sha256": "7c4387944919a328167ee294f2e2ccdea4d534a07feb17db7ef690bcc22d356a"
+      },
+      {
+        "path": "tests/test_release_source_link.py",
+        "before_sha256": "58bb7d604a504fca8faa08c8a0474cad9cd38c0c821f4fe62b23c6d6655639a4",
+        "after_sha256": "9aca20029f211ddc08473a82f0905832d6ef591184195974f6fec0af39c64ce5"
+      },
+      {
+        "path": "tests/test_source_access.py",
+        "before_sha256": "c18ebe4329bcd4868980c76815315922a173f14fc5482f609ad7456319f7796b",
+        "after_sha256": "28188c6fcf3a96dfba064725a78086a2eca8ed9dfdd75a4649813d4fc9fda90c"
+      },
+      {
+        "path": "tests/test_source_repository.py",
+        "before_sha256": "bc8c41fd6f4115e9654e682e76a375aa67612974d2d23db5fe9fa75b91954f61",
+        "after_sha256": "f163dcd911088a85e1ce6f1bba1a48bc55ad47e2579193f3ee3bf67ac629c2db"
+      },
+      {
+        "path": "tools/doom_companion/prepare.py",
+        "before_sha256": "5309e11999023c1d01783a7552bb78795d08cf0f87bdf666ba50149427ebb351",
+        "after_sha256": "da589948d9b07a254cd0910f5b66e30265db40ed62d44c2c13171d302cca3489"
+      },
+      {
+        "path": "tools/doom_companion/release_source_link.py",
+        "before_sha256": "1f68e7c8a5d857dea1430b451eedfdba476572efefe57c334f0ea7d572d9961e",
+        "after_sha256": "ef72b387ff1d94a546b882813e628f3e6046b781f37541c913e63755bf3ac073"
+      },
+      {
+        "path": "tools/doom_companion/source_access.py",
+        "before_sha256": "27b553fb97a50d386d87819713ed8c8a2b3a89fed61d09b6a4e373a163600640",
+        "after_sha256": "e20506aa72e72ac4688d207ba0f77aa13141cb0a1bb69698af96496ce151f76a"
+      },
+      {
+        "path": "tools/doom_companion/source_repository.py",
+        "before_sha256": "799c8138cf007a351a5478a7f6bf73a696086797fdb32f3912fd9af83d82c6ef",
+        "after_sha256": "3d80fb9bc97151eadbd0ced04c49199d92d4654506d642bd197fec135d8b3b69"
+      },
+      {
+        "path": "tools/doom_companion/source_templates/THIRD_PARTY_NOTICES.md",
+        "before_sha256": "3073149e548719f5e7a18cc30fb4cff4362ddc5d30d873ec9b75ab3b149f8051",
+        "after_sha256": "8a1063198dd5b17461859e856b0a27e6da239b4b6cd12401be5ce44502055d99"
+      }
+    ],
+    "publication_performed": false,
+    "historical_corresponding_source_complete": false
+  },
+  "external_test_inputs_policy": {
+    "schema_version": 1,
+    "path": "APCpp/jsoncpp/test/jsonchecker",
+    "status": "external-optional-test-inputs-only",
+    "origin_url": "https://www.json.org/JSON_checker/",
+    "original_archive_url": "https://www.json.org/JSON_checker/test.zip",
+    "compatible_fixture_grant_established": false,
+    "preserved_library_test_data": "APCpp/jsoncpp/test/data",
+    "scope": "Independently attributed JSON_checker test payloads; preserve notices/references and the JsonCpp test harness",
+    "build_profile": "JSONCPP_WITH_TESTS=OFF and JSONCPP_WITH_POST_BUILD_UNITTEST=OFF",
+    "historical_recipient_delivery_complete": false
+  },
+  "external_test_input_revision": {
+    "date": "2026-10-15",
+    "removed_external_fixtures": [
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail1.json",
+        "sha256": "438b1027386f69e8ff72306d162bba30745cfc3ad99522c06b77093f6b2868b1"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail10.json",
+        "sha256": "ffea57a589f965c41b8778f1f0b69a1f4b7a14f072b868389cd6e2d249a33246"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail11.json",
+        "sha256": "ba669b02c583cdc66458f9318ec64f2787e1edded69cee94361d9d04bf87b591"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail12.json",
+        "sha256": "8033711342b67e573d96916fd820730a0a12ee291bd2e4ae324df3455c3f825f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail13.json",
+        "sha256": "a9235f6b3a47a700d45a8cba0c0b01b62ed4b2fd8a0f10cfe7964bde5e8cc1e0"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail14.json",
+        "sha256": "4c353586a59fd208964f41f12547ef9e403520b87e9d9fe73c0bd6951de36933"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail15.json",
+        "sha256": "656c4510d2ae41d28f3bb5498a7df7e87652bbbb35a7c7ef7c28d4a3d1d59eae"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail16.json",
+        "sha256": "4514053448b28818d0d23041242b0e1705ea0bbf9f2ee84694d4e0100bd90cc4"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail17.json",
+        "sha256": "a806d560ae63698f5082c7e51189395be458d1709db63244d26846f5a1e1a91d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail18.json",
+        "sha256": "e663fb0874bda154424bc35b9aff5f61d73d1a8cb926ccf41311827f30456997"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail19.json",
+        "sha256": "f262f8944e9f4346e80ccab07d2cc74f95928193210bc7a95c634f665f105b03"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail2.json",
+        "sha256": "9dbe48572aa40ff5e44b7b0e691e1b487d37cd4cfb34cf5bb506a5b6e965ec3b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail20.json",
+        "sha256": "beff780d4797749a6180792d96de68b52eafbe3558578e2486b51c0fc384d3f0"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail21.json",
+        "sha256": "d786f4c34fc330006cfd6ef9a855d4233ce7ea4ffdce19a1aeb6498ae0341edc"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail22.json",
+        "sha256": "dd22ed47b00f7977a8fd058adbf448e7af9b4cf7299c8a11f21298ded07b9e03"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail23.json",
+        "sha256": "5b746985dd2a3406e0d457dc38583b5ed26c2691950a10e1e50049a93c924a78"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail24.json",
+        "sha256": "0389d0d5920ee2996811974bdcbfe05c9ca0ed79af909704b8485bc86f6eaf25"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail25.json",
+        "sha256": "8305373703e9a50e767c42929d22bb69b377cf62a5aeba4dc60bfbf28939411d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail26.json",
+        "sha256": "032ff03c5b7bf611b5015000312a290b6fa7878ccb508c5ed5cc73cb2b649179"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail27.json",
+        "sha256": "b174b2bd7f3e16e077c68ce2b8b6400a7ae0b390a8742cdff59d648c6fccf93e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail28.json",
+        "sha256": "327ffa4160b43e9a1fb77f3a0d2f78823bcd61d4e3347e3702034fed13a7fcdf"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail29.json",
+        "sha256": "cd279aa777afca083b346dbc2b62a1847c24f1556b619b7564842457f8949c93"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail3.json",
+        "sha256": "6903daf61af5b38e0bc66d8da4f13631e2c2d03598169fe2d7c45d2504d310b9"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail30.json",
+        "sha256": "3f54bdbbd4e3ad547fa457b5810df7c96f2d2c3bc6985e11202ffd1d42116889"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail31.json",
+        "sha256": "25981c42fdd25646ab17d57bfaa65e4b2d7b791fdf13840e75c5a9e8f66dec70"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail32.json",
+        "sha256": "15388c40b8b3920b49a317f303140234fecaa37d6adc8056f54b8d7d79cfba87"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail33.json",
+        "sha256": "df72f007b029ebe06bffcd6083deff92aae557aa172eaf7e2504a3222dc73b60"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail4.json",
+        "sha256": "15836776fdc7d0473f68c35c1295e473d57c215af1232b439b28120f674be45f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail5.json",
+        "sha256": "40b23c469b617b09914010ee5c5aa0faa706061f77b4a96b374742c18bb17d42"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail6.json",
+        "sha256": "9cac15bfc3db16d965b9074329f4b7b26443fd4ccbf21cc545cc718114cbda20"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail7.json",
+        "sha256": "d9b01bb868ba4a6156085744bddf7acf119125aaf40e19e404b284e99b1973e0"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail8.json",
+        "sha256": "fbb0928ebab6b0f1aa7b5a7f10453bf89cc7ed56185bd783836ceedeec248ea8"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/fail9.json",
+        "sha256": "a3a4796b5ddb6c80e894113c690a75e5290ef109601dee2e277f652bc6d6a163"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/pass1.json",
+        "sha256": "c5708adb770f98c27ffa3ca20503f286df13c6ef4598c83585e8e5568c495f5f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/pass2.json",
+        "sha256": "7f9deff2652df58a02ca676ff9494de3d93f18db64c7f20f9596dffb8c92f187"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/jsonchecker/pass3.json",
+        "sha256": "4fdaf20bf45d4fa605a8297d19734b75d21ac481d72ae5a453b2c45f390c9d26"
+      }
+    ],
+    "restored_library_test_data": [
+      {
+        "path": "APCpp/jsoncpp/test/data/fail_invalid_quote.json",
+        "sha256": "3455f41de9c8437dec9e64208884f198b2416bfbfb8188d809b033a2c7b3452f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/fail_test_array_01.json",
+        "sha256": "ffb3c9ee6bef13d6efac8437957d59e5b3b597a4013e650801edc916d11e57cc"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/fail_test_array_02.json",
+        "sha256": "7dcdf8e26f2b6b62aa33a6bfaa06aad9831e2e24155d9c76236cc7e6e67f3996"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/fail_test_object_01.json",
+        "sha256": "8f00da95fe0028afb593e8e84141afc4586c2ae663a6fa686d586b74cff65bde"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/fail_test_stack_limit.json",
+        "sha256": "d2b7ba36d5bc6d1174a4b74d1788e6e627c70aedd40e79d091358cd40072748a"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.expected",
+        "sha256": "c6f916fc27d6d6512e4a036f26a1a9fd91fbc648aaedfe92a90e00028f541828"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_01.json",
+        "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.expected",
+        "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_02.json",
+        "sha256": "a1e35b820619d4c7eddac1396508ca0dda65191942356c460aeb1503d5744638"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.expected",
+        "sha256": "5a799f613483f70bfc8f5d8f151bb2468cbd836cf7cb2194718ee5876c224b51"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_03.json",
+        "sha256": "6213ec56dc1d4f44340ccb7880b6735286789ffd541c5aa63ceec10e5730bd04"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.expected",
+        "sha256": "92de9763f54fe66176e3784962ea32ef5d34b6bd5e03818eabb1d0baa4221506"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_04.json",
+        "sha256": "337c9e8f699615244520bd59ebf03c5fb0a277cb72bae2dda477fccf7f29b31a"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.expected",
+        "sha256": "2061c6a9d0de20a027c80c5e53e25392e4ca6787ddf6bdc3fc9857fc343b2326"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_05.json",
+        "sha256": "15e28797a68120e90e101d0d5b56b2b935ce234d491819709b47fa0c67655465"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.expected",
+        "sha256": "c68f6fd1d80153eeaa69d72b30d9a2462e61b75fa7011d85515876427e0dae2e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_06.json",
+        "sha256": "00b65a4d2cbee0b1c973ced2e10bf5a344749d0bc38284e69a6f0a1fe3cb9c8b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.expected",
+        "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_array_07.json",
+        "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.expected",
+        "sha256": "665c3cef87de10b2708ed0bbf7f48d3506e699dcb6148fd734b998a6dd25d0c1"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_01.json",
+        "sha256": "6c9dc57ad9b3bef88ea57b454bb678246d5de6748b711c71fabaef7af5539147"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.expected",
+        "sha256": "856a4fb7714ccf0d4cf25d16ef22ae952f9d49a603728e9999778e6c0a669664"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_02.json",
+        "sha256": "921cc466f708554b24662574002f5569435ab5af411700de634867b4a96be504"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.expected",
+        "sha256": "fb74bfa4eebb79969e3c79759b83a386ac922655ab0aff7282ca9b73a6652bd5"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_03.json",
+        "sha256": "d6956b3ac9cd55dfdd2252a5501c0ed67caf1f0248e90c4882a34dd9698e3720"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.expected",
+        "sha256": "23e58f1eb66d22c4abe4b34f8713c978ad3dcf18e37a8f9fd5d069eb61709bfe"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_04.json",
+        "sha256": "b2afb781d13ac7fb1d42ee7ced1ead9e7a0a15dc8b90fe502a51ece7a7bcf5c9"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.expected",
+        "sha256": "317ed08c6b55008dc2a053dc430997ba985106ca0da738ba60f3246200222634"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_05.json",
+        "sha256": "001bd640391fb11a28262375a464ed5730d3a1656cc7af7db5ac82d44b52cc7b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.expected",
+        "sha256": "c4547f16d1f564145393e10f48f2abefe84935f890541fd0db699df7ae4b1cab"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_06.json",
+        "sha256": "61db928f1db83b354eb004017cfe9da1207f76856e7ae264c40fe237e27d6ce3"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.expected",
+        "sha256": "f5669393a6d41fad522b3ed4fd5993156f0620f33c063f0d1a4d9971ead5863d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_07.json",
+        "sha256": "36153eccdfd04866819d74a54522659362d7047c3c567e8475ff326baf7f96dd"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.expected",
+        "sha256": "bae3c648bdcbd267ad223ea56630d03780d1339c269146f63ca4545b141831f5"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_08.json",
+        "sha256": "c20e6b84e1322060a414443040a6754bea1f41c4e8afc23db9034a4fc11fa68e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.expected",
+        "sha256": "223d3ec2b1d4565c40b83a9e57fb8041bbd839ac00757e0ec6b0930cce259da3"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_basic_09.json",
+        "sha256": "4725609e8deeb168729c585356c09bd7deade6d3200296025827d6d5b0c7cc7d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.expected",
+        "sha256": "635f5e074d97d920f160928f204203694b26eff0068404ca7935df35904815e8"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_00.json",
+        "sha256": "8494563934bc631b9d3ac702d3e7413e5333b2407be779fe2bd3d2f35394e123"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.expected",
+        "sha256": "eb9b4f33b5bd772763798b723f46ef1bb0c23b5eb70e88071acb2d9d916ca29e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_01.json",
+        "sha256": "69f053c3722c08cfe07b8ecb50ca028f1cefcf90f0ce50a745648cd7c65983f9"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.expected",
+        "sha256": "d0e374cc35d8831c47f03ff5348b806e629d68d51d1bda4a1262debd138df072"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_comment_02.json",
+        "sha256": "08a35bd2849aa426770362a9530cc2db42246ad091d31efad5cd025793884f23"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.expected",
+        "sha256": "45aab12f25e46d7fb45176324fe7afedf8a71274619321af37c22224ead4a601"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_complex_01.json",
+        "sha256": "c716557a840af6a5c93a3e796174d3da9ace1b0051ad42fe6acbd02e56a8d553"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.expected",
+        "sha256": "0b81ab066ecc36a9cabaddbe12851bf738955869593fc1e74bb08f3097f56811"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_01.json",
+        "sha256": "bc307b316d7551eb681e18222ccd0a4032a9ae25735bbf98175b34b63ea48808"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.expected",
+        "sha256": "3d71a99396661c62f2be2040a1270211487b8fca38608f64c6dfb07f967a4d6f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_02.json",
+        "sha256": "cd56dc760b549fc0a8da8dab92042cab194d1a5b2ae1d4ddc82f59c5067a53c0"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.expected",
+        "sha256": "2e31ae6302a0b4adfb9f7a855a9554f02f774729ede933f259f9b8ac993c1a38"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_03.json",
+        "sha256": "384991d21aae6140267484f88989254a87c70ddcb7569e2809932b865d8f04e9"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.expected",
+        "sha256": "f6a7b0b81a5f37ff4b1733cfca871f6ea31520e0f0f37b9d88116bb1aa235de1"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_04.json",
+        "sha256": "8639cd130e448fd5a7ade95a35b23d202ab0ee0a70413d53247f2182d44518d4"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.expected",
+        "sha256": "2120d9df30ef563b2fdba5e51a232cb2f0ea8882ce4d3603bdf267aa8f5ed8e1"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_05.json",
+        "sha256": "19a365f45a230083f170074b49072583c406ce5e20fa5929201d3f5d1be914a5"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.expected",
+        "sha256": "1da42b004c9a274cc44df199565eede2f4808f7c79dd62d8b09909708b27abcb"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_06_64bits.json",
+        "sha256": "8968e8cb1bd5063fcea884756fe82bdf4266416b7f8778a777fd22b57a513485"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.expected",
+        "sha256": "79eaa7af14c1ea14314065e4f0ffefb163cfee337558c3aec14d9c130472f4f1"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_07_64bits.json",
+        "sha256": "7fd42286704f2bb83448ac57660b0e69c4430ff133da677bd342fd4b26c1520b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.expected",
+        "sha256": "73abd74cce869b4b51d897e05c76066b172f577421be9d461345b2ac854efa07"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_integer_08_64bits.json",
+        "sha256": "80dc9030f906dec24464b64dd40d92babe0ea0a2eb174dd6a72dca2318a5b59f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.expected",
+        "sha256": "1f5dfb6d23756024d56326ecec73a3e5d5a2b88f7e4bc85a26a34ec70d62229b"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_large_01.json",
+        "sha256": "d92b094461f7eabebbc16a43be48c7c14f6db37e393a463e2d9251fee53726ad"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.expected",
+        "sha256": "1c9419bbb5b0171cb3ab63bbc6eff8650a7aae9fc1ad065ef57e7169f26015da"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_01.json",
+        "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.expected",
+        "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_02.json",
+        "sha256": "82d46e925f1999d8d44425c8ee2025cb77a8b8ac970dc70afcdd2454aae6f4f9"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.expected",
+        "sha256": "e7bdcba4d205a5a00165f82889bd3b49cc4ca8fad2e8e079437195f462a9088e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_03.json",
+        "sha256": "4794e98c00f160468bb6b3f6f95b7709f57decec63ec99158217e4d1e30f696f"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.expected",
+        "sha256": "b3774c48b373deb32caf01d69eb8a794a4af0248cf270d5ab10bab0c3d90314c"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_object_04.json",
+        "sha256": "f2f62184ea4824450c67c707f29a07bcc54233e0dc856bb1ce2936d921c210ba"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.expected",
+        "sha256": "a3f5009865426bc1693dc00d4348ab708242af3201c8fa612e703706d8b45a51"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_preserve_comment_01.json",
+        "sha256": "9d62156dbdaedb87ab38727058012e0dd4b2577a5e228f07e93948602acfeec7"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.expected",
+        "sha256": "c18d5ab587b650dc3028f6c9ea087defc72eaf6b3dde4599fd428181daeeaf8d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_01.json",
+        "sha256": "b59f59f1d2047aa575c5b21c5a123cba8ae26ff8397e1371a46b44d41a168063"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.expected",
+        "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_02.json",
+        "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.expected",
+        "sha256": "a32c53c21206e4d43d32940902f7723f8a70d79b3ba6e8653ffa86d847dd215e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_03.json",
+        "sha256": "0b81da5bee5d01b6f38458b5148a92f7231056cbd37178df517a5fc7fb15a006"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.expected",
+        "sha256": "b6e687dab6aaaba104c905ed5d59da539e37079211bf13fe1f7491c3292c9a97"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_04.json",
+        "sha256": "a6003c3c6fca28e6c10e453fa8d17f6045f052f5c41e4c8c75ccf2309dc066f3"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.expected",
+        "sha256": "0b488ce37559454048c2c4744f2c34918269cc4a4c868da021cc57b0d0254522"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_05.json",
+        "sha256": "7e7265717a84f1a7a29acd312eeb4c5cc45b3df46224c3e309f26e1704638c49"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.expected",
+        "sha256": "ef38cf15ad34b27a5a9b279ce0aa53657d9f2a0bee61f5c7ebd7365ebc3c6524"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_06.json",
+        "sha256": "b1a88134cd33c95f609059fc66fb69afd5604da50d0ce9a5b70d0ea15759f1e8"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.expected",
+        "sha256": "241c5e3ac49e1a74bdf04f6b234d36f2c99ef185402fbfcb9d79783659d11090"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_07.json",
+        "sha256": "7be5014caa552ada2d21dfba874a582caed18accd15b2579738da3df2e004ee2"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.expected",
+        "sha256": "7212299b1e090c8b68d97112d93238c073efc65c1409cef24944b2ae9316bfa7"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_08.json",
+        "sha256": "e1887699d2068ae6d75482a9af63710ff0d4c553086caf27f6e55d6edaf452af"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.expected",
+        "sha256": "fb8498f3fab1db040379f29698bcd90a69349bea5afea48f6793fe86fb13d36a"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_09.json",
+        "sha256": "1700685acdedc7dac9998663a3dc239054470a6816d83e9fd69ca0d9fa6b6809"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.expected",
+        "sha256": "2fe7db76bc01697fbfab26a6aa68e9823280ced0c3acc65cb95c4e7552e777af"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_10.json",
+        "sha256": "369f39da2714459488d48b59ffeb06baf2bb97e002ed339e1d9a29f8092041bf"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.expected",
+        "sha256": "594b50cc50118d0ecac4031de5e41362b2ef99c4f362f36012929dd73788aa38"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_11.json",
+        "sha256": "e710f0231251e7543d33fbb07d896b46093995a7fafffa04764032e178f7edec"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.expected",
+        "sha256": "6e14d006aa6015c937ee561b6dc6d1ab946358127b146f76274347b050965585"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_12.json",
+        "sha256": "b266aec87985868f280cd39f212beeecb68be815a1b408fd64822cfbb07807fd"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.expected",
+        "sha256": "2022088378c6738dea184f907723c017e00982d08f979e14074ed1d3d73a07b4"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_real_13.json",
+        "sha256": "d9551b95e93e619936da6c45383b95fe61151f35c5fa92e0b9dcf4fe3017adaa"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.expected",
+        "sha256": "3ee77d9360068fb6e94d6386667eb2eb5651f42a262440aa1226278cbe733e83"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_01.json",
+        "sha256": "f5d86696f7992f02855e7cd095fb90f8896c68411d5297eb9564e4c397fa6270"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.expected",
+        "sha256": "e65f0ddcc4124dbfc99a29318b6de9425eda09b28b997394f39f5d6e83f47861"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_02.json",
+        "sha256": "6c11e88629a4458cf5a9f5a48017005f34a1db9fd76a5a6162f8e473f13b6f30"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.expected",
+        "sha256": "3a6800d4a108fb8281732ff5e6c7e6d4d0b653f6a73f8340e8f448eb820bf3e7"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_03.json",
+        "sha256": "18349b657a9a1d012730cd492dce16e8e6ea73e4e351dbc60cf6a7430f7f1159"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.expected",
+        "sha256": "d3cbe32cbeb82223d210566350cf321db20585f52504a5426ba752854a7070d6"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_04.json",
+        "sha256": "b2dfcc6075d1c28c0b4bbb548f816136d71b4d91b2169bbf3501e7b600cf19b8"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.expected",
+        "sha256": "6159cf0bbea62545be940c49517a180d290cf3a858688a07641601077f1e6f4e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_05.json",
+        "sha256": "f7fad4514c4c3e87e1e474d43d7362567ddec22d5bb8b888cfc46802afdac711"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.expected",
+        "sha256": "d1c437a3920a88ffb79b05d1f279a95971ba06225a3487c134acd0ea9644801e"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_01.json",
+        "sha256": "0aeb95f62766e68469af9ce64f77530be1109235683599a36a2186b9584cbf53"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.expected",
+        "sha256": "4b8798bf8ff469055717483991149ab9dfd744aee8c5d2e5786dc41b1ea86075"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_02.json",
+        "sha256": "9dff52fa9c14255abd41292e881a4655655731888c35ffe6720653e881cd1d09"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.expected",
+        "sha256": "235d662d252012dadd9824a93b158f02d45c6ce3c44e9d08202ecd6f0f5fe97c"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_03.json",
+        "sha256": "8f25aa9a5ab78e1d2ecfe9363201fa103ee046c3010124dda178a2a6e41662b7"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.expected",
+        "sha256": "dba65df9fff6d98272e84070966941495ca1a0951ed3f0c01024601cfaffb4e5"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_04.json",
+        "sha256": "9d231df813d5c2c9ba7043e768d78043eb27262ebdaab8c00ec82ba3bed7124d"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.expected",
+        "sha256": "33c96b4a09eb151ba8548902e33f2344f7859e505eb0d958fe6c0f1b78bb556c"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/legacy_test_string_unicode_05.json",
+        "sha256": "72b7af314741f7fa270965170ea838465f33666290da26b42064929f61953ffd"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/test_array_08.expected",
+        "sha256": "3d3ead5b3720473b9fcf0c5b3664eadda99f3e225736bebea8720bf342877929"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/test_array_08.json",
+        "sha256": "55ef1791e64fd2113e3a3b3f3ff35ac60bc9275dc23cfd2e5fc3d61d7c754643"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/test_object_05.expected",
+        "sha256": "9d593d75995961113f9b7a4bd96f2044e2c28d4edb93afee834b564051131323"
+      },
+      {
+        "path": "APCpp/jsoncpp/test/data/test_object_05.json",
+        "sha256": "ca1805080392ce254dc2683670c5333e248d9e9d998ce30ea1d9516d0a506cf4"
+      }
+    ],
+    "owned_updates": [
+      {
+        "path": "BUILDING.md",
+        "before_sha256": "4aa1c6cda95581ae7de70e0f32b3ca81a153ff5eaaa8a5367569a899ba4237da",
+        "after_sha256": "cc5d03b56eea9deb77ec5ddaf20dc46f976b95b053a8993669c113292f42ad41"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "before_sha256": "7c4387944919a328167ee294f2e2ccdea4d534a07feb17db7ef690bcc22d356a",
+        "after_sha256": "3afe4d0728437284895225ee10af4902083a47615b8610aeb1f6fe7fa0d36841"
+      },
+      {
+        "path": "tests/test_release_source_link.py",
+        "before_sha256": "9aca20029f211ddc08473a82f0905832d6ef591184195974f6fec0af39c64ce5",
+        "after_sha256": "c945b694163c8260c9353e36e4ad8eac5a9a99be8a142a92a0841cb7a25bae4b"
+      },
+      {
+        "path": "tests/test_source_access.py",
+        "before_sha256": "28188c6fcf3a96dfba064725a78086a2eca8ed9dfdd75a4649813d4fc9fda90c",
+        "after_sha256": "bcdb0dcbad86a50efceab27ed5b8dea86a5d9bea8650c36181dfed593d729eca"
+      },
+      {
+        "path": "tests/test_source_repository.py",
+        "before_sha256": "f163dcd911088a85e1ce6f1bba1a48bc55ad47e2579193f3ee3bf67ac629c2db",
+        "after_sha256": "a3967af790e47a53232f70bb15f25d97281362573e0c53c5e6f18d93ec9e2483"
+      },
+      {
+        "path": "tools/doom_companion/prepare.py",
+        "before_sha256": "da589948d9b07a254cd0910f5b66e30265db40ed62d44c2c13171d302cca3489",
+        "after_sha256": "7b16834926df4422ad06b4a3ae8603a56f3150e60250fb30966171c78115d666"
+      },
+      {
+        "path": "tools/doom_companion/release_source_link.py",
+        "before_sha256": "ef72b387ff1d94a546b882813e628f3e6046b781f37541c913e63755bf3ac073",
+        "after_sha256": "ed26f4d59d4d95c30db9e559af82dc991e32674a4d3428a1b45e449fbbcbddee"
+      },
+      {
+        "path": "tools/doom_companion/source_access.py",
+        "before_sha256": "e20506aa72e72ac4688d207ba0f77aa13141cb0a1bb69698af96496ce151f76a",
+        "after_sha256": "b0900f9b1cf1f570cc3cf52a2832620ecbaa133b647b653949dd2f01b3a4d7cf"
+      },
+      {
+        "path": "tools/doom_companion/source_repository.py",
+        "before_sha256": "3d80fb9bc97151eadbd0ced04c49199d92d4654506d642bd197fec135d8b3b69",
+        "after_sha256": "8591f0c56f660ebc4423397e71e9ae68db46f96ce357960b413fd8726976d9b5"
+      },
+      {
+        "path": "tools/doom_companion/source_templates/BUILDING.md",
+        "before_sha256": "0a475a81d21b8533318b244b0aa78971b689a609508ef037d7598f6c4cee886a",
+        "after_sha256": "88bac1c2dfb62c2efcc9510d0220f7b53ebc145aa68ed6fffbe9c3c1b44da60d"
+      },
+      {
+        "path": "tools/doom_companion/source_templates/THIRD_PARTY_NOTICES.md",
+        "before_sha256": "8a1063198dd5b17461859e856b0a27e6da239b4b6cd12401be5ce44502055d99",
+        "after_sha256": "eb45854de09f023d637b65e1f4f416414f05e7f53fc6d52de121cd7c66631b68"
+      }
+    ],
+    "native_compilation_inputs_unchanged": true,
+    "publication_performed": false,
+    "historical_source_delivery_complete": false
+  },
+  "publication_repair_revision": {
+    "date": "2026-10-15",
+    "base_commit": "1c286d337dd6c39e5fc992a5533b47b8b88d698a",
+    "private_candidate_snapshot_sha256": "52c95542f991ffa7ab112502d46d15e6dddf07d703070747e1ef2b28980296b6",
+    "documentation_change": {
+      "path": "README.md",
+      "before_sha256": "c75ea48eec88e4c8f0527236d9d5b8b4e0a7b9798fdc97915b3dfc010be07693",
+      "after_sha256": "70f0f904c5d458090a1d88cf23b773c2e4f7abbdd689365b211dfd23b9e96578"
+    },
+    "native_source_and_compiler_recipes_changed": false,
+    "publication_authorization_pending_at_preparation": true,
+    "published_by_preparation": false,
+    "historical_source_delivery_or_cure_established": false
   }
 }

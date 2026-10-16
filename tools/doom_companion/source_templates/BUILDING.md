@@ -183,3 +183,15 @@ The new local recipe does not read the retired BaseAssets archive. The original
 IWADs, generated resource ZIP/WADs, screenshots, saves and credentials remain
 private. Audio, native GUI interaction, every gameplay option, live AP receipts and save/reload
 are separate acceptance checks, not covered by the asset codec unit tests.
+
+## Optional upstream test inputs
+
+The captured APCpp build sets `JSONCPP_WITH_TESTS=OFF` and
+`JSONCPP_WITH_POST_BUILD_UNITTEST=OFF`. The native client build does not require
+the independently attributed JSON_checker fixtures. Their payloads are excluded
+from this source distribution while a compatible grant remains unestablished.
+The original attribution README, JsonCpp test harness and other JsonCpp test
+data remain available. To run that separate optional suite, provide its inputs
+locally from https://www.json.org/JSON_checker/ after reviewing its terms.
+The helpers do not download or run that suite. Keep external fixtures outside
+the distribution tree; publication and binary/source gates reject them there.

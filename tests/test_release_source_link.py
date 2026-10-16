@@ -5,10 +5,29 @@ import unittest
 from unittest.mock import patch
 
 from tools.doom_companion import release_source_link as binding
+from tools.doom_companion import vendor_notices
+from tools.doom_companion import external_test_inputs
+from tools.doom_companion.inventory import sha256
 from tools.doom_companion.dependency_sources import digest
 
 
 class DoomReleaseSourceLinkTests(unittest.TestCase):
+    def test_legacy_external_fixtures_block_binary_source_binding(self):
+        path = self.source / external_test_inputs.INPUT_ROOT / "fail1.json"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"synthetic independent fixture")
+        with self.assertRaisesRegex(ValueError, "must not be distributed"):
+            self.link()
+
+    def test_missing_vendor_notice_rejects_binary_source_binding(self):
+        raw = b"# synthetic reviewed protocol\n"
+        module = self.source / vendor_notices.PROTOCOL_PATH
+        module.parent.mkdir(parents=True)
+        module.write_bytes(raw)
+        with patch.object(vendor_notices, "PROTOCOL_LF_SHA256", sha256(raw)):
+            with self.assertRaisesRegex(ValueError, "Missing.*vendor notice"):
+                self.link()
+
     def setUp(self):
         self.temporary = TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

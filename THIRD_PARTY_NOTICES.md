@@ -19,16 +19,42 @@ The candidate's source input hashes are in `SOURCE_SNAPSHOT.json`.
 - JsonCpp: retained dual public-domain/MIT notice in `APCpp/jsoncpp/LICENSE`;
   recovered baseline `8190e061bc2d95da37479a638aa2c9e483e58ec6`.
   https://github.com/open-source-parsers/jsoncpp
+  The separately attributed `test/jsonchecker` fixture payloads are omitted.
+  Their original JSON.org archive contains no notice file, while the associated
+  checker program carries an additional use condition. A compatible grant for
+  those independent fixtures has not been established. Their original README
+  and the JsonCpp harness remain; JsonCpp's own other tests/data remain separate.
+  https://www.json.org/JSON_checker/
 - mbedTLS 3.4.0: supplied preferred source archive
   `APCpp/mbedtls-3.4.0.tar.gz`, including its upstream LICENSE and nested notices.
   https://github.com/Mbed-TLS/mbedtls/tree/mbedtls-3.4.0
 - IXWebSocket's nested cpp-linenoise notice remains in
   `APCpp/IXWebSocket/third_party/cpp-linenoise/LICENSE`.
+- Its vendored Python `websockets` protocol derives from version 8.1 with three
+  upstream-vendor logging/debug lines added. The original 2013-2019 Aymeric
+  Augustin and contributors notice is retained separately at
+  `APCpp/IXWebSocket/test/compatibility/python/websockets/vendor/LICENSE`.
+  The reviewed source and notice hashes are recorded in the source snapshot.
+  https://github.com/python-websockets/websockets/tree/139085fe2624192a5a6c72b1e5db211dcec6ced1
 
 The parent APDoom source was recovered from an unversioned local working copy.
 Do not invent an upstream revision or equate this modified candidate with the
 source of a retired binary. The local remediation changes are recorded against
 the recovered preparation baseline, separately from older APMine gameplay edits.
+
+## Textscreen Fonts
+
+The original font copyright and grant text is retained unchanged in
+`textscreen/fonts/README`. It records the DOSBox, Thomas A. Fine and Simon
+Howard notices supplied with the checked-in font headers. Those headers
+reference that file; preserve it with them.
+
+The unmodified upstream generator is `textscreen/fonts/convert-font`.
+The three exact upstream PNG font inputs can be retained with their original
+notices and GPL text under the hash-bound font-source profile recorded in
+`SOURCE_SNAPSHOT.json`. The DOSBox origin of the normal font is recorded
+separately. This exception covers those font inputs only; other game artwork,
+complete historical source delivery and aggregate resource rights remain separate.
 
 ## Native Build Dependencies
 

@@ -9,10 +9,19 @@ import urllib.error
 import zipfile
 
 from tools.doom_companion import source_access
+from tools.doom_companion import vendor_notices
+from tools.doom_companion import external_test_inputs
 from tools.doom_companion.inventory import sha256
 
 
 class DoomCompanionPublicSourceTests(unittest.TestCase):
+    def test_legacy_external_fixtures_block_source_publication_verification(self):
+        path = self.source / external_test_inputs.INPUT_ROOT / "fail1.json"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"synthetic independent fixture")
+        with self.assertRaisesRegex(ValueError, "must not be distributed"):
+            self.collect()
+
     def setUp(self):
         self.temporary = TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
@@ -58,6 +67,15 @@ class DoomCompanionPublicSourceTests(unittest.TestCase):
         self.assertEqual(1, report["preferred_source_inputs"])
         self.assertNotIn(str(self.root), json.dumps(report))
         self.assertIn("Historical recipients", report["limitations"][-1])
+
+    def test_missing_vendor_notice_blocks_source_publication_verification(self):
+        raw = b"# synthetic reviewed protocol\n"
+        module = self.source / vendor_notices.PROTOCOL_PATH
+        module.parent.mkdir(parents=True)
+        module.write_bytes(raw)
+        with patch.object(vendor_notices, "PROTOCOL_LF_SHA256", sha256(raw)):
+            with self.assertRaisesRegex(ValueError, "Missing.*vendor notice"):
+                self.collect()
 
     def test_mutable_refs_credentials_and_other_url_syntax_are_rejected(self):
         for repository, revision in (("example/source", "main"), ("example/source", "v1.0"),

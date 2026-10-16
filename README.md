@@ -73,4 +73,25 @@ releases' corresponding-source gaps or establish historical GPL cure or
 reinstatement. A newer build cannot substitute for an older recipient's actual
 source. No binary download or platform deployment is part of this publication.
 
-Publication documentation updated 2026-10-12.
+Initial publication documentation updated 2026-10-12.
+
+## Source Repair Prepared 2026-10-15
+
+This revision restores the original textscreen font notices, the executable
+font converter and its three hash-reviewed PNG source inputs. Their original
+DOSBox, Thomas A. Fine and Simon Howard license context is retained. It also
+preserves the missing BSD notice for the vendored Python websockets protocol.
+See THIRD_PARTY_NOTICES.md and the component files for the original terms.
+
+The independent JSON_checker payloads are excluded from new source exports
+while their compatible redistribution terms remain unresolved. Their original
+attribution and test harness remain. JsonCpp's own 123 reviewed test-data files
+are restored under its retained license. Optional tests requiring external
+fixtures need separately supplied inputs; BUILDING.md documents that boundary.
+
+Preparation and source-access checks enforce those inputs and notices. The
+native C/C++ code, CMake/compiler recipes and existing generated font headers
+are unchanged from the preceding public revision. CMake uses those headers;
+the retained optional Autotools font rules can regenerate them when enabled.
+This source repair does not establish historical source delivery or license
+cure, authorize a binary release, or license original game/mod resources.

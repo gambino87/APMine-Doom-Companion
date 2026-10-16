@@ -1,5 +1,6 @@
 """Verify anonymous, commit-pinned source access without publishing anything."""
 
+# APMine companion change, 2026-10-15: require reviewed vendored-module notices.
 from __future__ import annotations
 
 import argparse
@@ -17,6 +18,8 @@ import zipfile
 from .inventory import sha256
 from .bootstrap import CORE_BINARIES, RUNTIME_LIBRARIES
 from .source_repository import relative_path, verify_source_snapshot
+from .vendor_notices import validate as validate_vendor_notices
+from .external_test_inputs import validate as validate_external_tests
 
 
 MAX_ARCHIVE_BYTES = 256 * 1024 * 1024
@@ -109,6 +112,8 @@ def verify_archive(raw: bytes, snapshot_raw: bytes, snapshot: dict) -> dict:
 def collect(source: Path, source_link: Path, repository: str, commit: str) -> dict:
     url = archive_url(repository, commit)
     snapshot = verify_source_snapshot(source)
+    validate_external_tests(source)
+    validate_vendor_notices(source)
     snapshot_raw = (source / "SOURCE_SNAPSHOT.json").read_bytes()
     source_link_raw = source_link.read_bytes()
     link = json.loads(source_link_raw)

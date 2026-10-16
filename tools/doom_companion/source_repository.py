@@ -1,4 +1,5 @@
 """Stage a private, source-only Doom companion repository candidate."""
+# APMine companion change, 2026-10-15: bind reviewed fonts and reject unreviewed declared media.
 
 from __future__ import annotations
 
@@ -9,9 +10,12 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 
-from .inventory import sha256
+from .inventory import EXTENSIONLESS_SOURCE_PATHS, sha256
 from .prepare import NOTICE_NAMES, TEXT_SUFFIXES
 from .dependency_sources import verify as verify_dependency_sources
+from .font_sources import collect as collect_font_sources, FONT_FILES
+from .vendor_notices import collect as collect_vendor_notices, validate as validate_vendor_notices, TEMPLATE_PATH as VENDOR_TEMPLATE
+from .external_test_inputs import is_external_test_input, is_library_test_path, is_library_test_data, policy as external_test_policy, validate as validate_external_tests
 
 
 GENERATED_RESOURCES = {f"src/{name}-res.rc" for name in ("doom", "heretic", "hexen", "strife", "setup", "launcher")}
@@ -21,7 +25,7 @@ DEPENDENCIES = {
     "sdl2", "sdl2-mixer", "sdl2-net", "zlib", "libpng", "libsamplerate",
     "libogg", "libvorbis", "wavpack", "fluidsynth", "gcem", "vcpkg-cmake", "vcpkg-cmake-config",
 }
-HELPERS = ("__init__.py", "inventory.py", "prepare.py", "local_assets.py", "bootstrap.py", "build_local.ps1", "source_repository.py",
+HELPERS = ("__init__.py", "inventory.py", "prepare.py", "font_sources.py", "vendor_notices.py", "external_test_inputs.py", "local_assets.py", "bootstrap.py", "build_local.ps1", "source_repository.py",
            "dependency_sources.py", "prove_dependency_sources.py", "build_dependencies.ps1", "release_source_link.py",
            "ln_handshake.h", "apmine_gameplay_test.h", "apmine_network_test.h", "practice_items.h", "gameplay.py",
            "network_gameplay.py", "source_access.py", "level_select_layout.h", "pickup_patch.h", "pickup_sprites.c", "pickup_sprites.h")
@@ -36,7 +40,13 @@ MODIFICATION_NOTICE = re.compile(
 
 def is_text_source(name: str) -> bool:
     path = PurePosixPath(name)
-    return path.name in NOTICE_NAMES | {"CMakeLists.txt"} or path.suffix.lower() in TEXT_SUFFIXES
+    return (is_library_test_data(name) or name in EXTENSIONLESS_SOURCE_PATHS or path.name in NOTICE_NAMES | {"CMakeLists.txt"}
+            or path.suffix.lower() in TEXT_SUFFIXES)
+
+
+def omitted_directory(name: str, *, directory: bool = False) -> bool:
+    parts = PurePosixPath(name).parts if directory else PurePosixPath(name).parts[:-1]
+    return any(part in OMIT_DIRECTORIES and not (part == "data" and is_library_test_path(name)) for part in parts)
 
 
 def text_source_bytes(root: Path, name: str) -> bytes:
@@ -75,7 +85,19 @@ def source_file(root: Path, name: str) -> Path:
     return path
 
 
+def validate_font_source(root: Path) -> None:
+    # The checked-in arrays refer to a separate upstream copyright notice.
+    # An old prepared tree can lack that notice even after the collector is fixed.
+    for name in ("small", "normal", "large"):
+        relative = f"textscreen/fonts/{name}.h"
+        if (root / relative).is_file() and b"Please see textscreen/fonts/README for copyright" in source_file(root, relative).read_bytes()[:512]:
+            for required in ("textscreen/fonts/README", "textscreen/fonts/convert-font"):
+                text_source_bytes(root, required)
+            return
+
+
 def validate_prepared_source(root: Path) -> None:
+    validate_font_source(root)
     for name in ("COPYING.md", "APCpp/LICENSE", "APCpp/IXWebSocket/LICENSE.txt", "APCpp/jsoncpp/LICENSE"):
         source_file(root, name).read_text(encoding="utf-8")
     for name in ("CMakeLists.txt", "src/CMakeLists.txt"):
@@ -142,6 +164,8 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
     if destination.exists():
         raise FileExistsError(f"Refusing to replace an existing source candidate: {destination}")
     validate_prepared_source(source_root)
+    fonts, font_profile = collect_font_sources(source_root)
+    vendor_notices, vendor_profile = collect_vendor_notices(source_root)
     prepared = json.loads(source_file(source_root, "prepare-manifest.json").read_text(encoding="utf-8"))
     if prepared.get("status") != "private-source-working-copy":
         raise ValueError("A separately prepared companion source manifest is required")
@@ -150,11 +174,14 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
     omitted = []
     for entry in prepared["copied_inputs"]:
         name = str(relative_path(entry["path"]))
-        if name != "APCpp/mbedtls-3.4.0.tar.gz" and not is_text_source(name):
+        if is_external_test_input(name):
+            omitted.append(name)
+            continue
+        if name != "APCpp/mbedtls-3.4.0.tar.gz" and name not in FONT_FILES and not is_text_source(name):
             raise ValueError(f"Unreviewed source/asset input: {name}")
         # Do not carry inherited CI/publication hooks or duplicate extracted TLS
         # sources into a new repository. The reviewed TLS source tar is retained.
-        if name in GENERATED_RESOURCES | OMIT_FILES or any(part in OMIT_DIRECTORIES for part in PurePosixPath(name).parts[:-1]):
+        if name in GENERATED_RESOURCES | OMIT_FILES or omitted_directory(name):
             omitted.append(name)
             continue
         if name in payloads:
@@ -163,6 +190,8 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
         if name == "APCpp/mbedtls-3.4.0.tar.gz":
             if sha256(raw) != entry["sha256"]:
                 raise ValueError("The retained TLS source archive changed and needs separate review")
+        elif name in FONT_FILES:
+            raw = fonts[name]
         else:
             raw = text_source_bytes(source_root, name)
         payloads[name] = raw
@@ -183,19 +212,31 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
             if path.is_symlink():
                 raise ValueError(f"Symlink in prepared source: {name}")
             if path.is_dir():
-                if path.name not in OMIT_DIRECTORIES and not path.name.startswith(("build", ".venv")):
+                if not omitted_directory(name, directory=True) and not path.name.startswith(("build", ".venv")):
                     stack.append(path)
+            elif is_external_test_input(name):
+                if name not in omitted:
+                    omitted.append(name)
             elif name not in payloads and name not in GENERATED_RESOURCES | OMIT_FILES and is_text_source(name):
                 raw = text_source_bytes(source_root, name)
                 payloads[name] = raw
                 added.append({"path": name, "sha256": sha256(raw)})
     for name in ICONS:
         payloads[name] = source_file(source_root, name).read_bytes()
+    for name, raw in fonts.items():
+        if name not in payloads:
+            payloads[name] = raw
+            added.append({"path": name, "sha256": sha256(raw)})
+    for name, raw in vendor_notices.items():
+        if name not in payloads:
+            payloads[name] = raw
+            added.append({"path": name, "sha256": sha256(raw)})
     payloads["COPYING.GPL3.txt"] = source_file(source_root, "APCpp/LICENSE").read_bytes()
     payloads["README.upstream.md"] = payloads.pop("README.md")
     helper_root = Path(__file__).resolve().parent
     for name in HELPERS:
         payloads[f"tools/doom_companion/{name}"] = (helper_root / name).read_bytes()
+    payloads[f"tools/doom_companion/{VENDOR_TEMPLATE}"] = (helper_root / VENDOR_TEMPLATE).read_bytes()
     asset_tests = repository / "test/tools/test_doom_companion_local_assets.py"
     if not asset_tests.is_file():
         asset_tests = repository / "tests/test_local_assets.py"
@@ -216,7 +257,7 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
     if not handshake_tests.is_file():
         handshake_tests = repository / "tests/test_handshake.py"
     payloads["tests/test_handshake.py"] = handshake_tests.read_bytes()
-    for name in ("gameplay", "practice_items", "network_gameplay", "source_access", "level_select_layout", "pickup_patch"):
+    for name in ("gameplay", "practice_items", "network_gameplay", "source_access", "level_select_layout", "pickup_patch", "font_sources", "vendor_notices", "external_test_inputs"):
         tests = repository / f"test/tools/test_doom_companion_{name}.py"
         if not tests.is_file():
             tests = repository / f"tests/test_{name}.py"
@@ -280,6 +321,9 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
         "git_repository_created": False, "published": False,
         "source_match": "prepared prototype inputs; not verified corresponding source for retired binaries",
         "modification_notice_profile": 1,
+        "reviewed_font_source_inputs": font_profile,
+        "reviewed_vendor_notices": vendor_profile,
+        "external_test_inputs_policy": external_test_policy(),
         "required_dependency_sources_present": bundle is not None,
         "copied_inputs": [{"path": name, "sha256": sha256(raw)} for name, raw in sorted(payloads.items())],
         "changes_from_prepared_baseline": changes, "omitted_generated_or_maintenance_inputs": sorted(omitted),
@@ -299,6 +343,8 @@ def stage_repository(source_root: Path, destination: Path, library_prefix: Path,
         json.dump(manifest, stream, indent=2)
         stream.write("\n")
     verify_source_snapshot(destination)
+    validate_vendor_notices(destination)
+    validate_external_tests(destination)
     return manifest
 
 
@@ -307,17 +353,40 @@ def verify_source_snapshot(root: Path) -> dict:
     manifest = json.loads(source_file(root, "SOURCE_SNAPSHOT.json").read_text(encoding="utf-8"))
     if manifest.get("status") != "private-source-repository-candidate" or manifest.get("release_ready") is not False:
         raise ValueError("Source candidate status is invalid; this check does not grant release clearance")
+    validate_font_source(root)
     profile = manifest.get("modification_notice_profile")
     if type(profile) is not int or profile != 1:
         raise ValueError("Source candidate lacks the reviewed dated-modification notice profile")
     names = set()
     for entry in manifest["copied_inputs"]:
         name = str(relative_path(entry["path"]))
+        if (not name.startswith("vendor/native-dependencies/") and not is_text_source(name)
+                and name not in FONT_FILES and name not in {
+                    ".gitignore", "tools/doom_companion/source_templates/.gitignore", "APCpp/mbedtls-3.4.0.tar.gz"}):
+            raise ValueError(f"Unreviewed source/asset input: {name}")
         if name in names:
             raise ValueError(f"Duplicate source snapshot entry: {name}")
         names.add(name)
         if sha256(source_file(root, name).read_bytes()) != entry["sha256"]:
             raise ValueError(f"Source snapshot hash changed: {name}")
+    fonts, font_profile = collect_font_sources(root)
+    if manifest.get("external_test_inputs_policy") is not None:
+        if manifest["external_test_inputs_policy"] != external_test_policy():
+            raise ValueError("External test input policy differs")
+        if any(is_external_test_input(name) for name in names):
+            raise ValueError("External JSON_checker test payload is declared in the source snapshot")
+        validate_external_tests(root)
+    if manifest.get("reviewed_font_source_inputs") != font_profile or any(name not in names for name in fonts):
+        raise ValueError("Reviewed font source profile or declared inputs differ")
+    # Old incomplete snapshots remain checkable for integrity. New stages record
+    # this profile; publication and binary/source binding additionally require
+    # the installed notice even for an older snapshot without the profile.
+    if manifest.get("reviewed_vendor_notices") is not None:
+        vendor_notices, vendor_profile = collect_vendor_notices(root, require_installed=True)
+        if (manifest["reviewed_vendor_notices"] != vendor_profile
+                or vendor_profile is None or vendor_profile["source_path"] not in names
+                or any(name not in names for name in vendor_notices)):
+            raise ValueError("Reviewed vendor notice profile or declared inputs differ")
     changed_names = set()
     for entry in manifest["changes_from_prepared_baseline"]:
         name = str(relative_path(entry["path"]))

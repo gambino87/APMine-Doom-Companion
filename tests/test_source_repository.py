@@ -2,8 +2,12 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from tools.doom_companion import source_repository
+from tools.doom_companion import font_sources
+from tools.doom_companion import vendor_notices
+from tools.doom_companion import external_test_inputs
 from tools.doom_companion.inventory import sha256
 from tools.doom_companion.source_repository import (
     ICONS, OWNED_NATIVE_ADDITIONS, modification_dates, stage_repository, verify_source_snapshot,
@@ -65,6 +69,52 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
     def write_snapshot(self, manifest: dict) -> None:
         (self.destination / "SOURCE_SNAPSHOT.json").write_text(json.dumps(manifest), encoding="utf-8")
 
+    def test_vendored_protocol_gets_its_own_notice_and_profile_checks(self):
+        raw = b"# synthetic vendored protocol\n"
+        self.write_source(vendor_notices.PROTOCOL_PATH, raw)
+        with patch.object(vendor_notices, "PROTOCOL_LF_SHA256", sha256(raw)):
+            manifest = self.stage()
+            self.assertEqual(manifest["reviewed_vendor_notices"], vendor_notices.validate(self.destination))
+            self.assertFalse((self.source / vendor_notices.NOTICE_PATH).exists())
+            self.assertEqual(verify_source_snapshot(self.destination), manifest)
+            manifest["reviewed_vendor_notices"]["notice_sha256"] = "0" * 64
+            self.write_snapshot(manifest)
+            with self.assertRaisesRegex(ValueError, "vendor notice profile"):
+                verify_source_snapshot(self.destination)
+
+    def test_external_fixtures_are_omitted_from_legacy_preparation_and_late_additions(self):
+        prefix = external_test_inputs.INPUT_ROOT
+        legacy, late, notice = prefix + "/fail1.json", prefix + "/late.json", prefix + "/readme.txt"
+        self.write_source(legacy, b"synthetic independent fixture")
+        self.write_source(late, b"synthetic late fixture")
+        self.write_source(notice, b"Original attribution")
+        prepared = json.loads((self.source / "prepare-manifest.json").read_text())
+        prepared["copied_inputs"].append({"path": legacy, "sha256": sha256((self.source / legacy).read_bytes())})
+        self.write_source("prepare-manifest.json", json.dumps(prepared).encode())
+        manifest = self.stage()
+        for name in (legacy, late):
+            self.assertFalse((self.destination / name).exists())
+            self.assertTrue((self.source / name).exists())
+        self.assertEqual((self.destination / notice).read_bytes(), b"Original attribution")
+        self.assertEqual(verify_source_snapshot(self.destination), manifest)
+        path = self.destination / legacy
+        path.write_bytes(b"synthetic declared bypass")
+        manifest["copied_inputs"].append({"path": legacy, "sha256": sha256(path.read_bytes())})
+        self.write_snapshot(manifest)
+        with self.assertRaisesRegex(ValueError, "External JSON_checker"):
+            verify_source_snapshot(self.destination)
+
+    def test_library_test_data_is_retained_while_engine_data_stays_excluded(self):
+        fixtures = {"APCpp/jsoncpp/test/data/test.json": b"synthetic library fixture",
+                    "APCpp/jsoncpp/test/data/test.expected": b"synthetic expected output"}
+        for name, raw in fixtures.items():
+            self.write_source(name, raw)
+        self.write_source("data/game.json", b"synthetic unreviewed engine data")
+        self.stage()
+        for name, raw in fixtures.items():
+            self.assertEqual((self.destination / name).read_bytes(), raw)
+        self.assertFalse((self.destination / "data").exists())
+
     def add_owned_native_headers(self) -> None:
         helpers = Path(source_repository.__file__).resolve().parent
         for name in OWNED_NATIVE_ADDITIONS:
@@ -103,6 +153,7 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
         self.assertFalse((self.destination / "appimage.sh").exists())
         self.assertFalse((self.destination / "pkg").exists())
         self.assertFalse((self.destination / "mbedtls-3.4.0").exists())
+
         self.assertFalse((self.destination / "embed/unlisted-private.png").exists())
         self.assertTrue((self.destination / "tools/doom_companion/local_assets.py").is_file())
         self.assertTrue((self.destination / "tools/doom_companion/bootstrap.py").is_file())
@@ -120,6 +171,18 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
         self.assertNotIn("/private/local/path", json.dumps(manifest))
         self.assertEqual(manifest, verify_source_snapshot(self.destination))
 
+    def test_font_notice_and_extensionless_generator_are_discovered_even_if_old_manifest_omitted_them(self) -> None:
+        payloads = {"textscreen/fonts/README": b"Synthetic font copyright and license\n",
+                    "textscreen/fonts/convert-font": b"#!/usr/bin/env python3\n# synthetic generator\n"}
+        for name, raw in payloads.items():
+            self.write_source(name, raw)
+        self.write_source("textscreen/fonts/private.png", b"synthetic private image")
+        manifest = self.stage()
+        for name, raw in payloads.items():
+            self.assertEqual(raw, (self.destination / name).read_bytes())
+        self.assertFalse((self.destination / "textscreen/fonts/private.png").exists())
+        self.assertEqual(manifest, verify_source_snapshot(self.destination))
+
     def test_dependency_references_are_not_falsely_marked_as_delivered_source(self) -> None:
         self.stage()
         dependencies = json.loads((self.destination / "DEPENDENCIES.json").read_text())
@@ -127,6 +190,45 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
         self.assertIn("not-included", dependencies["installed_dependencies"][0]["source_delivery"])
         self.assertNotIn("/private/path", json.dumps(dependencies))
         self.assertEqual("original BSD-2-Clause notice", (self.destination / "licenses/dependencies/libsamplerate.txt").read_text())
+
+    def test_declaring_unreviewed_media_in_the_snapshot_does_not_make_it_source(self) -> None:
+        manifest = self.stage()
+        name, raw = "unreviewed.png", b"synthetic private artwork"
+        (self.destination / name).write_bytes(raw)
+        manifest["copied_inputs"].append({"path": name, "sha256": sha256(raw)})
+        self.write_snapshot(manifest)
+        with self.assertRaisesRegex(ValueError, "Unreviewed source/asset"):
+            verify_source_snapshot(self.destination)
+
+    def test_reviewed_font_pngs_are_staged_with_their_bound_profile_and_notices(self) -> None:
+        payloads = {name: b"\x89PNG\0synthetic font " + name.encode() for name in font_sources.FONT_FILES}
+        payloads.update({"COPYING.md": (self.source / "COPYING.md").read_bytes(),
+                         "textscreen/fonts/README": b"Synthetic upstream font copyright and grant",
+                         "textscreen/fonts/convert-font": b"# Synthetic upstream generator"})
+        for name, raw in payloads.items():
+            self.write_source(name, raw)
+        fonts = {name: sha256(payloads[name]) for name in font_sources.FONT_FILES}
+        context = {name: sha256(payloads[name]) for name in font_sources.CONTEXT_FILES}
+        with patch.object(font_sources, "FONT_FILES", fonts), patch.object(font_sources, "CONTEXT_FILES", context):
+            manifest = self.stage()
+            self.assertEqual(6, len(manifest["reviewed_font_source_inputs"]["inputs"]))
+            self.assertEqual(manifest, verify_source_snapshot(self.destination))
+            for name in fonts:
+                self.assertEqual(payloads[name], (self.destination / name).read_bytes())
+            manifest["reviewed_font_source_inputs"]["upstream_revision"] = "0" * 40
+            self.write_snapshot(manifest)
+            with self.assertRaisesRegex(ValueError, "font source profile"):
+                verify_source_snapshot(self.destination)
+
+    def test_old_font_arrays_cannot_be_staged_without_their_notice_and_generator(self) -> None:
+        self.write_source("textscreen/fonts/normal.h", b"/* Please see textscreen/fonts/README for copyright information. */\n")
+        for missing in ("README", "convert-font"):
+            with self.assertRaisesRegex(ValueError, f"textscreen/fonts/{missing}"):
+                self.stage()
+            self.assertFalse(self.destination.exists())
+            self.write_source(f"textscreen/fonts/{missing}", b"# synthetic required upstream text\n")
+        manifest = self.stage()
+        self.assertEqual(manifest, verify_source_snapshot(self.destination))
 
     def test_assembled_candidate_includes_verified_dependency_source_and_build_tools(self) -> None:
         bundle = self.dependency_bundle()
