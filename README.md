@@ -95,3 +95,11 @@ are unchanged from the preceding public revision. CMake uses those headers;
 the retained optional Autotools font rules can regenerate them when enabled.
 This source repair does not establish historical source delivery or license
 cure, authorize a binary release, or license original game/mod resources.
+
+## Historical Code Supplement Prepared 2026-10-16
+
+[Historical source information](historical/README.md) preserves additional
+historical code/header/build inputs beside the supported companion, with
+original notices and bounded evidence. It does not replace current native
+code or establish a complete historical source offer, resource permission,
+recipient delivery or cure. No binary release is included.

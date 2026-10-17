@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "status": "private-historical-code-build-supplement",
+  "publicBaseCommit": "c3aa08e2dfefe100397269fee964968653792dbd",
+  "historicalSourceSnapshotSha256": "432888c88494af44b3a6fa2d5152dd6ff693d026b1797bd6b7f16ea0ac1fd3a0",
+  "exactHistoricalCodeBuildFiles": 40,
+  "observedCodeHeaderGapsIncluded": 14,
+  "observedResourceArrayGapsExcluded": 2,
+  "sourceInputs": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 3959,
+      "sha256": "62cc2b989599a1e37ad1a518401de2c1e9a04a7c5f10dd5034fa3cdf2099b21d"
+    },
+    {
+      "path": "build-information/COPYING.GPL3.txt",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "build-information/README-VERIFIED-PRIVATE-BUILD.md",
+      "bytes": 4150,
+      "sha256": "420c15f8d4c77eada80e9bb764cef2b54a9a4a0eecdd4115a81b7a6f62c51e2e"
+    },
+    {
+      "path": "build-information/historical_build_settings.json",
+      "bytes": 1224,
+      "sha256": "0fc410a9650a976d1406db2e39b21384d8c5aecc93c5506958e44c2d91646427"
+    },
+    {
+      "path": "build-information/recover_historical_assets.py",
+      "bytes": 4252,
+      "sha256": "f9282fbbb0cfc4a27f7918467faab2bbadd6b0f6bdea3fb5897e72c7addfa53a"
+    },
+    {
+      "path": "engine-overlay/.devcontainer/initialize-linux.sh",
+      "bytes": 310,
+      "sha256": "d6ea7a27e659779d344823f5e686920f92f6dccd7dbb5fe097b8610b4d27fd76"
+    },
+    {
+      "path": "engine-overlay/.travis.sh",
+      "bytes": 542,
+      "sha256": "1f480b4f6921577faa3484d2b322650fa112febb7e9c0c36b29bc5248f9fa0ba"
+    },
+    {
+      "path": "engine-overlay/APCpp/CMakeLists.txt",
+      "bytes": 2120,
+      "sha256": "83aa0b64ecf5c950e6dfe109493f31b91e6bbcd5ff0e951b978a4a641f456d85"
+    },
+    {
+      "path": "engine-overlay/CMakeLists.txt",
+      "bytes": 5583,
+      "sha256": "6ad2369b2a7a38fe57a8eea6478ded09593a2c6ad02a18a42824ad74f5d28888"
+    },
+    {
+      "path": "engine-overlay/appimage.sh",
+      "bytes": 2391,
+      "sha256": "69fdb2129e0eabf0a95b7e11722150d5c595b4aa82524c4a9badf7415fe613a0"
+    },
+    {
+      "path": "engine-overlay/create_release.bat",
+      "bytes": 3059,
+      "sha256": "d9fa631c299d1c86400da0f0b3e40f15a22cdfa746db8a91d402f8858fa98c70"
+    },
+    {
+      "path": "engine-overlay/data/AppImage/run_launcher.sh",
+      "bytes": 92,
+      "sha256": "d5b7354c32802a822c7a9a1e7d654a5637afac70cae5b5fbae005082636fbdb5"
+    },
+    {
+      "path": "engine-overlay/data/Makefile.am",
+      "bytes": 1049,
+      "sha256": "e2b88d8daa26b59dc919e7f91dde23e0833021bf62aed9237d2427f70f673abe"
+    },
+    {
+      "path": "engine-overlay/data/convert-icon",
+      "bytes": 2033,
+      "sha256": "330a48319a6182f87a8e0a9135da1fac46a50c3346f652acc81b0083ff79e277"
+    },
+    {
+      "path": "engine-overlay/embed/CMakeLists.txt",
+      "bytes": 3252,
+      "sha256": "1675ea4e7ad9e84da1aff75797f31cb4e3d1054cc5c76bc9043b48cc2ccf2bd8"
+    },
+    {
+      "path": "engine-overlay/pkg/Makefile.am",
+      "bytes": 1445,
+      "sha256": "ad22ba6019770156b042fe6325cd6cabcb325cab0881284504f1fd4857bdc481"
+    },
+    {
+      "path": "engine-overlay/pkg/config.make.in",
+      "bytes": 704,
+      "sha256": "ad3cee94c427daed0772f82758311c894c19d3ecde9ca763af17755f8dcd6992"
+    },
+    {
+      "path": "engine-overlay/pkg/osx/AppController.h",
+      "bytes": 1149,
+      "sha256": "c0fa29081d9ff2c8277be407bca1a54ae071f41d885fca60f31ca08445557e18"
+    },
+    {
+      "path": "engine-overlay/pkg/osx/Execute.h",
+      "bytes": 867,
+      "sha256": "5a3b0a195d287aa3fbc003a078921a03dd9eae63c84dd219426d5c60b57e4b16"
+    },
+    {
+      "path": "engine-overlay/pkg/osx/IWADController.h",
+      "bytes": 1396,
+      "sha256": "1a48d511b7231b470056d7e1c7e5da70772523c367642578ae90bdf24e27df82"
+    },
+    {
+      "path": "engine-overlay/pkg/osx/Info.plist.in",
+      "bytes": 4166,
+      "sha256": "a7cf7b5cbf61a99571e8fdce32c458cf66c0f4a513046e7263c53eb4c6451edc"
+    },
+    {
+      "path": "engine-overlay/pkg/osx/LauncherManager.h",
+      "bytes": 1430,
+      "sha256": "ba26652443db9976105338f6a5aeb6290afe91b7d6a4cd434b8c2b85a779c620"
+    },
+    {
+      "path": "engine-overlay/src/CMakeLists.txt",
+      "bytes": 13516,
+      "sha256": "21108226b1ea2c200c66e4aa0ed745924958ce0a3044debe2bd4940e9e5e562b"
+    },
+    {
+      "path": "engine-overlay/src/ap_basic.c",
+      "bytes": 11027,
+      "sha256": "c3c0f1210829f492925417b9ea361d2252749c93bf1a4d9d362ffb88d976a42e"
+    },
+    {
+      "path": "engine-overlay/src/ap_notif.c",
+      "bytes": 4755,
+      "sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303"
+    },
+    {
+      "path": "engine-overlay/src/ap_notif.h",
+      "bytes": 838,
+      "sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd"
+    },
+    {
+      "path": "engine-overlay/src/archipelago/apdoom.cpp",
+      "bytes": 114182,
+      "sha256": "596d311add5f281033f648d53f28cfe16956b211592fc353b7dc5c3d5bfab4bc"
+    },
+    {
+      "path": "engine-overlay/src/archipelago/apdoom.h",
+      "bytes": 17597,
+      "sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe"
+    },
+    {
+      "path": "engine-overlay/src/doom-res.rc.in",
+      "bytes": 690,
+      "sha256": "f6a97b7564771b44779f42d2f9a326de4f6003cb77b9c63b5ed6a1a6554a51ff"
+    },
+    {
+      "path": "engine-overlay/src/doom/CMakeLists.txt",
+      "bytes": 3654,
+      "sha256": "ffdfffc7a9c21680851d2b96f455d47914cf38d23558efd112c7236e14d93bc5"
+    },
+    {
+      "path": "engine-overlay/src/doom/d_main.c",
+      "bytes": 68536,
+      "sha256": "98e6ab6f4045af5b0b0cbfe0525c2c5cc3279e34bc77b6a8ae23bab08d2cefab"
+    },
+    {
+      "path": "engine-overlay/src/doom/level_select.c",
+      "bytes": 36523,
+      "sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8"
+    },
+    {
+      "path": "engine-overlay/src/doom/r_data.c",
+      "bytes": 40713,
+      "sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71"
+    },
+    {
+      "path": "engine-overlay/src/doom/r_defs.h",
+      "bytes": 10781,
+      "sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec"
+    },
+    {
+      "path": "engine-overlay/src/doom/r_things.c",
+      "bytes": 33782,
+      "sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009"
+    },
+    {
+      "path": "engine-overlay/src/heretic-res.rc.in",
+      "bytes": 693,
+      "sha256": "2a575220cb90d355d8ac35bcaaa4d6f44ab61e93aa3ff287a2de3e9780503203"
+    },
+    {
+      "path": "engine-overlay/src/hexen-res.rc.in",
+      "bytes": 691,
+      "sha256": "fcc4d84e7f7fbfd8c3aed69494560d9a2c890c87ccebc2bd3e5aa4dc84acb09c"
+    },
+    {
+      "path": "engine-overlay/src/launcher-res.rc.in",
+      "bytes": 698,
+      "sha256": "ef8a674d4320e1f9255a525495b2d34993f64b55c8db47ff2fb00344f7c7164c"
+    },
+    {
+      "path": "engine-overlay/src/launcher/CMakeLists.txt",
+      "bytes": 531,
+      "sha256": "01c6f4d8d2d5db45ac64c0850e9d09c682385141fc7be56534852fe279b76da6"
+    },
+    {
+      "path": "engine-overlay/src/launcher/ln_exec.c",
+      "bytes": 17797,
+      "sha256": "338bb53e99e23f5fce6c0b5cab6f33d10b01cf44c68e0097e08975298daf9e58"
+    },
+    {
+      "path": "engine-overlay/src/launcher/lv_video.c",
+      "bytes": 11260,
+      "sha256": "7c6f736d5b06df1383d80e94ae584ee2c9f4951e6657c55ac2391c702f7c53b5"
+    },
+    {
+      "path": "engine-overlay/src/launcher/lv_video.h",
+      "bytes": 1302,
+      "sha256": "2961d101658bc4ecac7dd612408bef651ef9d05045b9dd9b43a7d77b35dd61ee"
+    },
+    {
+      "path": "engine-overlay/src/launcher/main.c",
+      "bytes": 52477,
+      "sha256": "8f49b644be3e1bea1ba6cceb44b9e17ea1dcd9ba74881b6bd49b6fbce4006288"
+    },
+    {
+      "path": "engine-overlay/src/setup-res.rc.in",
+      "bytes": 662,
+      "sha256": "a2f7fc00d2e6559356b0dcc4b44461c9d8c20eebc428bd1d882223ca4332023e"
+    },
+    {
+      "path": "engine-overlay/src/strife-res.rc.in",
+      "bytes": 692,
+      "sha256": "647e38f33cea2cca3e46fce2782cccac303f69e39952974dfd205aade2e1d6a7"
+    },
+    {
+      "path": "evidence/observed-input-availability.json",
+      "bytes": 6657,
+      "sha256": "6a91c5c055c4000881687c380f98d76f7587b6def8f5a05d1e2f02b79104e3be"
+    },
+    {
+      "path": "evidence/public-source-archive.json",
+      "bytes": 1355,
+      "sha256": "55fa850e63e0a3bbbb2abd635153d57e4577d996fba11fe6177927d961ce77f0"
+    },
+    {
+      "path": "original-notices/APCpp/LICENSE",
+      "bytes": 35823,
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "path": "original-notices/AUTHORS",
+      "bytes": 246,
+      "sha256": "0c976e32d4d9c44ef211a7a29f9db59e3f6bd9d25d76f82d878ecd37cdaf0ad9"
+    },
+    {
+      "path": "original-notices/COPYING.md",
+      "bytes": 17895,
+      "sha256": "aef8b4222b79d0dbf6bf17cfff71c90a6a6bb8917a4162abe417b469ed22da2e"
+    },
+    {
+      "path": "original-notices/CREDITS",
+      "bytes": 527,
+      "sha256": "ca14ea732ef911a0d1b4d453eb73d47d3cf4e98e5651e3da64d0fc3796b282b3"
+    },
+    {
+      "path": "original-notices/README.original.md",
+      "bytes": 5454,
+      "sha256": "dac46600da4e0cda03ebdb650dfd10a49e4ff1809c01e18c30938a7b268aeda7"
+    }
+  ],
+  "sourceSnapshotSha256": "36b0fcb7475cf7f4f803ca2e3ad9f3fa5ab9c941888086472758dbddb18701a8",
+  "resourcePayloadIncluded": false,
+  "standaloneBuildKit": false,
+  "completeCorrespondingSourceOffer": false,
+  "rightsCleared": false,
+  "historicalRecipientDeliveryOrCureEstablished": false,
+  "publicationAuthorized": false,
+  "committedPushedDeployedOrPublished": false
+}

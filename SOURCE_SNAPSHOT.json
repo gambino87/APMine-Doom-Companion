@@ -1658,7 +1658,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "70f0f904c5d458090a1d88cf23b773c2e4f7abbdd689365b211dfd23b9e96578"
+      "sha256": "bbd67a3f71c9647f02618b7dc158568f3e7b350f7aeeb3a531da92f03eb6bd58"
     },
     {
       "path": "README.upstream.md",
@@ -1763,6 +1763,222 @@
     {
       "path": "embed/README.txt",
       "sha256": "bfbad4ef871a6895b1263e98f57e3a16dab359e6b24faf7c0453e0ce523ed24f"
+    },
+    {
+      "path": "historical/README.md",
+      "sha256": "b2a364e16303d746e6ae33a9467e7199239e2434fd3d225b60b69d109be5feda"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/REVIEW.md",
+      "sha256": "62cc2b989599a1e37ad1a518401de2c1e9a04a7c5f10dd5034fa3cdf2099b21d"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/SUPPLEMENT_INPUTS.json",
+      "sha256": "0fb4273fc5accb44b3ab0b59642b462cb48e88db6d8fcacca3af4584157c545f"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/COPYING.GPL3.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/README-VERIFIED-PRIVATE-BUILD.md",
+      "sha256": "420c15f8d4c77eada80e9bb764cef2b54a9a4a0eecdd4115a81b7a6f62c51e2e"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/historical_build_settings.json",
+      "sha256": "0fc410a9650a976d1406db2e39b21384d8c5aecc93c5506958e44c2d91646427"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/recover_historical_assets.py",
+      "sha256": "f9282fbbb0cfc4a27f7918467faab2bbadd6b0f6bdea3fb5897e72c7addfa53a"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/.devcontainer/initialize-linux.sh",
+      "sha256": "d6ea7a27e659779d344823f5e686920f92f6dccd7dbb5fe097b8610b4d27fd76"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/.travis.sh",
+      "sha256": "1f480b4f6921577faa3484d2b322650fa112febb7e9c0c36b29bc5248f9fa0ba"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/APCpp/CMakeLists.txt",
+      "sha256": "83aa0b64ecf5c950e6dfe109493f31b91e6bbcd5ff0e951b978a4a641f456d85"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/CMakeLists.txt",
+      "sha256": "6ad2369b2a7a38fe57a8eea6478ded09593a2c6ad02a18a42824ad74f5d28888"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/appimage.sh",
+      "sha256": "69fdb2129e0eabf0a95b7e11722150d5c595b4aa82524c4a9badf7415fe613a0"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/create_release.bat",
+      "sha256": "d9fa631c299d1c86400da0f0b3e40f15a22cdfa746db8a91d402f8858fa98c70"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/AppImage/run_launcher.sh",
+      "sha256": "d5b7354c32802a822c7a9a1e7d654a5637afac70cae5b5fbae005082636fbdb5"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/Makefile.am",
+      "sha256": "e2b88d8daa26b59dc919e7f91dde23e0833021bf62aed9237d2427f70f673abe"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/convert-icon",
+      "sha256": "330a48319a6182f87a8e0a9135da1fac46a50c3346f652acc81b0083ff79e277"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/embed/CMakeLists.txt",
+      "sha256": "1675ea4e7ad9e84da1aff75797f31cb4e3d1054cc5c76bc9043b48cc2ccf2bd8"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/Makefile.am",
+      "sha256": "ad22ba6019770156b042fe6325cd6cabcb325cab0881284504f1fd4857bdc481"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/config.make.in",
+      "sha256": "ad3cee94c427daed0772f82758311c894c19d3ecde9ca763af17755f8dcd6992"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/AppController.h",
+      "sha256": "c0fa29081d9ff2c8277be407bca1a54ae071f41d885fca60f31ca08445557e18"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/Execute.h",
+      "sha256": "5a3b0a195d287aa3fbc003a078921a03dd9eae63c84dd219426d5c60b57e4b16"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/IWADController.h",
+      "sha256": "1a48d511b7231b470056d7e1c7e5da70772523c367642578ae90bdf24e27df82"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/Info.plist.in",
+      "sha256": "a7cf7b5cbf61a99571e8fdce32c458cf66c0f4a513046e7263c53eb4c6451edc"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/LauncherManager.h",
+      "sha256": "ba26652443db9976105338f6a5aeb6290afe91b7d6a4cd434b8c2b85a779c620"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/CMakeLists.txt",
+      "sha256": "21108226b1ea2c200c66e4aa0ed745924958ce0a3044debe2bd4940e9e5e562b"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_basic.c",
+      "sha256": "c3c0f1210829f492925417b9ea361d2252749c93bf1a4d9d362ffb88d976a42e"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_notif.c",
+      "sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_notif.h",
+      "sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/archipelago/apdoom.cpp",
+      "sha256": "596d311add5f281033f648d53f28cfe16956b211592fc353b7dc5c3d5bfab4bc"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/archipelago/apdoom.h",
+      "sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom-res.rc.in",
+      "sha256": "f6a97b7564771b44779f42d2f9a326de4f6003cb77b9c63b5ed6a1a6554a51ff"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/CMakeLists.txt",
+      "sha256": "ffdfffc7a9c21680851d2b96f455d47914cf38d23558efd112c7236e14d93bc5"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/d_main.c",
+      "sha256": "98e6ab6f4045af5b0b0cbfe0525c2c5cc3279e34bc77b6a8ae23bab08d2cefab"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/level_select.c",
+      "sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_data.c",
+      "sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_defs.h",
+      "sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_things.c",
+      "sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/heretic-res.rc.in",
+      "sha256": "2a575220cb90d355d8ac35bcaaa4d6f44ab61e93aa3ff287a2de3e9780503203"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/hexen-res.rc.in",
+      "sha256": "fcc4d84e7f7fbfd8c3aed69494560d9a2c890c87ccebc2bd3e5aa4dc84acb09c"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher-res.rc.in",
+      "sha256": "ef8a674d4320e1f9255a525495b2d34993f64b55c8db47ff2fb00344f7c7164c"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/CMakeLists.txt",
+      "sha256": "01c6f4d8d2d5db45ac64c0850e9d09c682385141fc7be56534852fe279b76da6"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/ln_exec.c",
+      "sha256": "338bb53e99e23f5fce6c0b5cab6f33d10b01cf44c68e0097e08975298daf9e58"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/lv_video.c",
+      "sha256": "7c6f736d5b06df1383d80e94ae584ee2c9f4951e6657c55ac2391c702f7c53b5"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/lv_video.h",
+      "sha256": "2961d101658bc4ecac7dd612408bef651ef9d05045b9dd9b43a7d77b35dd61ee"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/main.c",
+      "sha256": "8f49b644be3e1bea1ba6cceb44b9e17ea1dcd9ba74881b6bd49b6fbce4006288"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/setup-res.rc.in",
+      "sha256": "a2f7fc00d2e6559356b0dcc4b44461c9d8c20eebc428bd1d882223ca4332023e"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/strife-res.rc.in",
+      "sha256": "647e38f33cea2cca3e46fce2782cccac303f69e39952974dfd205aade2e1d6a7"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/evidence/observed-input-availability.json",
+      "sha256": "6a91c5c055c4000881687c380f98d76f7587b6def8f5a05d1e2f02b79104e3be"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/evidence/public-source-archive.json",
+      "sha256": "55fa850e63e0a3bbbb2abd635153d57e4577d996fba11fe6177927d961ce77f0"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/APCpp/LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/AUTHORS",
+      "sha256": "0c976e32d4d9c44ef211a7a29f9db59e3f6bd9d25d76f82d878ecd37cdaf0ad9"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/COPYING.md",
+      "sha256": "aef8b4222b79d0dbf6bf17cfff71c90a6a6bb8917a4162abe417b469ed22da2e"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/CREDITS",
+      "sha256": "ca14ea732ef911a0d1b4d453eb73d47d3cf4e98e5651e3da64d0fc3796b282b3"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/README.original.md",
+      "sha256": "dac46600da4e0cda03ebdb650dfd10a49e4ff1809c01e18c30938a7b268aeda7"
     },
     {
       "path": "licenses/dependencies/fluidsynth.txt",
@@ -4498,7 +4714,7 @@
     },
     {
       "path": "tests/test_source_repository.py",
-      "sha256": "a3967af790e47a53232f70bb15f25d97281362573e0c53c5e6f18d93ec9e2483"
+      "sha256": "776a55c7cc04091a81246630a842bde59fbfa7251abe615a8f43b9a9c107610f"
     },
     {
       "path": "tests/test_vendor_notices.py",
@@ -4834,7 +5050,7 @@
     },
     {
       "path": "tools/doom_companion/source_repository.py",
-      "sha256": "8591f0c56f660ebc4423397e71e9ae68db46f96ce357960b413fd8726976d9b5"
+      "sha256": "fd1a854e709619b72e081ebda5310967362aaf53cb34b711d685e9c187b930e8"
     },
     {
       "path": "tools/doom_companion/source_templates/.gitignore",
@@ -22572,6 +22788,276 @@
     {
       "path": "tools/doom_companion/external_test_inputs.py",
       "sha256": "4560a38a0399ffff9311f30f3e089e49d85d348b2ef26ab00156a7969b0f65f3"
+    },
+    {
+      "path": "historical/README.md",
+      "sha256": "b2a364e16303d746e6ae33a9467e7199239e2434fd3d225b60b69d109be5feda",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/REVIEW.md",
+      "sha256": "62cc2b989599a1e37ad1a518401de2c1e9a04a7c5f10dd5034fa3cdf2099b21d",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/SUPPLEMENT_INPUTS.json",
+      "sha256": "0fb4273fc5accb44b3ab0b59642b462cb48e88db6d8fcacca3af4584157c545f",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/COPYING.GPL3.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/README-VERIFIED-PRIVATE-BUILD.md",
+      "sha256": "420c15f8d4c77eada80e9bb764cef2b54a9a4a0eecdd4115a81b7a6f62c51e2e",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/historical_build_settings.json",
+      "sha256": "0fc410a9650a976d1406db2e39b21384d8c5aecc93c5506958e44c2d91646427",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/build-information/recover_historical_assets.py",
+      "sha256": "f9282fbbb0cfc4a27f7918467faab2bbadd6b0f6bdea3fb5897e72c7addfa53a",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/.devcontainer/initialize-linux.sh",
+      "sha256": "d6ea7a27e659779d344823f5e686920f92f6dccd7dbb5fe097b8610b4d27fd76",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/.travis.sh",
+      "sha256": "1f480b4f6921577faa3484d2b322650fa112febb7e9c0c36b29bc5248f9fa0ba",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/APCpp/CMakeLists.txt",
+      "sha256": "83aa0b64ecf5c950e6dfe109493f31b91e6bbcd5ff0e951b978a4a641f456d85",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/CMakeLists.txt",
+      "sha256": "6ad2369b2a7a38fe57a8eea6478ded09593a2c6ad02a18a42824ad74f5d28888",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/appimage.sh",
+      "sha256": "69fdb2129e0eabf0a95b7e11722150d5c595b4aa82524c4a9badf7415fe613a0",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/create_release.bat",
+      "sha256": "d9fa631c299d1c86400da0f0b3e40f15a22cdfa746db8a91d402f8858fa98c70",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/AppImage/run_launcher.sh",
+      "sha256": "d5b7354c32802a822c7a9a1e7d654a5637afac70cae5b5fbae005082636fbdb5",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/Makefile.am",
+      "sha256": "e2b88d8daa26b59dc919e7f91dde23e0833021bf62aed9237d2427f70f673abe",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/data/convert-icon",
+      "sha256": "330a48319a6182f87a8e0a9135da1fac46a50c3346f652acc81b0083ff79e277",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/embed/CMakeLists.txt",
+      "sha256": "1675ea4e7ad9e84da1aff75797f31cb4e3d1054cc5c76bc9043b48cc2ccf2bd8",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/Makefile.am",
+      "sha256": "ad22ba6019770156b042fe6325cd6cabcb325cab0881284504f1fd4857bdc481",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/config.make.in",
+      "sha256": "ad3cee94c427daed0772f82758311c894c19d3ecde9ca763af17755f8dcd6992",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/AppController.h",
+      "sha256": "c0fa29081d9ff2c8277be407bca1a54ae071f41d885fca60f31ca08445557e18",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/Execute.h",
+      "sha256": "5a3b0a195d287aa3fbc003a078921a03dd9eae63c84dd219426d5c60b57e4b16",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/IWADController.h",
+      "sha256": "1a48d511b7231b470056d7e1c7e5da70772523c367642578ae90bdf24e27df82",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/Info.plist.in",
+      "sha256": "a7cf7b5cbf61a99571e8fdce32c458cf66c0f4a513046e7263c53eb4c6451edc",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/pkg/osx/LauncherManager.h",
+      "sha256": "ba26652443db9976105338f6a5aeb6290afe91b7d6a4cd434b8c2b85a779c620",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/CMakeLists.txt",
+      "sha256": "21108226b1ea2c200c66e4aa0ed745924958ce0a3044debe2bd4940e9e5e562b",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_basic.c",
+      "sha256": "c3c0f1210829f492925417b9ea361d2252749c93bf1a4d9d362ffb88d976a42e",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_notif.c",
+      "sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/ap_notif.h",
+      "sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/archipelago/apdoom.cpp",
+      "sha256": "596d311add5f281033f648d53f28cfe16956b211592fc353b7dc5c3d5bfab4bc",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/archipelago/apdoom.h",
+      "sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom-res.rc.in",
+      "sha256": "f6a97b7564771b44779f42d2f9a326de4f6003cb77b9c63b5ed6a1a6554a51ff",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/CMakeLists.txt",
+      "sha256": "ffdfffc7a9c21680851d2b96f455d47914cf38d23558efd112c7236e14d93bc5",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/d_main.c",
+      "sha256": "98e6ab6f4045af5b0b0cbfe0525c2c5cc3279e34bc77b6a8ae23bab08d2cefab",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/level_select.c",
+      "sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_data.c",
+      "sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_defs.h",
+      "sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/doom/r_things.c",
+      "sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/heretic-res.rc.in",
+      "sha256": "2a575220cb90d355d8ac35bcaaa4d6f44ab61e93aa3ff287a2de3e9780503203",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/hexen-res.rc.in",
+      "sha256": "fcc4d84e7f7fbfd8c3aed69494560d9a2c890c87ccebc2bd3e5aa4dc84acb09c",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher-res.rc.in",
+      "sha256": "ef8a674d4320e1f9255a525495b2d34993f64b55c8db47ff2fb00344f7c7164c",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/CMakeLists.txt",
+      "sha256": "01c6f4d8d2d5db45ac64c0850e9d09c682385141fc7be56534852fe279b76da6",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/ln_exec.c",
+      "sha256": "338bb53e99e23f5fce6c0b5cab6f33d10b01cf44c68e0097e08975298daf9e58",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/lv_video.c",
+      "sha256": "7c6f736d5b06df1383d80e94ae584ee2c9f4951e6657c55ac2391c702f7c53b5",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/lv_video.h",
+      "sha256": "2961d101658bc4ecac7dd612408bef651ef9d05045b9dd9b43a7d77b35dd61ee",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/launcher/main.c",
+      "sha256": "8f49b644be3e1bea1ba6cceb44b9e17ea1dcd9ba74881b6bd49b6fbce4006288",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/setup-res.rc.in",
+      "sha256": "a2f7fc00d2e6559356b0dcc4b44461c9d8c20eebc428bd1d882223ca4332023e",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/engine-overlay/src/strife-res.rc.in",
+      "sha256": "647e38f33cea2cca3e46fce2782cccac303f69e39952974dfd205aade2e1d6a7",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/evidence/observed-input-availability.json",
+      "sha256": "6a91c5c055c4000881687c380f98d76f7587b6def8f5a05d1e2f02b79104e3be",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/evidence/public-source-archive.json",
+      "sha256": "55fa850e63e0a3bbbb2abd635153d57e4577d996fba11fe6177927d961ce77f0",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/APCpp/LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/AUTHORS",
+      "sha256": "0c976e32d4d9c44ef211a7a29f9db59e3f6bd9d25d76f82d878ecd37cdaf0ad9",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/COPYING.md",
+      "sha256": "aef8b4222b79d0dbf6bf17cfff71c90a6a6bb8917a4162abe417b469ed22da2e",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/CREDITS",
+      "sha256": "ca14ea732ef911a0d1b4d453eb73d47d3cf4e98e5651e3da64d0fc3796b282b3",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
+    },
+    {
+      "path": "historical/code-build-supplement-20261016/original-notices/README.original.md",
+      "sha256": "dac46600da4e0cda03ebdb650dfd10a49e4ff1809c01e18c30938a7b268aeda7",
+      "reason": "Additive historical code/build supplement; original bodies and notices unchanged"
     }
   ],
   "remaining": [
@@ -23588,5 +24074,20 @@
     "publication_authorization_pending_at_preparation": true,
     "published_by_preparation": false,
     "historical_source_delivery_or_cure_established": false
+  },
+  "historical_supplement_review": {
+    "preparedDate": "2026-10-16",
+    "publicBaseCommit": "c3aa08e2dfefe100397269fee964968653792dbd",
+    "originalSupplementArchiveSha256": "d3a8bc474f49e18a52753c57f001dfeb1716f1ff45355f4127158409017fec7c",
+    "originalSupplementMembersByteUnchanged": 53,
+    "exactHistoricalCodeBuildFiles": 40,
+    "observedAdditionalCodeHeaderInputs": 14,
+    "resourcePayloadIncluded": false,
+    "supportedNativeAndBuildInputsChanged": false,
+    "publicationPerformed": false,
+    "completeHistoricalSourceOfferOrDeliveryOrCureEstablished": false,
+    "extensionlessSourcePolicy": "Only the exact dated historical converter path and reviewed SHA-256; no general source/media exception",
+    "initialVerifierFailurePreserved": true,
+    "sourceVerificationCodeAndFocusedRegressionTestChanged": true
   }
 }

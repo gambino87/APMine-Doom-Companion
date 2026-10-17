@@ -1,0 +1,197 @@
+{
+  "status": "public-nested-archive-and-observed-native-inputs-refined",
+  "historicalInputs": 6027,
+  "availabilityCounts": {
+    "not-in-this-public-archive": 270,
+    "exact-at-expected-path": 5149,
+    "exact-at-another-public-path": 9,
+    "exact-in-public-nested-source-archive": 599
+  },
+  "remainingByRole": {
+    "private-review-instructions": 53,
+    "engine-notice-documentation-or-metadata": 160,
+    "engine-code-or-build-input": 40,
+    "engine-resource-input": 17
+  },
+  "publicNestedArchivePath": "APCpp/mbedtls-3.4.0.tar.gz",
+  "publicNestedArchiveSha256": "1b899f355022e8d02c4d313196a0a16af86c5a692456fa99d302915b8cf0320a",
+  "publicNestedArchiveMembers": 1556,
+  "observedEngineAndTlsSourceHeaderInputs": 723,
+  "observedInputsAlreadyPublic": 707,
+  "observedInputsMissingFromAuditedPublicSource": [
+    {
+      "path": "engine/src/ap_basic.c",
+      "sha256": "c3c0f1210829f492925417b9ea361d2252749c93bf1a4d9d362ffb88d976a42e",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/ap_notif.c",
+      "sha256": "c83c38a4fb3c135b3b2f9c0bdd5faae1e5c93364e0ff7141394619bb2ca89303",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/doom/level_select.c",
+      "sha256": "67b0fef9b3f86daf16527acd0b51496f67f87931f8cff9b3ea17fb024336aae8",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/doom/d_main.c",
+      "sha256": "98e6ab6f4045af5b0b0cbfe0525c2c5cc3279e34bc77b6a8ae23bab08d2cefab",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/doom/r_data.c",
+      "sha256": "5ea5efbd186172fbd9689cf8910e175fbf3ecf4fda5ac766878fad261dbddc71",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/doom/r_things.c",
+      "sha256": "9fba35b8faa7cbc3781b16cf286736124fbb6fca00abb23174197058f6fe6009",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/launcher/ln_exec.c",
+      "sha256": "338bb53e99e23f5fce6c0b5cab6f33d10b01cf44c68e0097e08975298daf9e58",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/launcher/lv_video.c",
+      "sha256": "7c6f736d5b06df1383d80e94ae584ee2c9f4951e6657c55ac2391c702f7c53b5",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/launcher/main.c",
+      "sha256": "8f49b644be3e1bea1ba6cceb44b9e17ea1dcd9ba74881b6bd49b6fbce4006288",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/archipelago/apdoom.cpp",
+      "sha256": "596d311add5f281033f648d53f28cfe16956b211592fc353b7dc5c3d5bfab4bc",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "compiledSources"
+      ]
+    },
+    {
+      "path": "engine/src/ap_notif.h",
+      "sha256": "97accfc62db694b61609d6ac30f3958d51f5f663231072a455b717dffe3b88dd",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    },
+    {
+      "path": "engine/src/archipelago/apdoom.h",
+      "sha256": "992acac3c06779c501392827a1cb972c7d6d3e6a44f81ad844135e8bbe6e0ffe",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    },
+    {
+      "path": "engine/src/doom/doom_icon.c",
+      "sha256": "ebbdeb91d4ca259fdef4a247b7b47f066a6db86887a8ad63cbe09e6031bc9816",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    },
+    {
+      "path": "engine/src/doom/r_defs.h",
+      "sha256": "958e7e0551c76244ec050fe34851eb53d8d2e527a464f78cb4d79dca95f09cec",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    },
+    {
+      "path": "engine/src/launcher/lv_video.h",
+      "sha256": "2961d101658bc4ecac7dd612408bef651ef9d05045b9dd9b43a7d77b35dd61ee",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    },
+    {
+      "path": "engine/src/setup/setup_icon.c",
+      "sha256": "a0d9e56cabb8f777340dd4aeecb6f147a91d3c374c44e5ebaeb3a3f0320200cf",
+      "availability": "not-in-this-public-archive",
+      "observedAs": [
+        "dependencies"
+      ]
+    }
+  ],
+  "remainingNonTlsCodeOrBuildPaths": [
+    "engine/.devcontainer/initialize-linux.sh",
+    "engine/.travis.sh",
+    "engine/APCpp/CMakeLists.txt",
+    "engine/CMakeLists.txt",
+    "engine/appimage.sh",
+    "engine/create_release.bat",
+    "engine/data/AppImage/run_launcher.sh",
+    "engine/data/Makefile.am",
+    "engine/data/convert-icon",
+    "engine/embed/CMakeLists.txt",
+    "engine/pkg/Makefile.am",
+    "engine/pkg/config.make.in",
+    "engine/pkg/osx/AppController.h",
+    "engine/pkg/osx/Execute.h",
+    "engine/pkg/osx/IWADController.h",
+    "engine/pkg/osx/Info.plist.in",
+    "engine/pkg/osx/LauncherManager.h",
+    "engine/src/CMakeLists.txt",
+    "engine/src/ap_basic.c",
+    "engine/src/ap_notif.c",
+    "engine/src/ap_notif.h",
+    "engine/src/archipelago/apdoom.cpp",
+    "engine/src/archipelago/apdoom.h",
+    "engine/src/doom-res.rc.in",
+    "engine/src/doom/CMakeLists.txt",
+    "engine/src/doom/d_main.c",
+    "engine/src/doom/level_select.c",
+    "engine/src/doom/r_data.c",
+    "engine/src/doom/r_defs.h",
+    "engine/src/doom/r_things.c",
+    "engine/src/heretic-res.rc.in",
+    "engine/src/hexen-res.rc.in",
+    "engine/src/launcher-res.rc.in",
+    "engine/src/launcher/CMakeLists.txt",
+    "engine/src/launcher/ln_exec.c",
+    "engine/src/launcher/lv_video.c",
+    "engine/src/launcher/lv_video.h",
+    "engine/src/launcher/main.c",
+    "engine/src/setup-res.rc.in",
+    "engine/src/strife-res.rc.in"
+  ],
+  "publicSourceAvailabilityIsNotHistoricalRecipientDelivery": true,
+  "resourceRightsOrCompleteSourceOfferEstablished": false,
+  "nativeBuildRerunOrNativeImageExecuted": false,
+  "newCommitPushPublicationOrDeployment": false
+}

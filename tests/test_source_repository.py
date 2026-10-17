@@ -200,6 +200,27 @@ class DoomCompanionSourceRepositoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unreviewed source/asset"):
             verify_source_snapshot(self.destination)
 
+    def test_historical_converter_requires_exact_reviewed_bytes_and_path(self) -> None:
+        manifest = self.stage()
+        reviewed = next(iter(source_repository.REVIEWED_HISTORICAL_SOURCES))
+        for name, message in ((reviewed, "Historical source differs"),
+                              (reviewed.replace("20261016", "unreviewed"), "Unreviewed source/asset")):
+            with self.subTest(name=name):
+                path = self.destination / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                raw = b"#!/bin/sh\n# Arbitrary content must not gain approval from its filename.\n"
+                path.write_bytes(raw)
+                manifest["copied_inputs"].append({"path": name, "sha256": sha256(raw)})
+                self.write_snapshot(manifest)
+                try:
+                    with self.assertRaisesRegex(ValueError, message):
+                        verify_source_snapshot(self.destination)
+                finally:
+                    manifest["copied_inputs"].pop()
+                    path.unlink()
+        self.write_snapshot(manifest)
+        self.assertEqual(verify_source_snapshot(self.destination), manifest)
+
     def test_reviewed_font_pngs_are_staged_with_their_bound_profile_and_notices(self) -> None:
         payloads = {name: b"\x89PNG\0synthetic font " + name.encode() for name in font_sources.FONT_FILES}
         payloads.update({"COPYING.md": (self.source / "COPYING.md").read_bytes(),

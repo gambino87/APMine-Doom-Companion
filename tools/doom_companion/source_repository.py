@@ -1,5 +1,6 @@
 """Stage a private, source-only Doom companion repository candidate."""
 # APMine companion change, 2026-10-15: bind reviewed fonts and reject unreviewed declared media.
+# APMine companion change, 2026-10-16: bind the historical extensionless converter to its reviewed bytes.
 
 from __future__ import annotations
 
@@ -20,6 +21,10 @@ from .external_test_inputs import is_external_test_input, is_library_test_path, 
 
 GENERATED_RESOURCES = {f"src/{name}-res.rc" for name in ("doom", "heretic", "hexen", "strife", "setup", "launcher")}
 GENERATED_RESOURCES.add("src/setup/setup-manifest.xml")
+REVIEWED_HISTORICAL_SOURCES = {
+    "historical/code-build-supplement-20261016/engine-overlay/data/convert-icon":
+        "330a48319a6182f87a8e0a9135da1fac46a50c3346f652acc81b0083ff79e277",
+}
 ICONS = {f"src/{name}/{name}_icon.c" for name in ("doom", "heretic", "hexen", "strife", "setup")}
 DEPENDENCIES = {
     "sdl2", "sdl2-mixer", "sdl2-net", "zlib", "libpng", "libsamplerate",
@@ -361,14 +366,18 @@ def verify_source_snapshot(root: Path) -> dict:
     for entry in manifest["copied_inputs"]:
         name = str(relative_path(entry["path"]))
         if (not name.startswith("vendor/native-dependencies/") and not is_text_source(name)
+                and name not in REVIEWED_HISTORICAL_SOURCES
                 and name not in FONT_FILES and name not in {
                     ".gitignore", "tools/doom_companion/source_templates/.gitignore", "APCpp/mbedtls-3.4.0.tar.gz"}):
             raise ValueError(f"Unreviewed source/asset input: {name}")
         if name in names:
             raise ValueError(f"Duplicate source snapshot entry: {name}")
         names.add(name)
-        if sha256(source_file(root, name).read_bytes()) != entry["sha256"]:
+        digest = sha256(source_file(root, name).read_bytes())
+        if digest != entry["sha256"]:
             raise ValueError(f"Source snapshot hash changed: {name}")
+        if name in REVIEWED_HISTORICAL_SOURCES and digest != REVIEWED_HISTORICAL_SOURCES[name]:
+            raise ValueError(f"Historical source differs from its reviewed bytes: {name}")
     fonts, font_profile = collect_font_sources(root)
     if manifest.get("external_test_inputs_policy") is not None:
         if manifest["external_test_inputs_policy"] != external_test_policy():

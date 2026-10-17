@@ -1,0 +1,33 @@
+{
+  "status": "actual-public-archive-and-historical-input-availability-compared",
+  "publicCommit": "c3aa08e2dfefe100397269fee964968653792dbd",
+  "publicTree": "80866261e97cbc63eec48383062c5b347f2ba560",
+  "anonymousArchiveUrl": "https://codeload.github.com/gambino87/APMine-Doom-Companion/tar.gz/c3aa08e2dfefe100397269fee964968653792dbd",
+  "anonymousHttpStatus": 200,
+  "publicArchiveBytes": 27897589,
+  "publicArchiveSha256": "b4cd40f32950947c48766d16ab4145eb74b38009bb11ebeeb10431aac8c4779e",
+  "publicGitFilesVerified": 5255,
+  "publicArchiveModeCounts": {
+    "664": 5254,
+    "775": 1
+  },
+  "publicArchivePersisted": false,
+  "historicalSourceInputsVerified": 6027,
+  "historicalSourceSnapshotSha256": "432888c88494af44b3a6fa2d5152dd6ff693d026b1797bd6b7f16ea0ac1fd3a0",
+  "availabilityCounts": {
+    "not-in-this-public-archive": 869,
+    "exact-at-expected-path": 5149,
+    "exact-at-another-public-path": 9
+  },
+  "missingByRole": {
+    "private-review-instructions": 53,
+    "engine-notice-documentation-or-metadata": 230,
+    "engine-code-or-build-input": 569,
+    "engine-resource-input": 17
+  },
+  "allHistoricalInputsPresentInThisArchive": false,
+  "externalOriginalSourceUrlsNotAuditedHere": true,
+  "historicalSourceDeliveryOrCureEstablished": false,
+  "newPublicationCommitPushOrDeploy": false,
+  "recoveredNativeImageExecuted": false
+}

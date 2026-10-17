@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "recorded-historical-native-build-controls",
+  "source_snapshot_sha256": "432888c88494af44b3a6fa2d5152dd6ff693d026b1797bd6b7f16ea0ac1fd3a0",
+  "original_cache_sha256": "371d5cd95507ba0aabef0a27235c418407a528a89041028ccd4224d166430491",
+  "cmake_cache_settings": {
+    "CMAKE_BUILD_TYPE:STRING": "Release",
+    "CMAKE_C_FLAGS:STRING": "",
+    "CMAKE_C_FLAGS_RELEASE:STRING": "",
+    "CMAKE_CXX_FLAGS:STRING": "",
+    "CMAKE_CXX_FLAGS_RELEASE:STRING": "",
+    "CMAKE_EXE_LINKER_FLAGS:STRING": "",
+    "CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING": "",
+    "CMAKE_SHARED_LINKER_FLAGS:STRING": "",
+    "CMAKE_SHARED_LINKER_FLAGS_RELEASE:STRING": ""
+  },
+  "generated_inputs_sha256": {
+    "config.h": "7df7e9445b0ae11cbbc737873d81ba7ad0246ba901e300782edd65e6520de5ab",
+    "embedded_files.c": "9ef9862b14d1623e7ff02616cb30356f16a45aa912bf689a7b1f976e5d464751",
+    "embedded_files.h": "fe3eac5000892df89c4aebe281e63857cd600839e4f48bbba3161022487577c9"
+  },
+  "scope": "The historical Release cache intentionally has empty global compiler/linker flags; source target flags still apply. __DATE__, absolute build paths, toolchain and linker metadata remain separate reconstruction considerations."
+}
